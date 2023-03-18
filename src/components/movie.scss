@@ -1,0 +1,40 @@
+
+
+
+
+.movie{
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 20vw;
+    height: 30vh;
+
+    img{
+        object-fit: cover;
+        height: 28vh;
+
+
+        &:hover{
+            border: 1px solid whitesmoke;
+            cursor: pointer;
+        }
+    }
+
+    h1{
+        display: flex;
+        text-align: center;
+        width: 15vw;
+        margin: 0.5rem;
+        font-size: 1rem;
+    }
+
+    h2{
+        font-size: 0.8rem;
+    }
+
+
+    
+}
+

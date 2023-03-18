@@ -1,0 +1,38 @@
+
+.navbg{
+    background-color: rgb(18, 18, 18);
+    font-family: 'Poppins', sans-serif;
+
+    .nav{
+        
+        display: flex;
+        margin: 0 14rem;
+        height: 10vh;
+        justify-content: space-between;
+        align-items: center;
+
+    
+        .left-side{
+            h1{
+                color: whitesmoke;
+            }
+        }
+    
+        .right-side{
+            .nav-items{
+
+                span{
+                    margin: 0 1rem;
+                    font-family: 'Sono', sans-serif;
+                }
+
+                .search-icon{
+                    padding-top: 6px;
+                }
+
+                
+            }
+        }
+    }
+}
+
