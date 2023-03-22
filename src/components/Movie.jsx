@@ -1,16 +1,19 @@
 
 
 import React from 'react'
-import image from "../img/mbdtf.jpg"
 import "./movie.scss"
 
 
-export const Movie = () => {
+export const Movie = ({image,title,year}) => {
+
+  const IMAGES = "https://image.tmdb.org/t/p/w1280"
+
   return (
+
+
     <div className='movie'>
-        <img src={image} alt="" />
-        <h1>My Beautiful Dark Twisted Fantasy</h1>
-        <h2>Kanye West</h2>
+        <img src={IMAGES + image} alt="" />
+        <h1>{title}</h1>
     </div>
   )
 }

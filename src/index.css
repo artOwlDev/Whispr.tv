@@ -15,8 +15,14 @@ body {
   -webkit-text-size-adjust: 100%;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #c8c8c8;
+  background-color: #2a2a2a;
   font-weight: 400;
+
+  background-color: #e5e5f7;
+  background-image: radial-gradient(#000566 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+  background: repeat url(img/pattern.JPG);
+  
 
   
   min-height: 100vh;

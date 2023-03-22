@@ -6,6 +6,7 @@ import { Nav } from './components/Nav'
 import { Home } from './pages/Home'
 import { Movie } from './components/Movie'
 import { ListMovie } from './components/ListMovie'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,8 +14,6 @@ function App() {
   return (
     <div className="App">
       <Home/>
-      <Movie/>
-      <ListMovie/>
     </div>
   )
 }
