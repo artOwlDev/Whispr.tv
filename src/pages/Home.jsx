@@ -7,6 +7,7 @@ import { ListMovie } from '../components/ListMovie'
 import { Nav } from '../components/Nav'
 import Search from '../components/Search'
 import { TvItem } from '../components/TvItem'
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
 
@@ -37,7 +38,7 @@ export const Home = () => {
 
         <div className="popular-series-display" style={{display: "flex", alignContent: "center", justifyContent: "center", flexDirection: "row", margin: "2rem", flexWrap: "wrap"}}>
           {topRated.slice(0,12).map((tv) => {
-            return <TvItem key="tv" image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id}/>
+            return <Link to={`tv/details/${tv.id}`}><TvItem key="tv" image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id}/></Link>
           })}
         </div>
 

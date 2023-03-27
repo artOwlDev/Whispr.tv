@@ -14,7 +14,7 @@ export const Nav = () => {
         <div className='left-side'>
           
           <img src={whisper} alt="" />
-          <h1>Whisperr.tv</h1>
+          <a href="/" style={{textDecoration: 'none'}}><h1>Whisperr.tv</h1></a>
           
         </div> 
 

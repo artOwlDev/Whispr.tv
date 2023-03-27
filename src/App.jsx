@@ -6,14 +6,21 @@ import { Home } from './pages/Home'
 import { TvItem } from './components/TvItem'
 import { ListMovie } from './components/ListMovie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Details from './pages/Details'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tv/details/:id" element={<Details />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+    
   )
 }
 
