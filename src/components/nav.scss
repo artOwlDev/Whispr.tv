@@ -5,10 +5,11 @@
 
     .nav{
         
+        flex-wrap: wrap;
+        margin: 0rem 10rem;
         display: flex;
-        margin: 0 14rem;
         height: 10vh;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
 
        
@@ -16,12 +17,18 @@
     
         .left-side{
             display: flex;
-            flex-direction: column;
+            align-items: center;
             font-family: 'Alkatra', cursive;
+
+            img{
+                object-fit: contain;
+                height: 6vh;
+            }
 
             h1{
                 color: whitesmoke;
-                font-size: 2.5rem;
+                font-size: 2rem;
+                font-family: 'Montserrat', sans-serif;
             }
 
             i{
@@ -30,15 +37,17 @@
         }
     
         .middle-side{
+            display: flex;
+            margin-right: 6rem;
             .nav-items{
 
                 span{
-                    margin: 0 1rem;
+                    margin: 1rem;
                     font-family: 'Mukta', sans-serif;
 
                     &:hover{
                         cursor: pointer;
-                        color: rgb(140, 81, 140);
+                        color: #333366;
                         transition: all 0.4s ease;
                     }
                 }
@@ -71,7 +80,7 @@
                 &:hover {
                     color: white;
                     background-color: black;
-                    border-color: purple;
+                    border-color: #333366;
                 }
             
             }

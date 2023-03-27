@@ -8,7 +8,7 @@ const Search = () => {
         
         
         <h1>Got something in mind?</h1>
-        <input id="search" type="search" placeholder="Search for a movie or tv show.." autofocus required />
+        <input id="search" type="search" placeholder="Search for a TV series..." autofocus required />
     </div>
   )
 }
