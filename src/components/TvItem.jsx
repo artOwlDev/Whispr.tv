@@ -1,17 +1,17 @@
 
 
 import React from 'react'
-import "./movie.scss"
+import "./tvItem.scss"
 
 
-export const Movie = ({image,title,year}) => {
+export const TvItem = ({image,title,year}) => {
 
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
 
   return (
 
 
-    <div className='movie'>
+    <div className='tv-item'>
         <img src={IMAGES + image} alt="" />
         <h1>{title}</h1>
     </div>

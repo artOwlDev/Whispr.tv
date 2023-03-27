@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import { Nav } from './components/Nav'
 import { Home } from './pages/Home'
-import { Movie } from './components/Movie'
+import { TvItem } from './components/TvItem'
 import { ListMovie } from './components/ListMovie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
