@@ -10,6 +10,7 @@ const Details = () => {
 
     const[details, setDetails] = useState({});
     const[reviews, setReviews] = useState([]);
+    const IMAGES = "https://image.tmdb.org/t/p/w1280"
 
     useEffect(() => {
         async function getReviews(){
@@ -44,9 +45,20 @@ const Details = () => {
   return (
     <div>
         <Nav/>
-        <div className="info">
+        <div className="info" style={{display: "flex", width: "100%", justifyContent: "space-around", margin: "4rem", }}>
 
-            <h1>{details.name}</h1>
+            <div className="image-div" style={{marginRight: "2rem"}}>
+                <img style={{objectFit: "contain", height: "50vh", borderRadius: "1rem"}}src={IMAGES + details.poster_path} alt="" />   
+            </div>
+            <div className="text-div" style={{}}>
+               
+                <h1>{details.name}</h1>
+                <p>{details?.first_air_date?.substring(0,4)}</p>
+                <h3>Created by: {details?.created_by?.[0]?.name}</h3>
+
+            </div>
+
+
 
         </div>
     </div>
