@@ -45,16 +45,17 @@ const Details = () => {
   return (
     <div>
         <Nav/>
-        <div className="info" style={{display: "flex", width: "100%", justifyContent: "space-around", margin: "4rem", }}>
+        <div className="info" style={{display: "flex", justifyContent: "space-between", margin: "4rem 24rem"}}>
 
-            <div className="image-div" style={{marginRight: "2rem"}}>
-                <img style={{objectFit: "contain", height: "50vh", borderRadius: "1rem"}}src={IMAGES + details.poster_path} alt="" />   
+            <div className="image-div" style={{marginRight: "2rem", display: "flex", flex: "1"}}>
+                <img style={{objectFit: "contain", height: "50vh", borderRadius: "1rem", boxShadow: "0 0 0.5px white", backgroundSize: "100% 100%"}} src={IMAGES + details.poster_path} alt="" />   
             </div>
-            <div className="text-div" style={{}}>
+            <div className="text-div" style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", border: "1px solid white", flex: "2"}}>
                
-                <h1>{details.name}</h1>
-                <p>{details?.first_air_date?.substring(0,4)}</p>
-                <h3>Created by: {details?.created_by?.[0]?.name}</h3>
+                <h1 style={{fontFamily: "'Montserrat', sans-serif", margin: "2rem 2rem"}}>{details.name}</h1>
+                <p style={{fontFamily: "'Montserrat', sans-serif", margin: "0rem 2rem"}}>{details?.first_air_date?.substring(0,4)} - {details?.last_air_date?.substring(0,4)}</p>
+                <h3 style={{fontFamily: "'Montserrat', sans-serif", margin: "1rem 2rem"}}>Created by: {details?.created_by?.[0]?.name}</h3>
+                <p>{details.overview}</p>
 
             </div>
 
