@@ -15,7 +15,7 @@ const Details = () => {
     useEffect(() => {
         async function getReviews(){
             try{
-                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
                 console.log(response.data.results);
                 setReviews(response.data.results)
             }
@@ -29,7 +29,7 @@ const Details = () => {
     useEffect(() => {
         async function getDetails(){
             try{
-                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
                 console.log(response.data.results);
                 setDetails(response.data)
             }

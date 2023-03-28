@@ -13,7 +13,7 @@ export const Home = () => {
 
   const [topRated,setTopRated] = useState([]); 
   
-  const TOP_RATED =  `https://api.themoviedb.org/3/tv/top_rated?api_key=e04f3c7713a6e4684e77e1e5c66c4908&language=en-US&page=1`
+  const TOP_RATED =  `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
 
   useEffect(() => {
       fetch(TOP_RATED)
