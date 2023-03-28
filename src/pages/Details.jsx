@@ -47,7 +47,7 @@ const Details = () => {
         <Nav/>
         <div className="info" style={{display: "flex", justifyContent: "space-between", margin: "4rem 24rem"}}>
 
-            <div className="image-div" style={{marginRight: "2rem", display: "flex", flex: "1"}}>
+            <div style={{marginRight: "2rem", display: "flex", flex: "1"}}>
                 <img style={{objectFit: "contain", height: "50vh", borderRadius: "1rem", boxShadow: "0 0 0.5px white", backgroundSize: "100% 100%"}} src={IMAGES + details.poster_path} alt="" />   
             </div>
             <div className="text-div" style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", border: "1px solid white", flex: "2"}}>

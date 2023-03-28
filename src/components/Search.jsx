@@ -7,7 +7,7 @@ const Search = () => {
     <div className='search'>
         
         
-        <h1>Got something in mind?</h1>
+        <h1 style={{fontSize: "2rem",fontFamily: "'Poppins', sans-serif"}}>Got something in mind?</h1>
         <input id="search" type="search" placeholder="Search for a TV series..." autofocus required />
     </div>
   )

@@ -4,7 +4,7 @@ import React from 'react'
 import "./tvItem.scss"
 
 
-export const TvItem = ({image,title,year}) => {
+export const TvItem = ({image,title,year,id}) => {
 
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
 

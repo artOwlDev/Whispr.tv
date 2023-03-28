@@ -8,6 +8,7 @@ import { ListMovie } from './components/ListMovie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Details from './pages/Details'
+import Login from './pages/auth/Login'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tv/details/:id" element={<Details />} />
+          <Route path="/auth/login" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>

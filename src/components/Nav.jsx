@@ -2,12 +2,18 @@
 import React from 'react'
 import './nav.scss'
 import { FaCameraRetro, FaFly, FaHatWizard } from "react-icons/fa";
+import {IoMdArrowDropdown} from "react-icons/io"
 import whisper from "../img/whisper.png"
-
+import { Link } from 'react-router-dom';
+import { authFirebase } from '../../utils/firebase'; 
+import {useAuthState} from "react-firebase-hooks/auth"
 
 
 
 export const Nav = () => {
+
+  const[user, loading] = useAuthState(authFirebase);
+
   return (
     <div className='navbg'>
       <div className="nav">
@@ -31,7 +37,20 @@ export const Nav = () => {
 
 
         <div className="right-side">
-          <button>Login</button>
+          {!user && (
+            <Link to={`auth/login`}>
+              <button>Login</button>
+            </Link>
+          )}
+          {user && (
+            <div>
+              <div style={{display: "flex", flexDirection: "row", alignItems: "center", margin: "1rem", gap: "1rem"}}to={`/dashboard`}>
+                <img src={user.photoURL} style={{borderRadius: "50%", height: "4vh"}}alt="" />
+                <h1 style={{fontSize: "1.2rem"}}>{user.displayName}</h1>
+                <IoMdArrowDropdown style={{cursor: "pointer"}}/>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
