@@ -48,6 +48,7 @@ export const Nav = () => {
                 <img src={user.photoURL} style={{borderRadius: "50%", height: "4vh"}}alt="" />
                 <h1 style={{fontSize: "1.2rem"}}>{user.displayName}</h1>
                 <IoMdArrowDropdown style={{cursor: "pointer"}}/>
+                <h1>hi</h1>
               </div>
             </div>
           )}
