@@ -1,12 +1,22 @@
 
 
 import React from 'react'
+import { AiFillGithub, AiFillInstagram, AiFillTwitterCircle, AiFillYoutube } from 'react-icons/ai'
+import { SocialIcon } from 'react-social-icons'
 
 const Footer = () => {
   return (
-    <div style={{display: "flex", width: "100%", justifyContent: "center", paddingBottom: "2rem", alignItems: "center", flexDirection: "column"}}>
-        <h1 style={{fontSize: "1.5rem", margin: "2rem", fontFamily: "'Montserrat', sans-serif"}}>Developed by: Artun</h1>
-        <p style={{fontSize: "0.8rem" ,fontFamily: "'Montserrat', sans-serif"}}>Last updated: March 2023</p>
+    <div style={{display: "flex", marginTop: "10vh" ,width: "100%", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "2rem"}}>
+      
+        <div style={{display: "flex", fontSize: "2rem", gap: "1rem"}}>
+          <SocialIcon  url='https://github.com/artOwlDev' fgColor="white" target="_blank" />
+          <SocialIcon url='https://www.linkedin.com/in/artunselcuk/' fgColor="white" target="_blank" />
+          <SocialIcon url='https://www.youtube.com' fgColor="white" target="_blank" />
+          <SocialIcon url='https://twitter.com' fgColor="white" target="_blank" />
+          <SocialIcon url='https://www.instagram.com/artunipunii/' fgColor="white" target="_blank" />
+        </div>
+
+        <p style={{fontSize: "1rem" ,fontFamily: "'Montserrat', sans-serif", paddingBottom: "2rem"}}>Whispr © 2023</p>
     </div>
   )
 }

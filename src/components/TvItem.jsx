@@ -1,18 +1,24 @@
 
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./tvItem.scss"
 
 
-export const TvItem = ({image,title,year,id}) => {
+export const TvItem = ({image,title,year,id,type}) => {
 
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
+  const mediaType = type === "tv" ? "tv" : "movie";
 
   return (
 
 
     <div className='tv-item'>
-        <img src={IMAGES + image} alt="" />
+        <Link to={`${mediaType}/details/${id}`}>
+          <div className="image">
+            <img src={IMAGES + image} alt="" />
+          </div>
+        </Link>
         <h1>{title}</h1>
     </div>
   )

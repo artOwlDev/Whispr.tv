@@ -20,7 +20,7 @@ export const Nav = () => {
         <div className='left-side'>
           
           <img src={whisper} alt="" />
-          <a href="/" style={{textDecoration: 'none'}}><h1>Whisperr.tv</h1></a>
+          <a href="/" style={{textDecoration: 'none'}}><h1>Whispr.tv</h1></a>
           
         </div> 
 
@@ -28,10 +28,21 @@ export const Nav = () => {
 
         <div className='middle-side'>
           <div className="nav-items">
+            <Link to={'/movies'}>
+              <span>Movies</span>
+            </Link>
+            <Link to={'/tv'}>
               <span>TV Shows</span>
+            </Link>
+            <Link to={'/music'}>
+              <span>Music</span>
+            </Link>
+            <Link to={'/reviews'}>
               <span>Reviews</span>
-              <span>Watchlist</span>
+            </Link>
+            <Link to={'/discover'}>
               <span>Discover</span>
+            </Link>
           </div>
         </div>
 
@@ -48,7 +59,6 @@ export const Nav = () => {
                 <img src={user.photoURL} style={{borderRadius: "50%", height: "4vh"}}alt="" />
                 <h1 style={{fontSize: "1.2rem"}}>{user.displayName}</h1>
                 <IoMdArrowDropdown style={{cursor: "pointer"}}/>
-                <h1>hi</h1>
               </div>
             </div>
           )}

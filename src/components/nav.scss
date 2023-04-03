@@ -2,13 +2,17 @@
 .navbg{
     background-color: rgb(18, 18, 18);
     font-family: 'Mukta', sans-serif;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
 
     .nav{
         
+        height: 10vh;
         flex-wrap: wrap;
         margin: 0rem 10rem;
         display: flex;
-        height: 10vh;
         justify-content: space-around;
         align-items: center;
 
@@ -17,12 +21,14 @@
     
         .left-side{
             display: flex;
+            flex: 1;
+            justify-content: center;
             align-items: center;
             font-family: 'Alkatra', cursive;
 
             img{
                 object-fit: contain;
-                height: 6vh;
+                height: 4vh;
             }
 
             h1{
@@ -38,16 +44,17 @@
     
         .middle-side{
             display: flex;
-            margin-right: 6rem;
+            justify-content: center;
+            flex: 2;
             .nav-items{
 
                 span{
-                    margin: 1rem;
+                    padding: 1rem;
                     font-family: 'Mukta', sans-serif;
 
                     &:hover{
                         cursor: pointer;
-                        color: #333366;
+                        color: #8686e4;
                         transition: all 0.4s ease;
                     }
                 }
@@ -61,6 +68,9 @@
         }
 
         .right-side{
+            display: flex;
+            justify-content: center;
+            flex: 1;
             button{
                 
                 cursor: pointer;
