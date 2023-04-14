@@ -66,7 +66,7 @@ export const Home = () => {
 
 
   return (
-    <div>
+    <div style={{minHeight: "100vh"}}>
         <Nav/>
         <Search/>
         <HomePageInfo/>

@@ -14,6 +14,9 @@ export const Nav = () => {
 
   const[user, loading] = useAuthState(authFirebase);
 
+  
+  
+
   return (
     <div className='navbg'>
       <div className="nav">
@@ -24,19 +27,15 @@ export const Nav = () => {
           
         </div> 
 
-        
-
         <div className='middle-side'>
           <div className="nav-items">
-            <Link to={'/movies'}>
+            <Link to={'/movie'}>
               <span>Movies</span>
             </Link>
             <Link to={'/tv'}>
               <span>TV Shows</span>
             </Link>
-            <Link to={'/music'}>
-              <span>Music</span>
-            </Link>
+            
             <Link to={'/reviews'}>
               <span>Reviews</span>
             </Link>

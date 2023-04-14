@@ -1,12 +1,14 @@
 
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FcGoogle } from 'react-icons/fc';
 import { Nav } from '../../components/Nav';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import {authFirebase} from "../../../utils/firebase";
 
 const Login = () => {
+    
+
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = async () => {
         try{
@@ -15,7 +17,11 @@ const Login = () => {
         }catch(error){
             console.log(error);
         }
+
+        
     }
+
+    
 
   return (
     <React.Fragment>

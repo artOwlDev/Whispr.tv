@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Details from './pages/Details'
 import Login from './pages/auth/Login'
 import ScrollToTop from './components/ScrollTopTop'
+import Movie from './pages/Movie'
+import Tv from './pages/Tv'
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/movie" element={<Movie />} />
+          <Route path="/tv" element={<Tv />} />
           <Route path="/tv/details/:id" element={<Details />} />
           <Route path="/movie/details/:id" element={<Details />} />
           <Route path="/auth/login" element={<Login />} />

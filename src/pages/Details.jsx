@@ -88,7 +88,7 @@ const Details = () => {
                         <h2 style={{fontFamily: "'Montserrat', sans-serif"}}>{details?.first_air_date?.substring(0,4)} - {details?.first_air_date?.substring(0,4) === details?.last_air_date?.substring(0,4) ? " present" : details?.last_air_date?.substring(0,4)}</h2>
                         <h3 style={{fontFamily: "'Montserrat', sans-serif"}}>Created by: {details?.created_by?.[0]?.name}</h3>
                         <p>{details.overview}</p>
-                        <p>{details.average_rating}</p>
+                        <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
                     </div>
                 </div>
             </div>

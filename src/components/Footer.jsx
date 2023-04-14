@@ -6,7 +6,7 @@ import { SocialIcon } from 'react-social-icons'
 
 const Footer = () => {
   return (
-    <div style={{display: "flex", marginTop: "10vh" ,width: "100%", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "2rem"}}>
+    <div style={{display: "flex", marginTop: "10vh" ,width: "100%", justifyContent: "flex-end", alignItems: "center", flexDirection: "column", gap: "2rem"}}>
       
         <div style={{display: "flex", fontSize: "2rem", gap: "1rem"}}>
           <SocialIcon  url='https://github.com/artOwlDev' fgColor="white" target="_blank" />

@@ -10,6 +10,7 @@
     background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/banner.jpg) no-repeat center;
     background-size:cover;
 
+    
     form{
         width: 100%;
         display: flex;
@@ -41,7 +42,7 @@
             cursor: pointer;
 
             &:hover{
-                background-color: rgb(231, 231, 231);
+                background-color: white;
 
                 h1,p{
                     color: black;

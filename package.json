@@ -28,7 +28,9 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-social-icons": "^5.15.0",
-    "sass": "^1.59.3"
+    "sass": "^1.59.3",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
