@@ -3,22 +3,22 @@
 import React, { useEffect } from 'react'
 import { FcGoogle } from 'react-icons/fc';
 import { Nav } from '../../components/Nav';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import {authFirebase} from "../../../utils/firebase";
 
 const Login = () => {
-    
+
 
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = async () => {
-        try{
+        try {
             const result = await signInWithPopup(authFirebase, googleProvider);
             console.log(result.user);
-        }catch(error){
+
+
+        } catch (error) {
             console.log(error);
         }
-
-        
     }
 
     

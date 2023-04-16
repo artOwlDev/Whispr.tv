@@ -191,6 +191,52 @@
                 }
             
             }
+
+            .user-logged-in-dropdown{
+                display: flex; 
+                flex-direction: row; 
+                align-items: center; 
+                margin: 1rem;
+                gap: 1rem;
+
+                img{
+                    border-radius: 50%;
+                    height: 4vh;
+                }
+
+                h1{
+                    font-size: 1.2rem;
+                }
+
+                .dropdown-div{
+                    position: relative;
+
+                    .dropdown{
+                        color: black;
+                        gap: 0.6rem;
+                        justify-content: center;
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        top: 300%;
+                        right: 0%;
+                        height: 100px;
+                        width: 200px;
+                        background-color: beige;
+                        border-radius: 2rem;
+
+                        .dropdown-element{
+
+                            &:hover{
+                                color: purple;
+                            }
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }

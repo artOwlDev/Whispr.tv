@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaCameraRetro, FaFly, FaHatWizard } from "react-icons/fa";
 import {IoMdArrowDropdown} from "react-icons/io"
 import whisper from "../img/whisper.png"
@@ -13,6 +13,8 @@ export const Nav = () => {
 
   const[user, loading] = useAuthState(authFirebase);
   const[dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
 
   const handleDropdown = () => {
     if (!dropdown){
@@ -22,6 +24,7 @@ export const Nav = () => {
       setDropdown(false);
     }
   }
+
   
 
   return (
@@ -60,19 +63,21 @@ export const Nav = () => {
             </Link>
           )}
           {user && (
-            <div>
-              <div style={{display: "flex", flexDirection: "row", alignItems: "center", margin: "1rem", gap: "1rem"}}to={`/dashboard`}>
-                <img src={user.photoURL} style={{borderRadius: "50%", height: "4vh"}}alt="" />
-                <h1 style={{fontSize: "1.2rem"}}>{user.displayName}</h1>
+              <div className="user-logged-in-dropdown" to={`/dashboard`}>
+                <img src={user.photoURL} alt="" />
+                <h1>{user.displayName}</h1>
                   <div className="dropdown-div">
                     <IoMdArrowDropdown style={{cursor: "pointer"}} onClick={() => handleDropdown()} className='dropdown-arrow'/>
-                    
+                    {dropdown && <div className='dropdown' ref={dropdownRef}>
+                        <h1 className='dropdown-element'>Profile</h1>
+                        <div style={{width: "100%", borderTop: "1px solid black"}}></div>
+                        <h1 className='dropdown-element'>Log out</h1>
+                      </div>}
 
                   </div>
                   
 
               </div>
-            </div>
           )}
         </div>
       </div>
