@@ -1,0 +1,399 @@
+.footer{
+    display: flex; 
+    margin-top: 10vh;
+    width: 100%; 
+    justify-content: flex-end; 
+    align-items: center;
+    flex-direction: column; 
+    gap: 2rem;
+
+    .footer-links{
+        display: flex; 
+        font-size: 2rem;
+        gap: 1rem;
+    }
+    p{
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 2rem;
+    }
+}
+
+.home-page-info{
+
+    .watch{
+        height: 40vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 8rem 15rem;
+
+        .box1{
+            display: flex;
+            width: 40%;
+    
+            .box1-description{
+                font-family: 'Poppins', sans-serif;
+    
+                h1{
+                    font-size: 1.5rem;
+                    margin: 1rem 0;
+                }
+    
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+    
+            
+        }
+    
+        .box2{
+            margin: 1rem;
+            img{
+                object-fit: contain;
+                height: 40vh;
+            }
+        }
+    }
+
+    .rating{
+        height: 40vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 8rem 15rem;
+
+        .boxA{
+            display: flex;
+            width: 40%;
+    
+            .boxA-description{
+                font-family: 'Poppins', sans-serif;
+    
+                h1{
+                    font-size: 1.5rem;
+                    margin: 1rem 0;
+                }
+    
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+    
+            
+        }
+    
+        .boxB{
+            margin: 1rem;
+            img{
+                object-fit: contain;
+                height: 40vh;
+            }
+        }
+    }
+}
+
+
+
+.navbg{
+    background-color: rgb(18, 18, 18);
+    font-family: 'Mukta', sans-serif;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+
+    .nav{
+        
+        height: 10vh;
+        flex-wrap: wrap;
+        margin: 0rem 10rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+       
+
+    
+        .left-side{
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Alkatra', cursive;
+
+            img{
+                object-fit: contain;
+                height: 4vh;
+            }
+
+            h1{
+                color: whitesmoke;
+                font-size: 2rem;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            i{
+                color: white;
+            }
+        }
+    
+        .middle-side{
+            display: flex;
+            justify-content: center;
+            flex: 2;
+            .nav-items{
+
+                span{
+                    padding: 1rem;
+                    font-family: 'Mukta', sans-serif;
+
+                    &:hover{
+                        cursor: pointer;
+                        color: #8686e4;
+                        transition: all 0.4s ease;
+                    }
+                }
+
+                .search-icon{
+                    padding-top: 6px;
+                }
+
+                
+            }
+        }
+
+        .right-side{
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            button{
+                
+                cursor: pointer;
+                outline: 0;
+                display: inline-block;
+                font-weight: 400;
+                line-height: 1.5;
+                text-align: center;
+                background-color: transparent;
+                border: 1px solid transparent;
+                padding: 6px 20px;
+                font-size: 1rem;
+                border-radius: 4rem;
+                transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                color: white;
+                border-color: white;
+                &:hover {
+                    color: white;
+                    background-color: black;
+                    border-color: #333366;
+                }
+            
+            }
+        }
+    }
+}
+
+
+
+.search{
+    border: 1px solid black;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/banner.jpg) no-repeat center;
+    background-size:cover;
+
+    .search-title{
+        font-size: 2rem;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    
+    form{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        input{
+            
+            display: block;
+            margin: 1rem;
+            padding: 1rem;
+            color: inherit;
+            width: 40%;
+            font-family: inherit;
+            border: none;
+            border-radius: 1rem;
+    
+            &:focus{
+                outline: none;
+            }
+              
+        }
+            
+    }
+
+    .search-results{
+        position: absolute;
+        top: 60%;
+
+
+        .loaded-info{
+            background-color: #202020;
+            cursor: pointer;
+            display: flex; 
+            height: 10vh; 
+            width: 25vw; 
+            justify-content: space-around; 
+            gap: 1rem; 
+            align-items: center; 
+            box-shadow: 0 0 0.8px white;
+                  
+            background-size: 100% 100%; 
+            margin: 5px; 
+            border-radius: 1rem;
+
+            img{
+                object-fit: contain;
+                height: 9vh;
+            }
+
+            h1{
+                width: 10vw; 
+                text-align: center;
+            }
+
+            &:hover{
+                background-color: white;
+
+                h1,p{
+                    color: black;
+                }
+            }
+            
+        }
+    }
+
+   
+      
+}
+
+.tv-item{
+    background-color: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    margin: 1rem 0.2rem;    
+    border-radius: 1rem;
+    
+
+    img{
+        border-radius: 1rem;
+        height: 350px;
+        width: 250px;
+        box-shadow: 0 0 0.5px white;
+        background-size: 100% 100%;
+
+
+        &:hover{
+            cursor: pointer;
+            box-shadow: 0 0 0 1px white;
+            background-size: 120% 120%;
+        }
+    }
+
+    h1{
+        padding: 0.8rem;
+        font-family: 'Mukta', sans-serif;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    
+
+
+    
+}
+
+
+.details-frag{
+
+    .details{
+        .backdrop-div{
+            display: flex;
+            justify-content: center; 
+            width: 100vw;
+    
+            .backdrop{
+    
+            }
+    
+            
+        }
+
+        .details-info{
+            display: flex;
+            justify-content: space-between; 
+            margin: 1rem 24rem;
+
+            .details-image-div{
+                margin-right: 2rem;
+                display: flex; 
+                flex: 1;
+
+                img{
+                    object-fit: contain;
+                    height: 48vh;
+                    border-radius: 1rem;
+                    box-shadow: 0 0 0.5px white;
+                    background-size: 100% 100%;
+                }
+            }
+
+            .details-text{
+                display: flex;
+                flex-direction: column; 
+                justify-content: flex-start;
+                flex: 2;
+                gap: 1rem;
+                font-family: 'Montserrat', sans-serif;
+
+                h1{
+                    font-size: 2.8rem;
+                    font-weight: bolder;
+                }
+
+               
+            }
+        }
+    }
+}
+
+.home{
+    min-height: 100vh;
+
+    .home-title{
+        margin: 2rem 8rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+    }
+
+    .home-tv-display{
+        .popular-series-display{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;
+            margin: 2rem;
+            flex-wrap: wrap;
+        }
+    }
+}

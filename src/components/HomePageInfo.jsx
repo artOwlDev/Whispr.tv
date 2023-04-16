@@ -1,6 +1,5 @@
 
 import React from 'react'
-import "./homepageinfo.scss"
 import banner from "../img/watch.png"
 import rating from "../img/rating.png"
 import { Button } from 'react-bootstrap'

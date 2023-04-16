@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./tvItem.scss"
 
 
 export const TvItem = ({image,title,year,id,type}) => {

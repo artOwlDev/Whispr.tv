@@ -66,19 +66,15 @@ export const Home = () => {
 
 
   return (
-    <div style={{minHeight: "100vh"}}>
+    <div className="home">
         <Nav/>
         <Search/>
         <HomePageInfo/>
 
-        <h1 style={{margin: "2rem 8rem", fontFamily: "'Poppins', sans-serif", fontSize: "1.4rem"}}>Critically-acclaimed tv-series</h1>
+        <h1 className='home-title'>Critically-acclaimed tv-series</h1>
 
-        <div className="" style={{display: "flex", justifyContent: "center"}}>
-          <div className="div" style={{width: "90vw", borderTop: "1px solid #585858", display: "flex", justifyContent: "center"}}></div>
-        </div>
-
-        <div className="tv-display">
-          <div className="popular-series-display" style={{display: "flex", alignContent: "center", justifyContent: "center", flexDirection: "row", margin: "2rem", flexWrap: "wrap"}}>
+        <div className="home-tv-display">
+          <div className="popular-series-display">
             {tv.length > 0 && tv.slice(1,13).map((tv) => {
               return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
             })}
@@ -88,16 +84,11 @@ export const Home = () => {
         
         <br></br>
 
-        <h1 style={{margin: "2rem 8rem", fontFamily: "'Poppins', sans-serif", fontSize: "1.4rem"}}>Popular movies</h1>
+        <h1 className='home-title'>Popular movies</h1>
 
-        <div className="" style={{display: "flex", justifyContent: "center"}}>
-          <div className="div" style={{width: "90vw", borderTop: "1px solid #585858", display: "flex", justifyContent: "center"}}></div>
-        </div>
-        
-          
 
-        <div className="movie-display">
-          <div className="popular-movies-display" style={{display: "flex", alignContent: "center", justifyContent: "center", flexDirection: "row", margin: "2rem", flexWrap: "wrap"}}>
+        <div className="home-tv-display">
+          <div className="popular-series-display">
             {movies.length > 0 && movies.slice(0,12).map((movie) => {
               return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
             })}

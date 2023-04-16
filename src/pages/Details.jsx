@@ -71,22 +71,22 @@ const Details = () => {
     
 
   return (
-    <div>
+    <div className='details-frag'>
         <Nav/>
         {mediaType === "tv" &&
-            <div className="div">
-                <div className="" style={{display: "flex", justifyContent: "center", width: "100vw"}}>
+            <div className="details">
+                <div className="backdrop-div">
                     <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 20%, #14171d 90%), linear-gradient(to left, transparent 20%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "40vh", width: "50vw", borderRadius: "4rem", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
                 </div>
 
-                <div className="info" style={{display: "flex", justifyContent: "space-between", margin: "1rem 24rem"}}>
-                    <div style={{marginRight: "2rem", display: "flex", flex: "1"}}>
-                        <img style={{objectFit: "contain", height: "48vh", borderRadius: "1rem", boxShadow: "0 0 0.5px white", backgroundSize: "100% 100%"}} src={IMAGES + details.poster_path} alt="" />   
+                <div className="details-info">
+                    <div className="details-image-div">
+                        <img src={IMAGES + details.poster_path} alt="" />   
                     </div>
-                    <div className="text-div" style={{display: "flex", flexDirection: "column", justifyContent: "flex-start",flex: "2", gap: "1rem"}}>
-                        <h1 style={{fontFamily: "'Montserrat', sans-serif", fontSize: "2.8rem", fontWeight: "bolder"}}>{details.name}</h1>
-                        <h2 style={{fontFamily: "'Montserrat', sans-serif"}}>{details?.first_air_date?.substring(0,4)} - {details?.first_air_date?.substring(0,4) === details?.last_air_date?.substring(0,4) ? " present" : details?.last_air_date?.substring(0,4)}</h2>
-                        <h3 style={{fontFamily: "'Montserrat', sans-serif"}}>Created by: {details?.created_by?.[0]?.name}</h3>
+                    <div className="details-text">
+                        <h1>{details.name}</h1>
+                        <h2>{details?.first_air_date?.substring(0,4)} - {details?.first_air_date?.substring(0,4) === details?.last_air_date?.substring(0,4) ? " present" : details?.last_air_date?.substring(0,4)}</h2>
+                        <h3>Created by: {details?.created_by?.[0]?.name}</h3>
                         <p>{details.overview}</p>
                         <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
                     </div>
@@ -95,18 +95,18 @@ const Details = () => {
         }
 
         {mediaType === "movie" &&
-            <div className="div">      
-                <div className="" style={{display: "flex", justifyContent: "center", width: "100vw"}}>
+            <div className="details">      
+                <div className="backdrop-div">
                     <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 20%, #14171d 90%), linear-gradient(to left, transparent 20%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "40vh", width: "50vw", borderRadius: "4rem", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
                 </div>       
    
-                <div className="info" style={{display: "flex", justifyContent: "space-between", margin: "1rem 24rem"}}>
-                    <div style={{marginRight: "2rem", display: "flex", flex: "1"}}>
-                        <img style={{objectFit: "contain", height: "50vh", borderRadius: "1rem", boxShadow: "0 0 0.5px white", backgroundSize: "100% 100%"}} src={IMAGES + details.poster_path} alt="" />   
+                <div className="details-info" >
+                    <div className='details-image-div'>
+                        <img src={IMAGES + details.poster_path} alt="" />   
                     </div>
-                    <div className="text-div" style={{display: "flex", flexDirection: "column", justifyContent: "flex-start",flex: "2", gap: "1rem"}}>
-                        <h1 style={{fontFamily: "'Montserrat', sans-serif", fontSize: "2.8rem", fontWeight: "bolder"}}>{details.title}</h1>
-                        <h2 style={{fontFamily: "'Montserrat', sans-serif", fontSize: "1.2rem"}}>Released: {details?.release_date?.substring(0,4)}</h2>
+                    <div className="details-text">
+                        <h1>{details.title}</h1>
+                        <h2>Released: {details?.release_date?.substring(0,4)}</h2>
 
 
                         {/* Getting director name */}
@@ -114,7 +114,7 @@ const Details = () => {
                             crew?.job === "Director" ? director = crew.name : "Not found"
                         })}
                         
-                        <h3 style={{fontFamily: "'Montserrat', sans-serif"}}>Directed by: {director}</h3>
+                        <h3>Directed by: {director}</h3>
                         <p>{details.overview}</p>
                         <p>{details.average_rating}</p>
                     </div>
