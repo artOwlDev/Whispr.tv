@@ -200,6 +200,7 @@
                 gap: 1rem;
 
                 img{
+                    object-fit: contain;
                     border-radius: 50%;
                     height: 4vh;
                 }
@@ -208,32 +209,8 @@
                     font-size: 1.2rem;
                 }
 
-                .dropdown-div{
-                    position: relative;
-
-                    .dropdown{
-                        color: black;
-                        gap: 0.6rem;
-                        justify-content: center;
-                        align-items: center;
-                        display: flex;
-                        flex-direction: column;
-                        position: absolute;
-                        top: 300%;
-                        right: 0%;
-                        height: 100px;
-                        width: 200px;
-                        background-color: beige;
-                        border-radius: 2rem;
-
-                        .dropdown-element{
-
-                            &:hover{
-                                color: purple;
-                            }
-                        }
-                    }
-                }
+                
+                
             }
 
 
@@ -394,13 +371,19 @@
                 margin-right: 2rem;
                 display: flex; 
                 flex: 1;
+                flex-direction: column;
 
                 img{
                     object-fit: contain;
                     height: 48vh;
-                    border-radius: 1rem;
-                    box-shadow: 0 0 0.5px white;
-                    background-size: 100% 100%;
+                    border-radius: 2rem;
+                    
+                }
+
+                .rate-review{
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
                 }
             }
 
@@ -409,12 +392,53 @@
                 flex-direction: column; 
                 justify-content: flex-start;
                 flex: 2;
-                gap: 1rem;
+                gap: 2rem;
                 font-family: 'Montserrat', sans-serif;
 
                 h1{
                     font-size: 2.8rem;
                     font-weight: bolder;
+                }
+
+                
+
+                .actors{
+                    display: flex;
+                    gap: 3rem;
+                    align-items: flex-start;
+
+
+                    .actors-div{
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        width: 8rem;
+
+                        text-align: center;
+                        gap: 0.4rem;
+
+                        img{
+                            object-fit: contain;
+                            height: 20vh;
+                            border-radius: 2rem;
+                            opacity: 0.8;
+
+                            &:hover{
+                                opacity: 1;
+                                cursor: pointer;
+                            }
+                        }
+
+                        h1{
+                            font-size: 1rem;
+                        }
+                        p{
+                            font-size: 0.8rem;
+                        }
+
+                        
+                        
+                    }
                 }
 
                
@@ -440,6 +464,72 @@
             flex-direction: row;
             margin: 2rem;
             flex-wrap: wrap;
+        }
+    }
+}
+
+.dashboard-page{
+    .dashboard{
+        display: flex;
+        margin: 5rem 12rem;
+        height: 80vh;
+        font-family: 'Poppins', sans-serif;
+        
+
+        .dashboard-left{
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            .dashboard-userinfo{
+                display: flex;
+                gap: 0.8rem;
+                flex-direction: column;
+                border-bottom: 1px solid white;
+
+                h1{
+                    font-size: 1.2rem;
+                }
+                
+                p{
+                    font-size: 0.8rem
+                }
+            }
+    
+            .dashboard-selections{
+                margin-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                a{
+                    padding: 1rem;
+                }
+
+                a.active {
+                    background: white;
+                    border-radius: 2rem;
+                    color: black;
+                }
+            }
+        }
+
+        .dashboard-right{
+            display: flex;
+            flex: 2;
+            margin: 2rem 4rem;
+
+
+            .dashboard-right-div{
+                display: flex;
+                flex-direction: column;
+
+                p{
+                    font-size: 0.8rem;
+                }
+
+            }
         }
     }
 }

@@ -5,14 +5,19 @@ import { FcGoogle } from 'react-icons/fc';
 import { Nav } from '../../components/Nav';
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import {authFirebase} from "../../../utils/firebase";
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer';
 
 const Login = () => {
+    const navigate = useNavigate();
+
 
 
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = async () => {
         try {
             const result = await signInWithPopup(authFirebase, googleProvider);
+            navigate("/");
             console.log(result.user);
 
 
@@ -20,6 +25,7 @@ const Login = () => {
             console.log(error);
         }
     }
+
 
     
 
@@ -36,6 +42,7 @@ const Login = () => {
                 </button>
             </div>
         </div>
+        <Footer/>
     </React.Fragment>
     
   )

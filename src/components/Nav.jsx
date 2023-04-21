@@ -24,6 +24,11 @@ export const Nav = () => {
       setDropdown(false);
     }
   }
+  useEffect(()=> {
+    if (user){
+      console.log(user.photoURL);
+    }
+  },[])
 
   
 
@@ -63,20 +68,11 @@ export const Nav = () => {
             </Link>
           )}
           {user && (
-              <div className="user-logged-in-dropdown" to={`/dashboard`}>
-                <img src={user.photoURL} alt="" />
+              <div className="user-logged-in-dropdown">
                 <h1>{user.displayName}</h1>
-                  <div className="dropdown-div">
-                    <IoMdArrowDropdown style={{cursor: "pointer"}} onClick={() => handleDropdown()} className='dropdown-arrow'/>
-                    {dropdown && <div className='dropdown' ref={dropdownRef}>
-                        <h1 className='dropdown-element'>Profile</h1>
-                        <div style={{width: "100%", borderTop: "1px solid black"}}></div>
-                        <h1 className='dropdown-element'>Log out</h1>
-                      </div>}
-
-                  </div>
-                  
-
+                <Link to={'/dashboard'}>
+                  <img src={user.photoURL} alt="" />                
+                </Link>
               </div>
           )}
         </div>

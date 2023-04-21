@@ -18,7 +18,7 @@ const Search = () => {
   const handleFilter = (event) => {
     event.preventDefault();
     axios.get(searchTMDBMovie + searchVal).then(res => {
-      console.log(res.data);
+      console.log(res.data + "hi");
       setFilteredData(res.data.results);
     })
     .catch(err => console.log(err));
@@ -80,7 +80,7 @@ const Search = () => {
 
           <div className="search-results" ref={searchRef}>
             {searchVal != '' && filteredData.length > 0 && filteredData.sort((a, b) => b.popularity - a.popularity).slice(0,3).map((movie) => {
-                  return <Link to={`/movie/details/${movie.id}`}><div className="loaded-info">
+                  return <Link to={`/${movie.release_date ? 'movie' : 'tv'}/details/${movie.id}`}><div className="loaded-info">
                       <img src={IMAGES + movie.poster_path} alt="" />
                       <h1>{movie.title || movie.name} </h1>
                       <p>{movie.release_date?.substring(0,4) || movie.first_air_date?.substring(0,4)}</p>

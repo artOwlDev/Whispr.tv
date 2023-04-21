@@ -11,6 +11,7 @@ import Login from './pages/auth/Login'
 import ScrollToTop from './components/ScrollTopTop'
 import Movie from './pages/Movie'
 import Tv from './pages/Tv'
+import Dashboard from './pages/Dashboard'
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
           <Route path="/tv/details/:id" element={<Details />} />
           <Route path="/movie/details/:id" element={<Details />} />
           <Route path="/auth/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          
         </Routes>
       </div>
     </BrowserRouter>
