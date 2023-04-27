@@ -1,14 +1,23 @@
 
 
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import axios from 'axios';
 import Footer from '../components/Footer';
+import {useAuthState} from "react-firebase-hooks/auth"
+import { authFirebase } from '../../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import {AiFillStar} from "react-icons/ai"
+import Rate from '../components/Rate';
+
 
 const Details = () => {
     const {id} = useParams();
 
+    const navigate = useNavigate();
+
+    const[user, loading] = useAuthState(authFirebase)
     const[details, setDetails] = useState({});
     const[reviews, setReviews] = useState([]);
     const[crew, setCrew] = useState([]);
@@ -60,16 +69,35 @@ const Details = () => {
     },[])
 
     useEffect(() => {
-        const tabName = mediaType === "tv"  ? `${details?.name}` : `${details?.title}`
-        document.title = tabName;
-    },[])
+        var tabName;
+        if (mediaType === "tv"){
+            tabName = details.name;
+            console.log(`media type is ${mediaType}`);
+        }
+        else{
+            tabName = details.title;
+        }
+        document.title = `${tabName} · Whispr`;
+    },[mediaType, details])
 
 
 
+    const handleReview = () => {
+        if (!user){
+            navigate("../../auth/login")
+            console.log("duwabdubawudbawubd")
+        }
+        else{
+            if (showRateBox){
+                setShowRateBox(false);
+            }
+            else{
+                setShowRateBox(true);
+            }
+        }
+       
+    }
     
-
-    
-
   return (
     <div className='details-frag'>
         <Nav/>
@@ -84,8 +112,7 @@ const Details = () => {
                         <img src={IMAGES + details.poster_path} alt="" />   
 
                         <div className="rate-review">
-                            <button style={{borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Rate</button>
-                            <button style={{borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Review</button>
+                            
                         </div>
                     </div>
                     <div className="details-text">
@@ -98,7 +125,9 @@ const Details = () => {
                         <div className="actors">
                             {crew?.cast?.slice(0,5).map(actor => {
                                 return <div className='actors-div'>
-                                    <img src={IMAGES + actor.profile_path} alt="" />
+                                    <Link to={`../../actor/${actor.id}`}>
+                                        <img src={IMAGES + actor.profile_path} alt="" />
+                                    </Link>
                                     <h1>{actor.name}</h1>
                                     <p>as</p>
                                     <p className='actor-character-name'>{actor.character}</p>
@@ -122,8 +151,10 @@ const Details = () => {
                         <img src={IMAGES + details.poster_path} alt="" />   
 
                         <div className="rate-review">
-                            <button style={{borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Rate</button>
-                            <button style={{borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Review</button>
+                            <button onClick={handleReview} style={{borderRadius: "1rem", margin: "1rem 0px", background: "whitesmoke", width: "6rem" ,fontSize: "1.2rem", color: "black", padding: "10px"}}>Rate</button>
+                            <button onClick={handleReview} style={{borderRadius: "1rem", margin: "1rem 0px", background: "whitesmoke", width: "6rem", fontSize: "1.2rem", color: "black", padding: "10px"}}>Review</button>
+                            <AiFillStar className='icon'/>
+
                         </div>
                     </div>
                     <div className="details-text">
@@ -137,12 +168,14 @@ const Details = () => {
                         
                         <h3>Directed by: {director}</h3>
                         <p>{details.overview}</p>
-                        <p>{details.average_rating}</p>
+                        <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
 
                         <div className="actors">
                             {crew?.cast?.slice(0,5).map(actor => {
                                 return <div className='actors-div'>
-                                    <img src={IMAGES + actor.profile_path} alt="" />
+                                    <Link to={`../../actor/${actor.id}`}>
+                                        <img src={IMAGES + actor.profile_path} alt="" />
+                                    </Link>
                                     <h1>{actor.name}</h1>
                                     <p>as</p>
                                     <p className='actor-character-name'>{actor.character}</p>

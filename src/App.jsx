@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollTopTop'
 import Movie from './pages/Movie'
 import Tv from './pages/Tv'
 import Dashboard from './pages/Dashboard'
+import Actor from './pages/Actor'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/movie/details/:id" element={<Details />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/actor/:id" element={<Actor />} />
           
         </Routes>
       </div>

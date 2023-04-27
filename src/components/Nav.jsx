@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FaCameraRetro, FaFly, FaHatWizard } from "react-icons/fa";
 import {IoMdArrowDropdown} from "react-icons/io"
-import whisper from "../img/whisper.png"
+import whisper from "../img/whispr.png"
 import { Link } from 'react-router-dom';
 import { authFirebase } from '../../utils/firebase'; 
 import {useAuthState} from "react-firebase-hooks/auth"
@@ -14,6 +14,7 @@ export const Nav = () => {
   const[user, loading] = useAuthState(authFirebase);
   const[dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const[userImage, setUserImage] = useState("");
 
 
   const handleDropdown = () => {
@@ -26,7 +27,9 @@ export const Nav = () => {
   }
   useEffect(()=> {
     if (user){
-      console.log(user.photoURL);
+      console.log(user);
+      setUserImage(user.photoURL);
+      console.log(userImage);
     }
   },[])
 
@@ -38,7 +41,7 @@ export const Nav = () => {
         <div className='left-side'>
           
           <img src={whisper} alt="" />
-          <a href="/" style={{textDecoration: 'none'}}><h1>Whispr.tv</h1></a>
+          <a href="/" style={{textDecoration: 'none'}}><h1>Whispr</h1></a>
           
         </div> 
 
@@ -56,6 +59,7 @@ export const Nav = () => {
             </Link>
             <Link to={'/discover'}>
               <span>Discover</span>
+              
             </Link>
           </div>
         </div>
@@ -63,17 +67,15 @@ export const Nav = () => {
 
         <div className="right-side">
           {!user && (
-            <Link to={`auth/login`}>
+            <Link to={`../../auth/login`}>
               <button>Login</button>
             </Link>
           )}
           {user && (
-              <div className="user-logged-in-dropdown">
+              <Link  className='user-logged-in-dropdown' to={'/dashboard'}>
                 <h1>{user.displayName}</h1>
-                <Link to={'/dashboard'}>
-                  <img src={user.photoURL} alt="" />                
-                </Link>
-              </div>
+                <img src={user.photoURL} alt="" />                
+              </Link>
           )}
         </div>
       </div>

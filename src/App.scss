@@ -125,13 +125,14 @@
 
             img{
                 object-fit: contain;
-                height: 4vh;
+                height: 5vh;
             }
 
             h1{
                 color: whitesmoke;
                 font-size: 2rem;
                 font-family: 'Montserrat', sans-serif;
+                padding: 1rem;
             }
 
             i{
@@ -167,6 +168,7 @@
         .right-side{
             display: flex;
             justify-content: center;
+            align-items: center;
             flex: 1;
             button{
                 
@@ -194,8 +196,8 @@
 
             .user-logged-in-dropdown{
                 display: flex; 
+                align-items: center;
                 flex-direction: row; 
-                align-items: center; 
                 margin: 1rem;
                 gap: 1rem;
 
@@ -372,6 +374,8 @@
                 display: flex; 
                 flex: 1;
                 flex-direction: column;
+                justify-content: center;
+                margin: 0 auto;
 
                 img{
                     object-fit: contain;
@@ -381,10 +385,15 @@
                 }
 
                 .rate-review{
+                  
+
+                    background-color: #454567;
+                    height: 24vh;
+                    width: 18vw;
                     display: flex;
-                    gap: 1rem;
-                    justify-content: center;
+                    margin: 2rem auto;
                 }
+                
             }
 
             .details-text{
@@ -421,7 +430,8 @@
                             object-fit: contain;
                             height: 20vh;
                             border-radius: 2rem;
-                            opacity: 0.8;
+                            opacity: 0.9;
+                            transition: all 0.2s ease-in-out;
 
                             &:hover{
                                 opacity: 1;
@@ -532,4 +542,47 @@
             }
         }
     }
+}
+
+
+
+
+.actor-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 6rem auto;
+    gap: 2rem;
+
+    .actor-details-text{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        gap: 2rem;
+
+        p{
+            width: 40vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        h1{
+            font-size: 2rem;
+        }
+    }
+
+    img{
+        object-fit: contain;
+        height: 30vh;
+        -webkit-box-shadow: 0px 0px 15px 1px #FFFFFF; 
+        box-shadow: 0px 0px 15px 1px #FFFFFF;
+    }
+
+
+
 }
