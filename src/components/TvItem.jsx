@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import notfound from "../img/notfound.png"
 
 
 export const TvItem = ({image,title,year,id,type}) => {
@@ -13,9 +14,10 @@ export const TvItem = ({image,title,year,id,type}) => {
 
 
     <div className='tv-item'>
-        <Link to={`${mediaType}/details/${id}`}>
+        <Link to={`../../${mediaType}/details/${id}`}>
           <div className="image">
-            <img src={IMAGES + image} alt="" />
+
+            <img src={IMAGES + image} onError={(e) => { e.target.onerror = null; e.target.src = notfound }} alt="Movie poster" />
           </div>
         </Link>
         <h1>{title}</h1>

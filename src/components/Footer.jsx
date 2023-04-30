@@ -16,7 +16,7 @@ const Footer = () => {
           <SocialIcon url='https://www.instagram.com/artunipunii/' fgColor="white" target="_blank" />
         </div>
 
-        <p>Whispr © 2023</p>
+        <p>Whispr © 2023 | Data Collected from TMDB API</p>
     </div>
   )
 }

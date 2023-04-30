@@ -1,14 +1,27 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { Nav } from '../components/Nav';
+import { TvItem } from '../components/TvItem';
+
 
 const Actor = () => {
     const[credits, setCredits] = useState([]);
     const[details, setDetails] = useState([]);
+    const[movieCount, setMovieCount] = useState(15);
     const {id} = useParams();
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
+    const navigate = useNavigate();
+
+
+    const handleMovieCount = () => {
+        setMovieCount(movieCount + 15);
+    }
+
+    useEffect(() => {
+        document.title = `${details.name} · Whispr`;
+    },[details])
 
 
     useEffect(() => {
@@ -46,12 +59,33 @@ const Actor = () => {
     <React.Fragment>
         <Nav/>
         <div className='actor-details'>
-            <img src={IMAGES + details.profile_path} alt="" />
+          
 
             <div className="actor-details-text">
+                <img src={IMAGES + details.profile_path} alt="" />
                 <h1>{details.name}</h1>
                 <p>{details.biography && details.biography.split('.').slice(0, 3).join('.')}</p>
             </div>
+
+
+            <div className='hori-line'></div>
+            <h1 className='notable'>Notable Roles</h1>
+
+            <div className="actor-details-credits">
+                {credits?.cast && credits?.cast?.slice(0,movieCount).map(movie => {
+                    return <div>
+                        <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title || movie.name} year={movie.release_date?.substring(0, 4) || movie.first_air_date?.substring(0, 4)} id={movie.id} type={movie.media_type === "movie" ? "movie" : "tv"}/>
+                    </div>
+                })}
+            </div>
+
+
+            <div className="button-div">
+            {movieCount < 60 && (
+                <button onClick={handleMovieCount}>View more</button>
+            )}
+            </div>
+
 
 
 

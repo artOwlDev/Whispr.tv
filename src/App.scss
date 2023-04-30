@@ -556,12 +556,17 @@
     gap: 2rem;
 
     .actor-details-text{
-        width: 100vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: 0 auto;
         gap: 2rem;
+
+        img{
+            object-fit: contain;
+            height: 30vh;
+            border-radius: 2rem;
+        }
 
         p{
             width: 40vw;
@@ -576,13 +581,39 @@
         }
     }
 
-    img{
-        object-fit: contain;
-        height: 30vh;
-        -webkit-box-shadow: 0px 0px 15px 1px #FFFFFF; 
-        box-shadow: 0px 0px 15px 1px #FFFFFF;
+    .hori-line{
+        margin: 0rem 20rem;
+        border-bottom: 1px solid white;
     }
 
+    .notable{
+        font-size: 2rem;
+        margin-top: 4rem 
+    }
+    
+    .actor-details-credits{
+        display: flex;
+        margin: 6rem 12rem;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .button-div{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        
+        button{
+            border-radius: 1rem; 
+            background: whitesmoke;
+            width: 8rem; 
+            font-size: 1rem; 
+            color: black;
+            padding: 10px;
+        }
+    }
+  
 
 
 }
