@@ -8,11 +8,13 @@ import Footer from '../components/Footer';
 import {useAuthState} from "react-firebase-hooks/auth"
 import { authFirebase } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import {AiFillStar} from "react-icons/ai"
+import {AiFillStar, AiOutlinePlus} from "react-icons/ai"
 import Rate from '../components/Rate';
 import { TvItem } from '../components/TvItem';
 import { MovieSharp } from '@mui/icons-material';
-
+import { Carousel } from 'react-responsive-carousel';
+import {MdFavorite} from "react-icons/md"
+import {BiTime} from "react-icons/bi"
 
 const Details = () => {
     const {id} = useParams();
@@ -23,17 +25,22 @@ const Details = () => {
     const[details, setDetails] = useState({});
     const[reviews, setReviews] = useState([]);
     const[similarMovies, setSimilarMovies] = useState([]);
+    const[similarTV, setSimilarTV] = useState([]);
     const[crew, setCrew] = useState([]);
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const {pathname} = useLocation();
     const mediaType = pathname.includes("tv") ? "tv" : "movie";
+    const [hoveredStars, setHoveredStars] = useState(0);
     var director = "";
 
+    const handleStarHover = (index) => {
+        setHoveredStars(index + 1);
+      };
    
     useEffect(() => {
         async function getSimilarMovies(){
             try{
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
                 console.log(response.data);
                 setSimilarMovies(response.data.results)
             }
@@ -42,6 +49,20 @@ const Details = () => {
             }
         }
         getSimilarMovies();
+    },[id])
+
+    useEffect(() => {
+        async function getSimilarTV(){
+            try{
+                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
+                console.log(response.data);
+                setSimilarTV(response.data.results)
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+        getSimilarTV();
     },[id])
 
     useEffect(() => {
@@ -84,7 +105,7 @@ const Details = () => {
             }
         }
         getCrew();
-    },[])
+    },[id])
 
     useEffect(() => {
         var tabName;
@@ -130,6 +151,32 @@ const Details = () => {
                         <img src={IMAGES + details.poster_path} alt="" />   
 
                         <div className="rate-review">
+                            <div className="star-rating">
+                            {[...Array(5)].map((_, index) => (
+                            <AiFillStar
+                            key={index}
+                            className='star-icon'
+                            style={{ color: index < hoveredStars ? 'gold' : 'whitesmoke' }}
+                            onMouseEnter={() => handleStarHover(index)}
+                            onMouseLeave={() => setHoveredStars(0)}
+                            />
+                        ))}
+                            </div>
+                            <div className='hori-line'></div>
+
+                            <div className="features">
+                                <MdFavorite className='features-icon heart'/>
+                                <AiOutlinePlus className='features-icon plus'/>
+                                <BiTime className='features-icon watchlist'/>
+                            </div>
+
+                            <div className='hori-line'></div>
+
+                            <div className="more-features">
+                                <p>Write a review</p>
+                                <p>Share</p>
+                            </div>
+
                             
                         </div>
                     </div>
@@ -155,6 +202,16 @@ const Details = () => {
                         
                     </div>
                 </div>
+
+                <div className="similar-movies">
+                    <h1>Recommended TV shows</h1>
+
+                    <div className="similar-movies-map">
+                        {similarTV.length > 0 && similarTV?.slice(4,9).map((movie) => {
+                            return <TvItem image={movie.poster_path} title={movie.name} year={similarTV?.first_air_date?.substring(0,4) === similarTV?.last_air_date?.substring(0,4) ? " present" : similarTV?.last_air_date?.substring(0,4)} id={movie.id} type={"tv"}/>
+                        })}
+                    </div>
+                </div>
             </div>
         }
 
@@ -169,10 +226,33 @@ const Details = () => {
                         <img src={IMAGES + details.poster_path} alt="" />   
 
                         <div className="rate-review">
-                            <button onClick={handleReview} style={{borderRadius: "1rem", margin: "1rem 0px", background: "whitesmoke", width: "6rem" ,fontSize: "1.2rem", color: "black", padding: "10px"}}>Rate</button>
-                            <button onClick={handleReview} style={{borderRadius: "1rem", margin: "1rem 0px", background: "whitesmoke", width: "6rem", fontSize: "1.2rem", color: "black", padding: "10px"}}>Review</button>
-                            <AiFillStar className='icon'/>
+                            <div className="star-rating">
+                            {[...Array(5)].map((_, index) => (
+                            <AiFillStar
+                            key={index}
+                            className='star-icon'
+                            style={{ color: index < hoveredStars ? 'gold' : 'whitesmoke' }}
+                            onMouseEnter={() => handleStarHover(index)}
+                            onMouseLeave={() => setHoveredStars(0)}
+                            />
+                        ))}
+                            </div>
+                            <div className='hori-line'></div>
 
+                            <div className="features">
+                                <MdFavorite className='features-icon heart'/>
+                                <AiOutlinePlus className='features-icon plus'/>
+                                <BiTime className='features-icon watchlist'/>
+                            </div>
+
+                            <div className='hori-line'></div>
+
+                            <div className="more-features">
+                                <p>Write a review</p>
+                                <p>Share</p>
+                            </div>
+
+                            
                         </div>
                     </div>
                     <div className="details-text">
@@ -206,10 +286,11 @@ const Details = () => {
                 </div>
 
                 <div className="similar-movies">
-                    <h1>Similar movies</h1>
+                    <h1>Recommended movies</h1>
 
+                    
                     <div className="similar-movies-map">
-                        {similarMovies.length > 0 && similarMovies?.slice(0,5).map((movie) => {
+                        {similarMovies.length > 0 && similarMovies?.slice(4,9).map((movie) => {
                             return <TvItem image={movie.poster_path} title={movie.title} year={movie.release_date} id={movie.id} type={"movie"}/>
                         })}
                     </div>
