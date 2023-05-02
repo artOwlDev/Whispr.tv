@@ -352,6 +352,7 @@
 .details-frag{
 
     .details{
+        border: 1px solid red;
         .backdrop-div{
             display: flex;
             justify-content: center; 
@@ -400,6 +401,7 @@
                 display: flex;
                 flex-direction: column; 
                 justify-content: flex-start;
+                margin: 0rem 2rem;
                 flex: 2;
                 gap: 2rem;
                 font-family: 'Montserrat', sans-serif;
@@ -415,23 +417,27 @@
                     display: flex;
                     gap: 3rem;
                     align-items: flex-start;
+                    margin: 0 1rem;
 
 
                     .actors-div{
+                        
                         display: flex;
                         justify-content: center;
                         flex-direction: column;
-                        width: 8rem;
+                        align-items: center;
+                        width: 7rem;
 
                         text-align: center;
                         gap: 0.4rem;
 
                         img{
+                            margin-bottom: 10px;
                             object-fit: contain;
-                            height: 20vh;
-                            border-radius: 2rem;
+                            height: 14vh;
                             opacity: 0.9;
                             transition: all 0.2s ease-in-out;
+                            border-radius: 2rem;
 
                             &:hover{
                                 opacity: 1;
@@ -454,7 +460,25 @@
                
             }
         }
+        .similar-movies{
+            margin: 10rem 14rem;
+
+            h1:first-child{
+                margin: 1rem 4rem;
+                font-size: 1rem;
+                font-family: 'Poppins', sans-serif;
+
+            }
+
+            
+            .similar-movies-map{
+                display: flex;
+                justify-content: center;
+            }
+        }
     }
+
+
 }
 
 .home{

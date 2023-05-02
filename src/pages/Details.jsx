@@ -10,6 +10,8 @@ import { authFirebase } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import {AiFillStar} from "react-icons/ai"
 import Rate from '../components/Rate';
+import { TvItem } from '../components/TvItem';
+import { MovieSharp } from '@mui/icons-material';
 
 
 const Details = () => {
@@ -20,11 +22,27 @@ const Details = () => {
     const[user, loading] = useAuthState(authFirebase)
     const[details, setDetails] = useState({});
     const[reviews, setReviews] = useState([]);
+    const[similarMovies, setSimilarMovies] = useState([]);
     const[crew, setCrew] = useState([]);
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const {pathname} = useLocation();
     const mediaType = pathname.includes("tv") ? "tv" : "movie";
     var director = "";
+
+   
+    useEffect(() => {
+        async function getSimilarMovies(){
+            try{
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
+                console.log(response.data);
+                setSimilarMovies(response.data.results)
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+        getSimilarMovies();
+    },[id])
 
     useEffect(() => {
         async function getReviews(){
@@ -52,7 +70,7 @@ const Details = () => {
             }
         }
         getDetails();
-    },[])
+    },[id])
 
     useEffect(() => {
         async function getCrew(){
@@ -123,7 +141,7 @@ const Details = () => {
                         <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
 
                         <div className="actors">
-                            {crew?.cast?.slice(0,5).map(actor => {
+                            {crew?.cast?.slice(0,6).map(actor => {
                                 return <div className='actors-div'>
                                     <Link to={`../../actor/${actor.id}`}>
                                         <img src={IMAGES + actor.profile_path} alt="" />
@@ -171,7 +189,7 @@ const Details = () => {
                         <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
 
                         <div className="actors">
-                            {crew?.cast?.slice(0,5).map(actor => {
+                            {crew?.cast?.slice(0,6).map(actor => {
                                 return <div className='actors-div'>
                                     <Link to={`../../actor/${actor.id}`}>
                                         <img src={IMAGES + actor.profile_path} alt="" />
@@ -186,6 +204,17 @@ const Details = () => {
                         
                     </div>
                 </div>
+
+                <div className="similar-movies">
+                    <h1>Similar movies</h1>
+
+                    <div className="similar-movies-map">
+                        {similarMovies.length > 0 && similarMovies?.slice(0,5).map((movie) => {
+                            return <TvItem image={movie.poster_path} title={movie.title} year={movie.release_date} id={movie.id} type={"movie"}/>
+                        })}
+                    </div>
+                </div>
+                
             </div>
 
         }
