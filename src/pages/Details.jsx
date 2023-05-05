@@ -142,6 +142,7 @@ const Details = () => {
         <Nav/>
         {mediaType === "tv" &&
             <div className="details">
+
                 <div className="backdrop-div">
                     <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "40vh", width: "50vw", borderRadius: "4rem", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
                 </div>
@@ -165,8 +166,8 @@ const Details = () => {
                             <div className='hori-line'></div>
 
                             <div className="features">
-                                <MdFavorite className='features-icon heart'/>
                                 <AiOutlinePlus className='features-icon plus'/>
+                                <MdFavorite className='features-icon heart'/>
                                 <BiTime className='features-icon watchlist'/>
                             </div>
 
@@ -240,8 +241,8 @@ const Details = () => {
                             <div className='hori-line'></div>
 
                             <div className="features">
-                                <MdFavorite className='features-icon heart'/>
                                 <AiOutlinePlus className='features-icon plus'/>
+                                <MdFavorite className='features-icon heart'/>
                                 <BiTime className='features-icon watchlist'/>
                             </div>
 
