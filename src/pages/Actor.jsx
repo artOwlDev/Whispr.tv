@@ -9,14 +9,16 @@ import { TvItem } from '../components/TvItem';
 const Actor = () => {
     const[credits, setCredits] = useState([]);
     const[details, setDetails] = useState([]);
-    const[movieCount, setMovieCount] = useState(15);
+    const[movieCount, setMovieCount] = useState(18);
     const {id} = useParams();
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const navigate = useNavigate();
 
 
     const handleMovieCount = () => {
-        setMovieCount(movieCount + 15);
+        setTimeout(() => {
+            setMovieCount(movieCount + 18);
+        }, 500); // Add a delay of 2 seconds
     }
 
     useEffect(() => {
@@ -82,7 +84,7 @@ const Actor = () => {
 
             <div className="button-div">
             {movieCount < 60 && (
-                <button onClick={handleMovieCount}>View more</button>
+                <button className='button-actors' onClick={handleMovieCount}>View more</button>
             )}
             </div>
 

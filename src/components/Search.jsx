@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
+import banner from "../img/banner.jpg"
 
 const Search = () => {
   const searchTMDBMovie =  `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US$page=1&query=`
@@ -13,7 +14,6 @@ const Search = () => {
   const [activeButton, setActiveButton] = useState("");
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
   const searchRef = useRef(null);
-
 
   const handleFilter = (event) => {
     event.preventDefault();
@@ -66,6 +66,9 @@ const Search = () => {
       window.removeEventListener('click', handleClick);
     };
   }, []);
+
+
+ 
 
 
 

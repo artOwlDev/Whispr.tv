@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import notfound from "../img/notfound.png"
 
 
-export const TvItem = ({image,title,year,id,type}) => {
+export const TvItem = ({image,title,year,id,type, onMouseOver}) => {
 
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
   const mediaType = type === "tv" ? "tv" : "movie";

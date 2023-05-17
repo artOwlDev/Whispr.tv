@@ -8,7 +8,6 @@ import { authFirebase } from '../../utils/firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
 
 
-
 export const Nav = () => {
 
   const[user, loading] = useAuthState(authFirebase);
@@ -57,8 +56,8 @@ export const Nav = () => {
             <Link to={'/reviews'}>
               <span>Reviews</span>
             </Link>
-            <Link to={'/discover'}>
-              <span>Discover</span>
+            <Link to={'/upcoming'}>
+              <span>Upcoming</span>
               
             </Link>
           </div>
@@ -68,7 +67,7 @@ export const Nav = () => {
         <div className="right-side">
           {!user && (
             <Link to={`../../auth/login`}>
-              <button>Login</button>
+              <button className='button-nav'>Login</button>
             </Link>
           )}
           {user && (

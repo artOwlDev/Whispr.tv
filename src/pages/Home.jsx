@@ -75,7 +75,7 @@ export const Home = () => {
 
         <div className="home-tv-display">
           <div className="popular-series-display">
-            {tv.length > 0 && tv.slice(1,13).map((tv) => {
+            {tv.length > 0 && tv.slice(1,8).map((tv) => {
               return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
             })}
 
@@ -89,7 +89,7 @@ export const Home = () => {
 
         <div className="home-tv-display">
           <div className="popular-series-display">
-            {movies.length > 0 && movies.slice(0,12).map((movie) => {
+            {movies.length > 0 && movies.slice(0,7).map((movie) => {
               return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
             })}
 
