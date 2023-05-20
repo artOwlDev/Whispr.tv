@@ -45,9 +45,6 @@ const genreTable = {
   37: 'Western'
 };
 
-  
-
-
   useEffect(() => {
     async function getNowPlaying(){
         try{
@@ -61,20 +58,6 @@ const genreTable = {
     }
     getNowPlaying();
   },[id]) 
-
-  // useEffect(() => {
-  //   async function getDetails(){
-  //       try{
-  //           const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
-  //           console.log(response.data);
-  //           setDetails(response.data)
-  //       }
-  //       catch(error){
-  //           console.log(error);
-  //       }
-  //   }
-  //   getDetails();
-  // },[id]) 
 
   const handleHover = (index) => {
     if (index !== null) {
@@ -160,7 +143,7 @@ const genreTable = {
                 <div className="movie-banner-right">
 
                   <div className="backdrop-div">
-                      <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to left, transparent 60%, #14171d 100%), linear-gradient(to bottom, transparent 90%, #14171d 100%), linear-gradient(to right, transparent 70%, #14171d 100%), linear-gradient(to top, transparent 90%, #14171d 100%), url(${IMAGES + nowPlaying[hoveredIndex]?.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "45vh", width: "60vw", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
+                      <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to left, transparent 80%, #14171d 100%), linear-gradient(to bottom, transparent 90%, #14171d 100%), linear-gradient(to right, transparent 90%, #14171d 100%), linear-gradient(to top, transparent 98%, #14171d 100%), url(${IMAGES + nowPlaying[hoveredIndex]?.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "55vh", width: "60vw", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
                   </div>
                   
                 </div>
@@ -169,7 +152,7 @@ const genreTable = {
             <div className="upcoming">
               <h1 className='upcoming-h1'>Currently in cinemas:</h1>
               <div className="movie-list">
-                {nowPlaying.length > 0 && nowPlaying.slice(0,7).map((movie, index) => {
+                {nowPlaying.length > 0 && nowPlaying.slice(0,8).map((movie, index) => {
                   return <div onMouseLeave={() => handleHover(index)} onMouseOver={() => handleHover(index)}><TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} onMouseOver={handleHover}
                   type="movie"/></div>
                 })}

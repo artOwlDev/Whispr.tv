@@ -312,8 +312,8 @@
     background-color: transparent;
     color: white;
     font-family: 'Poppins', sans-serif;
-    width: 250px;
-    height: 400px;
+    max-width: 250px;
+    max-height: 400px;
     margin: 1rem 0.2rem;    
     border-radius: 1rem;
     
@@ -741,101 +741,95 @@
     .movie-banner{
         display: flex;
         height: 60vh;
+        border-bottom: 1px solid white;
+        padding: 20px 0;
 
         .movie-banner-left{
             flex: 1;
-            
+            margin: 4rem auto;
+            display: flex;
+            flex-direction: column;
 
             .movie-banner-details{
-                margin: 4rem auto;
-                width: 80%;
                 display: flex;
                 flex-direction: column;
+                gap: 10px
+            }
+
+                
+            .movie-banner-genres{
+                display: flex;
                 gap: 1rem;
-
-                .transition-fade {
-                    opacity: 0;
-                    transition: opacity 0.3s ease-in-out;
-                  }
-                  
-                .transition-fade.show {
-                opacity: 1;
-                transition-delay: 0.2s; /* Add a delay to create a smoother transition */
-                }
-
-                .movie-banner-genres{
-                    display: flex;
-                    gap: 10px;
-                    height: 5vh;
-
-                    p{
-                        color: rgb(138, 138, 138);
-                        font-size: 1.2rem;
-                    }
-
-                    
-                }
-
-                .movie-banner-star-rating{
-                    display: flex;
-                    gap: 5px;
-
-                    .star-icon-full{
-                        font-size: 1.6rem;
-                        color: gold;
-                    }
-
-                    .star-icon-empty{
-                        font-size: 1.6rem;
-                    }
-                }
-
-                h1{
-                    font-size: 3rem;
-                    font-family: 'Josefin Sans', sans-serif;
-                    height: 12vh;
-                    transition: opacity 0.3s ease-in-out;
-
-                }
-
-                h3{
-                    font-size: 1.8rem;
-                    transition: all 1s ease;
-
-                }
+                height: 5vh;
 
                 p{
-                    font-family: 'Poppins', sans-serif;
-                    height: 10vh;
-                    transition: all 1s ease;
-                    font-size: 0.9rem;
-                    overflow:hidden;
-
-                }
-
-                .movie-banner-button{
-                    background-color: #3d3d99;; 
-                    color: white;
-                    width:fit-content;
-                    display: flex;
-                    justify-content: center;
-                    margin: 1rem auto;
-                    padding: 1rem;
-                    border-radius: 1rem;
-                    outline: #8686e4;
-
-                    &:hover{
-                        background-color: whitesmoke;
-                        outline: #8686e4;;
-                        transition: all 0.4s ease-in-out;
-                        color: black;
-                    }
-
+                    color: rgb(138, 138, 138);
+                    font-size: 1.2rem;
                 }
 
                 
+            }
+
+            .movie-banner-star-rating{
+                display: flex;
+                gap: 5px;
+
+                .star-icon-full{
+                    font-size: 1.6rem;
+                    color: gold;
+                }
+
+                .star-icon-empty{
+                    font-size: 1.6rem;
+                }
+            }
+
+            h1{
+                font-size: 3rem;
+                font-family: 'Josefin Sans', sans-serif;
+                max-height: 12vh;
+                transition: opacity 0.3s ease-in-out;
 
             }
+
+            h3{
+                font-size: 1.8rem;
+                transition: all 1s ease;
+
+            }
+
+            p{
+                font-family: 'Poppins', sans-serif;
+                height: 16vh;
+                transition: all 1s ease;
+                font-size: 0.9rem;
+                overflow:hidden;
+
+            }
+
+            .movie-banner-button{
+                background-color: #3d3d99;; 
+                color: white;
+                width:fit-content;
+                display: flex;
+                justify-content: center;
+                margin: 1rem auto;
+                padding: 1rem;
+                border-radius: 1rem;
+                outline: #8686e4;
+
+                &:hover{
+                    background-color: whitesmoke;
+                    outline: #8686e4;;
+                    transition: all 0.4s ease-in-out;
+                    color: black;
+                }
+
+            }
+
+                
+
+            
 
             .movie-sort{
                 display: flex;
@@ -872,7 +866,6 @@
             flex: 2;
             display: flex;
             justify-content: flex-end;
-            
 
             img{
                 object-fit: cover;
@@ -885,7 +878,11 @@
     .upcoming{
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 10px;
+        padding: 10px 0 0 0;
+        max-height: 100%;
+
 
         .upcoming-h1{
             font-size: 1.4rem;
@@ -894,6 +891,7 @@
         .movie-list{
             display: flex;
             gap: 20px;
+            justify-content: center;
         }
     }
 
