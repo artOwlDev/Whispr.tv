@@ -6,6 +6,7 @@ import whisper from "../img/whispr.png"
 import { Link } from 'react-router-dom';
 import { authFirebase } from '../../utils/firebase'; 
 import {useAuthState} from "react-firebase-hooks/auth"
+import {FaUserFriends} from "react-icons/fa"
 
 
 export const Nav = () => {
@@ -60,6 +61,10 @@ export const Nav = () => {
               <span>Upcoming</span>
               
             </Link>
+            <Link to={'/'}>
+              <span>Search</span>
+              
+            </Link>
           </div>
         </div>
 
@@ -71,10 +76,15 @@ export const Nav = () => {
             </Link>
           )}
           {user && (
-              <Link  className='user-logged-in-dropdown' to={'/dashboard'}>
-                <h1>{user.displayName}</h1>
-                <img src={user.photoURL} alt="" />                
-              </Link>
+              <React.Fragment>
+                <Link to={'/social'}>
+                  <FaUserFriends className='social-icon'/>
+                </Link>
+                <Link  className='user-logged-in-dropdown' to={'/dashboard'}>
+                  <h1>{user.displayName}</h1>
+                  <img src={user.photoURL} alt="" />                
+                </Link>
+              </React.Fragment>
           )}
         </div>
       </div>

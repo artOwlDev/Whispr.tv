@@ -14,6 +14,7 @@ const Movie = () => {
 
   const[details, setDetails] = useState([]);
   const[nowPlaying, setNowPlaying] = useState([]);
+  const[hotMovies, setHotMovies] = useState([]);
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
 
   const [hoveredIndex, setHoveredIndex] = useState(1);
@@ -59,6 +60,23 @@ const genreTable = {
     getNowPlaying();
   },[id]) 
 
+  useEffect(() => {
+    async function getHotMovies(){
+        try{
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
+            console.log(response.data);
+            setHotMovies(response.data.results)
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    getHotMovies();
+
+  },[]) 
+
+  
+
   const handleHover = (index) => {
     if (index !== null) {
       setTimeout(() => {
@@ -71,97 +89,112 @@ const genreTable = {
 
 
   return (
-    <div style={{minHeight: "100vh"}}>
+    <React.Fragment>
 
-        <Nav/>
-        <div className="movie-container">
-            <div className="movie-banner">
-                <div className="movie-banner-left">
-                  {/* <div className="movie-sort">
-                  <select name='Genre' required>
-                    <option value="" disabled selected hidden>Genre</option>
-                    <option value='action'>Action</option>
-                    <option value='comedy'>Comedy</option>
-                    <option value='drama'>Drama</option>
-                    <option value='horror'>Horror</option>
-                    <option value='science-fiction'>Science Fiction</option>
-                    <option value='romance'>Romance</option>
-                  </select>
+      <Nav/>
+      <div style={{position: "relative", minHeight: "100%"}}>
 
-                  <select name='Release Year' required>
-                    <option value="" disabled selected hidden>Release Year</option>
-                    <option value='2020s'>2020s</option>
-                    <option value='2010s'>2010s</option>
-                    <option value='2000s'>2000s</option>
-                    <option value='1990s'>1990s</option>
-                    <option value='1980s'>1980s</option>
-                    <option value='1970s'>1970s</option>
-                  </select>
+          <div className="movie-container">
+              <div className="movie-banner">
+                  <div className="movie-banner-left">
+                    {/* <div className="movie-sort">
+                    <select name='Genre' required>
+                      <option value="" disabled selected hidden>Genre</option>
+                      <option value='action'>Action</option>
+                      <option value='comedy'>Comedy</option>
+                      <option value='drama'>Drama</option>
+                      <option value='horror'>Horror</option>
+                      <option value='science-fiction'>Science Fiction</option>
+                      <option value='romance'>Romance</option>
+                    </select>
 
-                    
-                  </div> */}
+                    <select name='Release Year' required>
+                      <option value="" disabled selected hidden>Release Year</option>
+                      <option value='2020s'>2020s</option>
+                      <option value='2010s'>2010s</option>
+                      <option value='2000s'>2000s</option>
+                      <option value='1990s'>1990s</option>
+                      <option value='1980s'>1980s</option>
+                      <option value='1970s'>1970s</option>
+                    </select>
 
-                  <div className="movie-banner-details">
-
-                      <h1 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.title}</h1>
-
-                      <div className="movie-banner-star-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                          key={index}
-                          className={`star ${index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? 'gold' : ''}`}
-                        >
-                          {index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? (
-                            <span className="star-icon-full">&#9733;</span>
-                          ) : (
-                            <span className="star-icon-empty">&#9734;</span>
-                          )}
-                        </span>
-                           
-                        ))}
-                    </div>
-                     
-                      <h3 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.release_date.slice(0,4)}</h3>
                       
-                      <div className="movie-banner-genres">
-                        {nowPlaying[hoveredIndex]?.genre_ids?.slice(0, nowPlaying[hoveredIndex]?.genre_ids.length - 1).map((genreId) => {
-                          const genreName = genreTable[genreId];
-                          return <p key={genreId}>{genreName}</p>;
-                        })}
+                    </div> */}
+
+                    <div className="movie-banner-details">
+
+                        <h1 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.title}</h1>
+
+                        <div className="movie-banner-star-rating">
+                          {[...Array(5)].map((_, index) => (
+                            <span
+                            key={index}
+                            className={`star ${index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? 'gold' : ''}`}
+                          >
+                            {index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? (
+                              <span className="star-icon-full">&#9733;</span>
+                            ) : (
+                              <span className="star-icon-empty">&#9734;</span>
+                            )}
+                          </span>
+                            
+                          ))}
                       </div>
-
-
-
-                      <p>{nowPlaying[hoveredIndex]?.overview}</p>
                       
-                      <Link to={`details/${nowPlaying[hoveredIndex]?.id}`}>
-                        <button className='movie-banner-button'>View Details</button>
-                      </Link>
+                        <h3 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.release_date.slice(0,4)}</h3>
+                        
+                        <div className="movie-banner-genres">
+                          {nowPlaying[hoveredIndex]?.genre_ids?.slice(0, nowPlaying[hoveredIndex]?.genre_ids.length - 1).map((genreId) => {
+                            const genreName = genreTable[genreId];
+                            return <p key={genreId}>{genreName}</p>;
+                          })}
+                        </div>
+
+
+
+                        <p>{nowPlaying[hoveredIndex]?.overview}</p>
+                        
+                        <Link to={`details/${nowPlaying[hoveredIndex]?.id}`}>
+                          <button className='movie-banner-button'>View Details</button>
+                        </Link>
+                    </div>
+
                   </div>
+                  <div className="movie-banner-right">
 
-                </div>
-                <div className="movie-banner-right">
-
-                  <div className="backdrop-div">
-                      <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to left, transparent 80%, #14171d 100%), linear-gradient(to bottom, transparent 90%, #14171d 100%), linear-gradient(to right, transparent 90%, #14171d 100%), linear-gradient(to top, transparent 98%, #14171d 100%), url(${IMAGES + nowPlaying[hoveredIndex]?.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "55vh", width: "60vw", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
+                    <div className="backdrop-div">
+                        <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to left, transparent 80%, #14171d 100%), linear-gradient(to bottom, transparent 90%, #14171d 100%), linear-gradient(to right, transparent 90%, #14171d 100%), linear-gradient(to top, transparent 98%, #14171d 100%), url(${IMAGES + nowPlaying[hoveredIndex]?.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "55vh", width: "60vw", border: "0", overflow: "", opacity: "0.95", paddingBottom: "20rem"}}></div>
+                    </div>
+                    
                   </div>
-                  
-                </div>
-            </div>
-
-            <div className="upcoming">
-              <h1 className='upcoming-h1'>Currently in cinemas:</h1>
-              <div className="movie-list">
-                {nowPlaying.length > 0 && nowPlaying.slice(0,8).map((movie, index) => {
-                  return <div onMouseLeave={() => handleHover(index)} onMouseOver={() => handleHover(index)}><TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} onMouseOver={handleHover}
-                  type="movie"/></div>
-                })}
               </div>
-            </div>
-        </div>
 
-        <Footer className="footer"/>
-    </div>
+              <div className="upcoming">
+                <h1 className='upcoming-h1'>Currently in cinemas:</h1>
+                <div className="movie-list">
+                  {nowPlaying.length > 0 && nowPlaying.slice(0,6).map((movie, index) => {
+                    return <div onMouseLeave={() => handleHover(index)} onMouseOver={() => handleHover(index)}><TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} onMouseOver={handleHover}
+                    type="movie"/></div>
+                  })}
+                </div>
+              </div>
+
+              <div className="hot-movies">
+                <h1 className='hot-h1'>Hot at the moment:</h1>
+                <div className="hot-movie-list">
+                  {hotMovies.length > 0 && hotMovies.slice(0,8).map((movie) => {
+                    return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} onMouseOver={null}
+                    type="movie"/>
+                  })}
+                </div>
+              </div>
+
+              
+          </div>
+
+      </div>
+      <Footer className="footer" style={{position: "absolute", bottom: "0", width: "100%"}}/>
+    </React.Fragment>
   )
 }
 

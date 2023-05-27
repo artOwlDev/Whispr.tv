@@ -1,11 +1,13 @@
 .footer{
     display: flex; 
-    margin-top: 40vh;
     width: 100%; 
     justify-content: flex-end; 
     align-items: center;
     flex-direction: column; 
+    justify-content: center;
     gap: 2rem;
+    padding-top: 1rem;
+    height: 20vh;
 
     .footer-links{
         display: flex; 
@@ -97,7 +99,7 @@
 
 
 .navbg{
-    background-color: rgb(18, 18, 18);
+    background-color: rgb(24, 23, 23);
     font-family: 'Mukta', sans-serif;
     position: sticky;
     top: 0;
@@ -192,6 +194,10 @@
                     border-color: #333366;
                 }
             
+            }
+
+            .social-icon{
+                font-size: 1.4rem;
             }
 
             .user-logged-in-dropdown{
@@ -735,14 +741,13 @@
 .movie-container{
     display: flex;
     height: 80vh;
-    margin: 4rem 12rem;
+    margin: 2rem 12rem;
     flex-direction: column;
 
     .movie-banner{
         display: flex;
         height: 60vh;
         border-bottom: 1px solid white;
-        padding: 20px 0;
 
         .movie-banner-left{
             flex: 1;
@@ -787,7 +792,7 @@
             h1{
                 font-size: 3rem;
                 font-family: 'Josefin Sans', sans-serif;
-                max-height: 12vh;
+                height: 12vh;
                 transition: opacity 0.3s ease-in-out;
 
             }
@@ -893,7 +898,27 @@
             gap: 20px;
             justify-content: center;
         }
+
     }
+    
+    .hot-movies{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        margin: 3rem 0;
+        max-height: 100%;
+
+        .hot-h1{
+            font-size: 1.4rem;
+        }
+    }
+
+        .hot-movie-list{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
 
     
 
@@ -901,3 +926,4 @@
 
     
 }
+

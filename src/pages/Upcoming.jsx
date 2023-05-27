@@ -35,7 +35,14 @@ const Upcoming = () => {
 
         <div className="upcoming-container">
             <div className="upcoming-banner">
-    
+                <div className="upcoming-banner-left">
+                    <h1>The Witcher</h1>
+                    <h3>2020</h3>
+                    
+
+                </div>
+                <div className="upcoming-banner-right">
+                </div>
             </div>
 
             <div className="upcoming-list">
