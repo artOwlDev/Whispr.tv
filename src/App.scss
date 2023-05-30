@@ -99,7 +99,7 @@
 
 
 .navbg{
-    background-color: rgb(24, 23, 23);
+    background-color: #1d2226;
     font-family: 'Mukta', sans-serif;
     position: sticky;
     top: 0;
@@ -108,7 +108,7 @@
 
     .nav{
         
-        height: 10vh;
+        height: 8vh;
         flex-wrap: wrap;
         margin: 0rem 10rem;
         display: flex;
@@ -171,7 +171,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1;
+            flex: 1;s
             .button-nav{
                 
                 cursor: pointer;
@@ -198,6 +198,11 @@
 
             .social-icon{
                 font-size: 1.4rem;
+            }
+
+            .search-icon{
+                font-size: 1.4rem;
+                margin: 1rem;
             }
 
             .user-logged-in-dropdown{
@@ -230,7 +235,7 @@
 
 .search{
     border: 1px solid black;
-    min-height: 90vh;
+    min-height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -927,3 +932,135 @@
     
 }
 
+.upcoming-container{
+
+    .upcoming-movie-div{
+
+        .upcoming-movie-div{
+            position: relative;
+            width: 100vw;
+            height: 92vh;
+            overflow: hidden;
+
+            img{
+                animation: zoomAnimation 20s infinite alternate linear;
+                overflow: auto;
+            }
+        }
+
+        .upcoming-movie-div:before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 2%, #14171d 100%);
+        }
+    
+        .upcoming-movie-div-details{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            position: absolute;
+            color: white;
+            bottom: 4rem;
+            left: 10px;
+            padding: 1rem 2rem;
+            gap: 1rem;
+
+            .upcoming-movie-rating{
+                display: flex;
+                gap: 10px;
+            }
+
+            .upcoming-movie-release-date{
+                font-size: 1.1rem;
+            }
+
+            h1{
+                font-size: 3rem;
+                font-family: 'Poppins', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
+
+            }
+
+            p{
+                font-family: 'Josefin Sans', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
+
+            }
+
+            .upcoming-movie-button{
+                background-color: #3d3d99;; 
+                color: white;
+                width:fit-content;
+                display: flex;
+                padding: 1rem;
+                border-radius: 1rem;
+                outline: #8686e4;
+                font-family: 'Poppins', sans-serif;
+
+
+                &:hover{
+                    background-color: whitesmoke;
+                    outline: #8686e4;;
+                    transition: all 0.4s ease-in-out;
+                    color: black;
+                }
+            }
+
+            .upcoming-movie-genres{
+                display: flex;
+                gap: 20px;
+                color: white;
+
+                .upcoming-movie-genre-box{
+                    
+                    box-shadow: 0 0 0.5px white;
+                    background-size: 100% 100%;
+                    background: rgb(8, 8, 8,0.2);
+
+                    padding: 10px;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-shadow:
+                    0.01em 0 black,
+                    0 0.01em black,
+                    -0.01em 0 black,
+                    0 -0.01em black;
+
+
+                    &:hover{
+                        cursor: pointer;
+                        background: #8686e4;
+                        transition: all 0.2s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes zoomAnimation {
+    0% {
+      transform: scale(1) translateX(0);
+    }
+    50% {
+      transform: scale(1.05) translateX(-40px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  

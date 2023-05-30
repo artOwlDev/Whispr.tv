@@ -12,7 +12,7 @@ const Tv = () => {
   const[details, setDetails] = useState([]);
   const[nowPlaying, setNowPlaying] = useState([]);
   const[hotMovies, setHotMovies] = useState([]);
-  const IMAGES = "https://image.tmdb.org/t/p/w1280"
+  const IMAGES = "https://image.tmdb.org/t/p/original"
 
   const [hoveredIndex, setHoveredIndex] = useState(1);
 

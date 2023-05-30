@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { authFirebase } from '../../utils/firebase'; 
 import {useAuthState} from "react-firebase-hooks/auth"
 import {FaUserFriends} from "react-icons/fa"
+import {AiOutlineSearch} from "react-icons/ai"
 
 
 export const Nav = () => {
@@ -61,10 +62,6 @@ export const Nav = () => {
               <span>Upcoming</span>
               
             </Link>
-            <Link to={'/'}>
-              <span>Search</span>
-              
-            </Link>
           </div>
         </div>
 
@@ -77,7 +74,10 @@ export const Nav = () => {
           )}
           {user && (
               <React.Fragment>
-                <Link to={'/social'}>
+                <Link to={'../../'}>
+                  <AiOutlineSearch className='search-icon'/>
+                </Link>
+                <Link to={'.././social'}>
                   <FaUserFriends className='social-icon'/>
                 </Link>
                 <Link  className='user-logged-in-dropdown' to={'/dashboard'}>

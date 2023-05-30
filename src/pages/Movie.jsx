@@ -172,7 +172,7 @@ const genreTable = {
               <div className="upcoming">
                 <h1 className='upcoming-h1'>Currently in cinemas:</h1>
                 <div className="movie-list">
-                  {nowPlaying.length > 0 && nowPlaying.slice(0,6).map((movie, index) => {
+                  {nowPlaying.length > 0 && nowPlaying.slice(0,10).map((movie, index) => {
                     return <div onMouseLeave={() => handleHover(index)} onMouseOver={() => handleHover(index)}><TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} onMouseOver={handleHover}
                     type="movie"/></div>
                   })}
