@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import Footer from '../components/Footer'
 import { Nav } from '../components/Nav'
 import { TvItem } from '../components/TvItem';
+import { Carousel } from 'react-responsive-carousel';
+import Loader from '../components/Loader';
+
 
 const Tv = () => {
   const {id} = useParams();
@@ -13,12 +16,18 @@ const Tv = () => {
   const[nowPlaying, setNowPlaying] = useState([]);
   const[hotMovies, setHotMovies] = useState([]);
   const IMAGES = "https://image.tmdb.org/t/p/original"
+  const[isLoading, setIsLoading] = useState(true);
 
   const [hoveredIndex, setHoveredIndex] = useState(1);
 
 
   useEffect(() => {
     document.title = `TV · Whispr`;
+    const timer = setTimeout(() => {
+        setIsLoading(false);
+      },500); // Set the delay time in milliseconds (2 seconds in this example)
+  
+      return () => clearTimeout(timer);
 },[])
 
 const genreTable = {
@@ -47,7 +56,7 @@ const genreTable = {
     async function getNowPlaying(){
         try{
           
-            const response = await axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-CA&page=3`)
+            const response = await axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-CA&page=1`)
             console.log(response.data);
             setNowPlaying(response.data.results)
         }
@@ -73,126 +82,71 @@ const genreTable = {
 
   },[]) 
 
-  
-
-  const handleHover = (index) => {
-    if (index !== null) {
-      setTimeout(() => {
-        setHoveredIndex(index);
-      }, 200); // Delay in milliseconds
-    } else {
-      setHoveredIndex(index);
-    }
-  }
-
-
   return (
-    <React.Fragment>
-
-      <Nav/>
-      <div style={{position: "relative", minHeight: "100%"}}>
+    <div>
+      {isLoading ? (
+        <Loader/>
+      ) : (
+        <>
+          <Nav />
 
           <div className="movie-container">
-              <div className="movie-banner">
-                  <div className="movie-banner-left">
-                    {/* <div className="movie-sort">
-                    <select name='Genre' required>
-                      <option value="" disabled selected hidden>Genre</option>
-                      <option value='action'>Action</option>
-                      <option value='comedy'>Comedy</option>
-                      <option value='drama'>Drama</option>
-                      <option value='horror'>Horror</option>
-                      <option value='science-fiction'>Science Fiction</option>
-                      <option value='romance'>Romance</option>
-                    </select>
+            <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={6500} infiniteLoop={true}>
+              {nowPlaying.length > 0 && nowPlaying.slice(0, 20).map((movie) => (
+                <div className='upcoming-movie-div' key={movie.id}>
+                  <div className="upcoming-movie-div">
+                    <img src={IMAGES + movie.backdrop_path} style={{ background: "linear-gradient(to bottom, transparent 50%, #14171d 100%)" }} />
+                  </div>
 
-                    <select name='Release Year' required>
-                      <option value="" disabled selected hidden>Release Year</option>
-                      <option value='2020s'>2020s</option>
-                      <option value='2010s'>2010s</option>
-                      <option value='2000s'>2000s</option>
-                      <option value='1990s'>1990s</option>
-                      <option value='1980s'>1980s</option>
-                      <option value='1970s'>1970s</option>
-                    </select>
+                  <div className="upcoming-movie-div-details">
+                    <h1>{movie.name}</h1>
 
-                      
-                    </div> */}
+                    <div className="upcoming-movie-genres">
+                      {movie.genre_ids?.slice(0, movie.genre_ids.length - 1).map((genreId) => {
+                        const genreName = genreTable[genreId];
+                        if (genreName != null){
 
-                    <div className="movie-banner-details">
-
-                        <h1 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.name}</h1>
-
-                        <div className="movie-banner-star-rating">
-                          {[...Array(5)].map((_, index) => (
-                            <span
-                            key={index}
-                            className={`star ${index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? 'gold' : ''}`}
-                          >
-                            {index < Math.floor(nowPlaying[hoveredIndex]?.vote_average / 2) ? (
-                              <span className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                            
-                          ))}
-                      </div>
-                      
-                        <h3 className={`transition-fade ${hoveredIndex !== null ? 'show' : ''}`}>{nowPlaying[hoveredIndex]?.first_air_date?.slice(0,4)}</h3>
-                        
-                        <div className="movie-banner-genres">
-                          {nowPlaying[hoveredIndex]?.genre_ids?.slice(0, nowPlaying[hoveredIndex]?.genre_ids.length - 1).map((genreId) => {
-                            const genreName = genreTable[genreId];
-                            return <p key={genreId}>{genreName}</p>;
-                          })}
-                        </div>
-
-
-
-                        <p>{nowPlaying[hoveredIndex]?.overview}</p>
-                        
-                        <Link to={`details/${nowPlaying[hoveredIndex]?.id}`}>
-                          <button className='movie-banner-button'>View Details</button>
-                        </Link>
+                            return <div className="upcoming-movie-genre-box" key={genreId}>
+                                {genreName}
+                                </div>;
+                        }
+                      })}
                     </div>
 
-                  </div>
-                  <div className="movie-banner-right">
+                    <p className='upcoming-movie-release-date'>Release Date: {movie.first_air_date.substring(5)}</p>
 
-                    <div className="backdrop-div">
-                        <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to left, transparent 80%, #14171d 100%), linear-gradient(to bottom, transparent 90%, #14171d 100%), linear-gradient(to right, transparent 90%, #14171d 100%), linear-gradient(to top, transparent 98%, #14171d 100%), url(${IMAGES + nowPlaying[hoveredIndex]?.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "55vh", width: "60vw", border: "0", overflow: "", opacity: "0.95", paddingBottom: "20rem"}}></div>
+                    <div className="upcoming-movie-rating">
+                      {[...Array(5)].map((_, index) => (
+                        <span
+                          key={index}
+                          className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
+                        >
+                          {index < Math.floor(movie?.vote_average / 2) ? (
+                            <span style={{ color: "gold" }} className="star-icon-full">&#9733;</span>
+                          ) : (
+                            <span className="star-icon-empty">&#9734;</span>
+                          )}
+                        </span>
+                      ))}
                     </div>
-                    
+
+                    <Link to={`../movie/details/${movie.id}`}>
+                      <button className='upcoming-movie-button'>View Details</button>
+                    </Link>
                   </div>
-              </div>
-
-              <div className="upcoming">
-                <h1 className='upcoming-h1'>Currently in cinemas:</h1>
-                <div className="movie-list">
-                  {nowPlaying.length > 0 && nowPlaying.slice(0,6).map((movie, index) => {
-                    return <div onMouseLeave={() => handleHover(index)} onMouseOver={() => handleHover(index)}><TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date?.substring(0, 4)} id={movie.id} onMouseOver={handleHover}
-                    type="tv"/></div>
-                  })}
                 </div>
-              </div>
-
-              <div className="hot-movies">
-                <h1 className='hot-h1'>Hot at the moment:</h1>
-                <div className="hot-movie-list">
-                  {hotMovies.length > 0 && hotMovies.slice(0,8).map((movie) => {
-                    return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.first_air_date?.substring(0, 4)} id={movie.id} onMouseOver={null}
-                    type="tv"/>
-                  })}
-                </div>
-              </div>
-
-              
+              ))}
+            </Carousel>
           </div>
 
-      </div>
-    </React.Fragment>
+          <Footer />
+        </>
+      )}
+    </div>
   )
+
+  
 }
 
 export default Tv
+

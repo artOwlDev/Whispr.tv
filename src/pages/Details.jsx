@@ -163,7 +163,7 @@ const Details = () => {
                     <div className="details">
         
                         <div className="backdrop-div">
-                            <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "40vh", width: "55vw", borderRadius: "4rem", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
+                            <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`, objectPosition: 'center bottom', height: "40vh", width: "65vw", borderRadius: "4rem", border: "0", overflow: "", opacity: "0.8", paddingBottom: "20rem"}}></div>
                         </div>
         
                         <div className="details-info">
@@ -286,7 +286,7 @@ const Details = () => {
                                 
                                 <h3>Directed by: {director}</h3>
                                 <p>{details.overview}</p>
-                                <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
+                                <p>Average rating: {details?.vote_average === 0 ? <span>NA</span> : <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span>} / 10</p>
         
                                 <div className="actors">
                                     {crew?.cast?.slice(0,6).map(actor => {

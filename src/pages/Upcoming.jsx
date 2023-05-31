@@ -17,6 +17,12 @@ const Upcoming = () => {
         document.title = `Upcoming · Whispr`;
     },[])
 
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+    const currentDay = currentDate.getDate();
+
+    
+
 
 
 
@@ -26,7 +32,6 @@ const Upcoming = () => {
         async function getUpcoming(){
             try{
                 const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
-                console.log(response.data);
                 setUpcoming(response.data.results)
             }
             catch(error){
@@ -59,14 +64,28 @@ const Upcoming = () => {
       };
 
 
+      const filteredMovies = upcoming.filter((movie) => {
+        const itemDate = movie.release_date.substring(5);
+        const itemMonth = parseInt(itemDate.substring(0, 2), 10);
+        const itemDay = parseInt(itemDate.substring(3, 5), 10);
+
+        return !(currentMonth > itemMonth || (currentMonth === itemMonth && currentDay >= itemDay));
+      });
+
+      useEffect(() => {
+        console.log(filteredMovies)
+      },[]);
+
+
 
   return (
     <div>
         <Nav/>
 
         <div className="upcoming-container">
-            <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={10000} infiniteLoop={true}>
-                {upcoming.length > 0 && upcoming.slice(0,12).map((movie) => {
+            <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={6500} infiniteLoop={true}>
+                {filteredMovies.length > 0 && filteredMovies.slice(0,12).map((movie) => {
+                
                     return <div className='upcoming-movie-div' key={movie.id}>
                         <div className="upcoming-movie-div">
                             <img src={IMAGES + movie.backdrop_path} style={{backgorund: "linear-gradient(to bottom, transparent 50%, #14171d 100%)}}"}}/>
@@ -74,9 +93,9 @@ const Upcoming = () => {
                         
                         
                         <div className="upcoming-movie-div-details">
-
+    
                             <h1>{movie.title}</h1>
-
+    
                             <div className="upcoming-movie-genres">
                                 {movie.genre_ids?.slice(0, movie.genre_ids.length - 1).map((genreId) => {
                                     const genreName = genreTable[genreId];
@@ -85,11 +104,11 @@ const Upcoming = () => {
                                         </div>;
                                 })}
                             </div>
-
+    
                             <p className='upcoming-movie-release-date'>Release Date: {movie.release_date.substring(5)}</p>
-
+    
                             <div className="upcoming-movie-rating">
-
+    
                                 {[...Array(5)].map((_, index) => (
                                 <span
                                 key={index}
@@ -104,13 +123,14 @@ const Upcoming = () => {
                                 
                             ))}
                             </div>
-
+    
                             <Link to={`../movie/details/${movie.id}`}>
                                 <button className='upcoming-movie-button'>View Details</button>
                             </Link>
                         </div>
                     </div>
                 })}
+
 
                 
             </Carousel>

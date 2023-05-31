@@ -3,6 +3,9 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import banner from "../img/banner.jpg"
+import { authFirebase } from '../../utils/firebase'; 
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 
 const Search = () => {
   const searchTMDBMovie =  `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US$page=1&query=`
@@ -14,6 +17,8 @@ const Search = () => {
   const [activeButton, setActiveButton] = useState("");
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
   const searchRef = useRef(null);
+  const[user, loading] = useAuthState(authFirebase);
+
 
   const handleFilter = (event) => {
     event.preventDefault();
@@ -75,6 +80,10 @@ const Search = () => {
   return (
     <React.Fragment>
       <div className='search'>
+          {user && (
+            <h1 className='user'>Hi there, {user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</h1>
+          )}
+
           <h1 className='search-title'>Movies, TV series all in one.</h1>
 
           <form onSubmit={handleFilter}>

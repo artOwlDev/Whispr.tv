@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
+    "@uiball/loaders": "^1.2.6",
     "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
     "firebase": "^9.18.0",

@@ -8,6 +8,13 @@ import { Nav } from '../components/Nav'
 import Search from '../components/Search'
 import { TvItem } from '../components/TvItem'
 import { Link } from 'react-router-dom';
+import action from "../img/action-genre.jpg"
+import comedy from "../img/comedy-genre.jpg"
+import scifi from "../img/sci-fi-genre.jpg"
+import horror from "../img/horror-genre.jpg"
+import adventure from "../img/adventure-genre.jpg"
+import drama from "../img/drama-genre.jpg"
+import { Ring } from '@uiball/loaders'
 
 export const Home = () => {
 
@@ -71,6 +78,40 @@ export const Home = () => {
         <Search/>
         <HomePageInfo/>
 
+        <div className="home-page-genre">
+          <div className="home-page-genre-box">
+            <img src={action} alt="" />
+
+            <h1>Action</h1>
+
+            <p>John Wick, 2014</p>
+          </div>
+          <div className="home-page-genre-box">
+            <img src={drama} alt="" />
+            <h1>Drama</h1>
+          </div>
+          <div className="home-page-genre-box">
+            <img src={comedy} alt="" />
+
+            <h1>Comedy</h1>
+          </div>
+          <div className="home-page-genre-box">
+            <img src={horror} alt="" />
+            <h1>Horror</h1>
+          </div>
+          <div className="home-page-genre-box">
+            <img src={scifi} alt="" />
+
+            <h1>Sci-Fi</h1>
+          </div>
+          <div className="home-page-genre-box">
+            <img src={adventure} alt="" />
+            <h1>Adventure</h1>
+          </div>
+          
+          
+        </div>
+
         <h1 className='home-title'>Critically-acclaimed tv-series</h1>
 
         <div className="home-tv-display">
@@ -85,6 +126,12 @@ export const Home = () => {
         <br></br>
 
         <h1 className='home-title'>Popular movies</h1>
+
+        <Ring 
+            size={40}
+            lineWeight={5}
+            speed={2} 
+            color="white" />
 
 
         <div className="home-tv-display">

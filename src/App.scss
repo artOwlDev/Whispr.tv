@@ -108,7 +108,7 @@
 
     .nav{
         
-        height: 8vh;
+        height: 6vh;
         flex-wrap: wrap;
         margin: 0rem 10rem;
         display: flex;
@@ -127,13 +127,13 @@
 
             img{
                 object-fit: contain;
-                height: 5vh;
+                height: 3vh;
             }
 
             h1{
                 color: whitesmoke;
-                font-size: 2rem;
-                font-family: 'Montserrat', sans-serif;
+                font-size: 1.6rem;
+                font-family: 'Permanent Marker', cursive;
                 padding: 1rem;
             }
 
@@ -171,7 +171,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1;s
+            flex: 1;
             .button-nav{
                 
                 cursor: pointer;
@@ -180,17 +180,16 @@
                 font-weight: 400;
                 line-height: 1.5;
                 text-align: center;
-                background-color: transparent;
-                border: 1px solid transparent;
+                border: 1px solid #9999bd;
                 padding: 6px 20px;
                 font-size: 1rem;
                 border-radius: 4rem;
-                transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-                color: white;
-                border-color: white;
+                background: transparent;
+                
+              
                 &:hover {
                     color: white;
-                    background-color: black;
+                    background-color: transparent;
                     border-color: #333366;
                 }
             
@@ -235,13 +234,18 @@
 
 .search{
     border: 1px solid black;
-    min-height: 92vh;
+    min-height: 94vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
         background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/banner.jpg) no-repeat center;
     background-size: cover;
+
+    .user{
+        font-size: 1.4rem;
+        font-family: 'Poppins', sans-serif;
+    }
     
 
     .search-title{
@@ -578,6 +582,74 @@
 .home{
     min-height: 100vh;
 
+    .home-page-genre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20rem 4rem;
+        gap: 1rem;
+
+
+        .home-page-genre-box{
+            height: 24vh;
+            width: 24vh;
+            border: 1px solid;
+            position: relative;
+            border: none;
+            box-shadow: 0 0 0.5px white;
+            background-size: 100% 100%;
+            transition: all 0.2s ease-in-out;
+
+            &:hover{
+                img{
+                    filter: opacity(1);
+                    cursor: pointer;
+                }
+            
+                h1{
+                    text-shadow:
+                    0.01em 0 black,
+                    0 0.01em black,
+                    -0.01em 0 black,
+                    0 -0.01em black;
+                }
+            }
+
+            img{
+                height: 24vh;
+                width: 24vh;
+                object-fit: cover;
+                filter: opacity(0.3);
+            }
+
+            h1{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1.4rem;
+                font-family: 'Poppins', sans-serif;
+
+
+
+            }
+
+            p{
+                position: absolute;
+                bottom: 0;
+                right: 10px;
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.6rem;
+            }
+        }
+
+
+        
+
+
+    }
+
     .home-title{
         margin: 2rem 8rem;
         font-family: 'Poppins', sans-serif;
@@ -744,89 +816,83 @@
 
 
 .movie-container{
-    display: flex;
-    height: 80vh;
-    margin: 2rem 12rem;
-    flex-direction: column;
+    .upcoming-movie-div{
 
-    .movie-banner{
-        display: flex;
-        height: 60vh;
-        border-bottom: 1px solid white;
+        .upcoming-movie-div{
+            position: relative;
+            width: 100vw;
+            height: 94vh;
+            overflow: hidden;
 
-        .movie-banner-left{
-            flex: 1;
-            margin: 4rem auto;
+            img{
+                animation: zoomAnimation 20s infinite alternate linear;
+                overflow: auto;
+            }
+        }
+
+        .upcoming-movie-div:before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 2%, #14171d 100%);
+        }
+    
+        .upcoming-movie-div-details{
+            width: 50%;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            position: absolute;
+            color: white;
+            bottom: 4rem;
+            left: 10px;
+            padding: 1rem 2rem;
+            gap: 1rem;
 
-            .movie-banner-details{
+            .upcoming-movie-rating{
                 display: flex;
-                flex-direction: column;
-                gap: 10px
+                gap: 10px;
             }
 
-                
-            .movie-banner-genres{
-                display: flex;
-                gap: 1rem;
-                height: 5vh;
-
-                p{
-                    color: rgb(138, 138, 138);
-                    font-size: 1.2rem;
-                }
-
-                
-            }
-
-            .movie-banner-star-rating{
-                display: flex;
-                gap: 5px;
-
-                .star-icon-full{
-                    font-size: 1.6rem;
-                    color: gold;
-                }
-
-                .star-icon-empty{
-                    font-size: 1.6rem;
-                }
+            .upcoming-movie-release-date{
+                font-size: 1.1rem;
             }
 
             h1{
                 font-size: 3rem;
-                font-family: 'Josefin Sans', sans-serif;
-                height: 12vh;
-                transition: opacity 0.3s ease-in-out;
-
-            }
-
-            h3{
-                font-size: 1.8rem;
-                transition: all 1s ease;
+                font-family: 'Poppins', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
 
             }
 
             p{
-                font-family: 'Poppins', sans-serif;
-                height: 16vh;
-                transition: all 1s ease;
-                font-size: 0.9rem;
-                overflow:hidden;
+                font-family: 'Josefin Sans', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
 
             }
 
-            .movie-banner-button{
+            .upcoming-movie-button{
                 background-color: #3d3d99;; 
                 color: white;
                 width:fit-content;
                 display: flex;
-                justify-content: center;
-                margin: 1rem auto;
                 padding: 1rem;
                 border-radius: 1rem;
                 outline: #8686e4;
+                font-family: 'Poppins', sans-serif;
+
 
                 &:hover{
                     background-color: whitesmoke;
@@ -834,99 +900,39 @@
                     transition: all 0.4s ease-in-out;
                     color: black;
                 }
-
             }
 
-                
-
-            
-
-            .movie-sort{
+            .upcoming-movie-genres{
                 display: flex;
-                gap: 1rem;
+                gap: 20px;
+                color: white;
 
-                
-                select{
-                    padding: 1rem;
-                    text-align: center;
+                .upcoming-movie-genre-box{
                     
+                    box-shadow: 0 0 0.5px white;
+                    background-size: 100% 100%;
+                    background: rgb(8, 8, 8,0.2);
+
+                    padding: 10px;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-shadow:
+                    0.01em 0 black,
+                    0 0.01em black,
+                    -0.01em 0 black,
+                    0 -0.01em black;
 
 
-                    option{
-                        padding: 1rem;
-                        color: red;
-                        &:hover{      
-                            background-color: #8686e4; 
-                            color: green;  
-                        }
-
+                    &:hover{
+                        cursor: pointer;
+                        background: #8686e4;
+                        transition: all 0.2s ease-in-out;
                     }
-
-                    
-                       
-
-                    
                 }
-
-                
             }
         }
-
-        .movie-banner-right{
-            flex: 2;
-            display: flex;
-            justify-content: flex-end;
-
-            img{
-                object-fit: cover;
-                height: 55vh;
-            }
-
-        }
     }
-
-    .upcoming{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 0 0 0;
-        max-height: 100%;
-
-
-        .upcoming-h1{
-            font-size: 1.4rem;
-        }
-
-        .movie-list{
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-    }
-    
-    .hot-movies{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        margin: 3rem 0;
-        max-height: 100%;
-
-        .hot-h1{
-            font-size: 1.4rem;
-        }
-    }
-
-        .hot-movie-list{
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-    
-
+   
     
 
     
@@ -939,7 +945,7 @@
         .upcoming-movie-div{
             position: relative;
             width: 100vw;
-            height: 92vh;
+            height: 94vh;
             overflow: hidden;
 
             img{
@@ -1052,12 +1058,132 @@
     }
 }
 
+.tv-container{
+
+    .upcoming-movie-div{
+
+        .upcoming-movie-div{
+            position: relative;
+            width: 100vw;
+            height: 94vh;
+            overflow: hidden;
+
+            img{
+                animation: zoomAnimation 20s infinite alternate linear;
+                overflow: auto;
+            }
+        }
+
+        .upcoming-movie-div:before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 2%, #14171d 100%);
+        }
+    
+        .upcoming-movie-div-details{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            position: absolute;
+            color: whitesmoke;
+            bottom: 4rem;
+            left: 10px;
+            padding: 1rem 2rem;
+            gap: 1rem;
+
+            .upcoming-movie-rating{
+                display: flex;
+                gap: 10px;
+            }
+
+            .upcoming-movie-release-date{
+                font-size: 1.1rem;
+            }
+
+            h1{
+                font-size: 3rem;
+                font-family: 'Poppins', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
+
+            }
+
+            p{
+                font-family: 'Josefin Sans', sans-serif;
+                text-shadow:
+                0.01em 0 black,
+                0 0.01em black,
+                -0.01em 0 black,
+                0 -0.01em black;
+
+            }
+
+            .upcoming-movie-button{
+                background-color: #3d3d99;; 
+                color: whitesmoke;
+                width:fit-content;
+                display: flex;
+                padding: 1rem;
+                border-radius: 1rem;
+                outline: #8686e4;
+                font-family: 'Poppins', sans-serif;
+
+
+                &:hover{
+                    background-color: whitesmoke;
+                    outline: #8686e4;;
+                    transition: all 0.4s ease-in-out;
+                    color: black;
+                }
+            }
+
+            .upcoming-movie-genres{
+                display: flex;
+                gap: 20px;
+                color: white;
+
+                .upcoming-movie-genre-box{
+                    
+                    box-shadow: 0 0 0.5px white;
+                    background-size: 100% 100%;
+                    background: rgb(8, 8, 8,0.4);
+
+                    padding: 10px;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-shadow:
+                    0.01em 0 black,
+                    0 0.01em black,
+                    -0.01em 0 black,
+                    0 -0.01em black;
+
+
+                    &:hover{
+                        cursor: pointer;
+                        background: #8686e4;
+                        transition: all 0.2s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @keyframes zoomAnimation {
     0% {
       transform: scale(1) translateX(0);
     }
     50% {
-      transform: scale(1.05) translateX(-40px);
+      transform: scale(1.07) translateX(-40px);
     }
     100% {
       transform: translateX(0);

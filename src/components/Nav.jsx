@@ -81,7 +81,7 @@ export const Nav = () => {
                   <FaUserFriends className='social-icon'/>
                 </Link>
                 <Link  className='user-logged-in-dropdown' to={'/dashboard'}>
-                  <h1>{user.displayName}</h1>
+                  <h1>{user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</h1>
                   <img src={user.photoURL} alt="" />                
                 </Link>
               </React.Fragment>
