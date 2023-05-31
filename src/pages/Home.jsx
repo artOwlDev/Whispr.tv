@@ -14,7 +14,6 @@ import scifi from "../img/sci-fi-genre.jpg"
 import horror from "../img/horror-genre.jpg"
 import adventure from "../img/adventure-genre.jpg"
 import drama from "../img/drama-genre.jpg"
-import { Ring } from '@uiball/loaders'
 
 export const Home = () => {
 
@@ -126,12 +125,6 @@ export const Home = () => {
         <br></br>
 
         <h1 className='home-title'>Popular movies</h1>
-
-        <Ring 
-            size={40}
-            lineWeight={5}
-            speed={2} 
-            color="white" />
 
 
         <div className="home-tv-display">
