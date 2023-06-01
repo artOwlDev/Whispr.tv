@@ -76,6 +76,8 @@ export const Home = () => {
         <Nav/>
         <Search/>
         <HomePageInfo/>
+        
+        <h1 className='genre-title'>Pick a Genre:</h1>
 
         <div className="home-page-genre">
           <div className="home-page-genre-box">
@@ -111,30 +113,37 @@ export const Home = () => {
           
         </div>
 
-        <h1 className='home-title'>Critically-acclaimed tv-series</h1>
+        <div className="critically-acclaimed-home-page">
 
-        <div className="home-tv-display">
-          <div className="popular-series-display">
-            {tv.length > 0 && tv.slice(1,8).map((tv) => {
-              return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
-            })}
+          <h1 className='home-title'>Critically-acclaimed tv-series</h1>
 
+          <div className="home-tv-display">
+            <div className="popular-series-display">
+              {tv.length > 0 && tv.slice(1,8).map((tv) => {
+                return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
+              })}
+
+            </div>
           </div>
+          
         </div>
-        
         <br></br>
 
-        <h1 className='home-title'>Popular movies</h1>
+
+        <div className="popular-movies-home-page">
+
+          <h1 className='home-title'>Popular movies</h1>
 
 
-        <div className="home-tv-display">
-          <div className="popular-series-display">
-            {movies.length > 0 && movies.slice(0,7).map((movie) => {
-              return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
-            })}
+          <div className="home-tv-display">
+            <div className="popular-series-display">
+              {movies.length > 0 && movies.slice(0,7).map((movie) => {
+                return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+              })}
 
-          </div>
-        </div>        
+            </div>
+          </div>        
+        </div>
 
         <Footer/>
     </div>

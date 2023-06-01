@@ -19,6 +19,8 @@ const Search = () => {
   const searchRef = useRef(null);
   const[user, loading] = useAuthState(authFirebase);
 
+  
+
 
   const handleFilter = (event) => {
     event.preventDefault();
@@ -80,9 +82,7 @@ const Search = () => {
   return (
     <React.Fragment>
       <div className='search'>
-          {user && (
-            <h1 className='user'>Hi there, {user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</h1>
-          )}
+          
 
           <h1 className='search-title'>Movies, TV series all in one.</h1>
 

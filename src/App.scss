@@ -172,6 +172,53 @@
             justify-content: center;
             align-items: center;
             flex: 1;
+            height: 6vh;
+            position: relative;
+
+            .dropdown{
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                color: white;
+                position: absolute;
+                width: 40%;
+                background: #1d2226;
+                top: 100%;
+                left: 40%;
+                justify-content: center;
+                border-bottom-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                text-align: center;
+                font-family: 'Mukta', sans-serif;
+
+                .dropdown-element{
+
+                    padding: 1rem;
+                    &:hover{
+                        background: white;
+                        color: black;
+                    }
+
+                    &.logout{
+
+                        &:hover{
+                            border-bottom-left-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
+                        }
+                    }
+                }
+
+                .hori-line::after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 1px;
+                    background-color: white; /* Set the desired color using a color value or name */
+                  }
+              
+
+            }
+
             .button-nav{
                 
                 cursor: pointer;
@@ -197,11 +244,19 @@
 
             .social-icon{
                 font-size: 1.4rem;
+
+                &:hover{
+                    color: #8686e4;
+                }
             }
 
             .search-icon{
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 margin: 1rem;
+
+                &:hover{
+                    color: #8686e4;
+                }
             }
 
             .user-logged-in-dropdown{
@@ -210,19 +265,44 @@
                 flex-direction: row; 
                 margin: 1rem;
                 gap: 1rem;
+                position: relative;
 
+            
                 img{
                     object-fit: contain;
                     border-radius: 50%;
                     height: 4vh;
                 }
 
-                h1{
+                p{
                     font-size: 1.2rem;
+
+                    span{
+                        font-weight: 700;
+                    }
                 }
 
                 
+
                 
+                
+            }
+
+            .dropdown-icon{
+                color: black;
+                padding: 8px;
+                box-sizing: content-box;
+                background: white;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                border: 1px solid white;
+                cursor: pointer;
+
+                &:hover{
+                    background: transparent;
+                    color: white;
+                    transition: all 0.2s ease-in-out;
+                }
             }
 
 
@@ -239,7 +319,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-        background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/banner.jpg) no-repeat center;
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/banner11.jpg) no-repeat center;
     background-size: cover;
 
     .user{
@@ -582,12 +662,65 @@
 .home{
     min-height: 100vh;
 
+    .critically-acclaimed-home-page{
+        .home-title{
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            margin-left: 6rem;
+        }
+    
+        .home-tv-display{
+            
+    
+            .popular-series-display{
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                flex-direction: row;
+                margin: 2rem;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    }
+
+    .popular-movies-home-page{
+        .home-title{
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            margin-left: 6rem;
+        }
+    
+        .home-tv-display{
+            
+    
+            .popular-series-display{
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                flex-direction: row;
+                margin: 2rem;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+    }
+
+    .genre-title{
+        margin: 16rem 8rem 2rem 8rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+
+
+    }
+
     .home-page-genre{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        margin: 20rem 4rem;
+        margin: 4rem 4rem 20rem 4rem;
         gap: 1rem;
 
 
@@ -650,25 +783,7 @@
 
     }
 
-    .home-title{
-        margin: 2rem 8rem;
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.4rem;
-    }
-
-    .home-tv-display{
-        
-
-        .popular-series-display{
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            flex-direction: row;
-            margin: 2rem;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-    }
+    
 }
 
 .dashboard-page{
@@ -856,10 +971,13 @@
             .upcoming-movie-rating{
                 display: flex;
                 gap: 10px;
+                text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+
             }
 
             .upcoming-movie-release-date{
                 font-size: 1.1rem;
+                text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
             }
 
             h1{

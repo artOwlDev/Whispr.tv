@@ -8,6 +8,8 @@ import { authFirebase } from '../../utils/firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
 import {FaUserFriends} from "react-icons/fa"
 import {AiOutlineSearch} from "react-icons/ai"
+import {HiOutlineMenu} from "react-icons/hi"
+
 
 
 export const Nav = () => {
@@ -16,6 +18,10 @@ export const Nav = () => {
   const[dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const[userImage, setUserImage] = useState("");
+
+  const handleActiveTab  = (tab) => {
+    setActiveTab(tab)
+  }
 
 
   const handleDropdown = () => {
@@ -33,6 +39,20 @@ export const Nav = () => {
       console.log(userImage);
     }
   },[])
+
+
+  const DropDown = () => {
+    return <div className='dropdown'>
+      <Link to={'../../'}>
+        <div className='dropdown-element'>Home</div>
+      </Link>
+      <Link to={'../../dashboard'}>
+        <div className='dropdown-element'>Dashboard</div>
+      </Link>
+      <div className='hori-line'></div>
+      <div onClick={() => authFirebase.signOut() && navigate("/")} className='dropdown-element logout'>Log out</div>
+    </div>
+  }
 
   
 
@@ -77,13 +97,15 @@ export const Nav = () => {
                 <Link to={'../../'}>
                   <AiOutlineSearch className='search-icon'/>
                 </Link>
-                <Link to={'.././social'}>
-                  <FaUserFriends className='social-icon'/>
-                </Link>
-                <Link  className='user-logged-in-dropdown' to={'/dashboard'}>
-                  <h1>{user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</h1>
+                
+                <div  className='user-logged-in-dropdown' to={'/dashboard'}>
+                  <p><span>{user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
                   <img src={user.photoURL} alt="" />                
-                </Link>
+                </div>
+
+                <HiOutlineMenu onClick={handleDropdown} className='dropdown-icon'/>
+                {dropdown && <DropDown/>}
+
               </React.Fragment>
           )}
         </div>
