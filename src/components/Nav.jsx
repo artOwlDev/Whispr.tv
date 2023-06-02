@@ -75,12 +75,12 @@ export const Nav = () => {
               <span>TV Shows</span>
             </Link>
             
-            <Link to={'/reviews'}>
-              <span>Reviews</span>
-            </Link>
             <Link to={'/upcoming'}>
               <span>Upcoming</span>
               
+            </Link>
+            <Link to={'/reviews'}>
+              <span>Reviews</span>
             </Link>
           </div>
         </div>

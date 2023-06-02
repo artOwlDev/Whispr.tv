@@ -184,7 +184,7 @@
                 width: 40%;
                 background: #1d2226;
                 top: 100%;
-                left: 40%;
+                right: 22%;
                 justify-content: center;
                 border-bottom-left-radius: 1rem;
                 border-bottom-right-radius: 1rem;
@@ -1026,13 +1026,13 @@
                 color: white;
 
                 .upcoming-movie-genre-box{
-                    
+                    border-radius: 10px;
                     box-shadow: 0 0 0.5px white;
                     background-size: 100% 100%;
-                    background: rgb(8, 8, 8,0.2);
+                    background: rgba(255, 255, 255, 0.685);
 
                     padding: 10px;
-                    color: white;
+                    color: black;
                     font-family: 'Poppins', sans-serif;
                     text-shadow:
                     0.01em 0 black,
@@ -1294,6 +1294,72 @@
             }
         }
     }
+}
+
+.login-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74vh;
+
+
+    .login-card{
+        height: 60vh;
+        width: 60vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(255, 255, 255, 0.083) 0px 0px 15px;        
+        border-radius: 2rem;
+
+        .left{
+            flex: 1;
+            height: 60vh;
+            
+
+            img{
+                object-fit: cover;
+                height: 60vh;
+                filter: opacity(0.4);
+                border-top-left-radius: 2rem;
+                border-bottom-left-radius: 2rem;
+
+            }
+        }
+
+        .right{
+            border-top-right-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            padding-top: 6rem;
+            flex: 1;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            font-family: 'Poppins', sans-serif;
+            background: rgb(255, 255, 255);
+            text-align: center;
+
+
+
+            h1{
+                color: black;
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+
+            h3{
+                color: black;
+                padding-top: 4rem;
+            }
+
+            p{
+                color: black;
+            }
+        }
+    }
+
 }
 
 @keyframes zoomAnimation {

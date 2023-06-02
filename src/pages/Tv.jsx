@@ -130,7 +130,7 @@ const genreTable = {
                       ))}
                     </div>
 
-                    <Link to={`../movie/details/${movie.id}`}>
+                    <Link to={`../tv/details/${movie.id}`}>
                       <button className='upcoming-movie-button'>View Details</button>
                     </Link>
                   </div>
