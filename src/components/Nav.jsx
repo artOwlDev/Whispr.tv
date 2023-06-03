@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FaCameraRetro, FaFly, FaHatWizard } from "react-icons/fa";
 import {IoMdArrowDropdown} from "react-icons/io"
-import whisper from "../img/whispr.png"
+import whisper from "../img/whispr-logo.png"
 import { Link } from 'react-router-dom';
 import { authFirebase } from '../../utils/firebase'; 
 import {useAuthState} from "react-firebase-hooks/auth"
@@ -61,8 +61,7 @@ export const Nav = () => {
       <div className="nav">
         <div className='left-side'>
           
-          <img src={whisper} alt="" />
-          <a href="/" style={{textDecoration: 'none'}}><h1>Whispr</h1></a>
+          <a href="/"><img src={whisper} alt="" /></a>
           
         </div> 
 
