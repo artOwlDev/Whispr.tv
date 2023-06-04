@@ -19,9 +19,6 @@ const Search = () => {
   const searchRef = useRef(null);
   const[user, loading] = useAuthState(authFirebase);
 
-  
-
-
   const handleFilter = (event) => {
     event.preventDefault();
     axios.get(searchTMDBMovie + searchVal).then(res => {
@@ -47,6 +44,7 @@ const Search = () => {
         })
         .catch(err => console.log(err));
       }, 500); // Wait for 500ms after user stops typing to make API call
+
       return () => clearTimeout(timeoutId);
     } else {
       setFilteredData([]);
@@ -86,21 +84,22 @@ const Search = () => {
 
           <h1 className='search-title'>Movies, TV series all in one.</h1>
 
-          <form onSubmit={handleFilter}>
+          <form className="search-form" onSubmit={handleFilter}>
             <input id="search" type="search" placeholder="Got something in mind?" autofocus required value={searchVal} onChange={handleSearch}/>
-          </form>
 
-          <div className="search-results" ref={searchRef}>
-            {searchVal != '' && filteredData.length > 0 && filteredData.sort((a, b) => b.popularity - a.popularity).slice(0,3).map((movie) => {
+            <div className="search-results" ref={searchRef}>
+            {searchVal != '' && filteredData.length > 0 && filteredData.sort((a, b) => b.popularity - a.popularity).slice(0,6).map((movie) => {
                   return <Link to={`/${movie.release_date ? 'movie' : 'tv'}/details/${movie.id}`}><div className="loaded-info">
-                      <img src={IMAGES + movie.poster_path} alt="" />
-                      <h1>{movie.title || movie.name} </h1>
-                      <p>{movie.release_date?.substring(0,4) || movie.first_air_date?.substring(0,4)}</p>
+                      <h1>{movie.title || movie.name}</h1>
+                      <p><i>{movie.release_date?.substring(0,4) || movie.first_air_date?.substring(0,4)}</i></p>
                   </div>
                   </Link>
               })
             }
           </div>  
+          </form>
+
+          
           
       </div>
     </React.Fragment>
