@@ -59,12 +59,12 @@ export const Nav = () => {
   return (
     <div className='navbg'>
       <div className="nav">
+
         <div className='left-side'>
           
           <a href="/"><img src={whisper} alt="" /></a>
           
         </div> 
-
         <div className='middle-side'>
           <div className="nav-items">
             <Link to={'/movie'}>

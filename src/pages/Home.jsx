@@ -14,6 +14,7 @@ import scifi from "../img/sci-fi-genre.jpg"
 import horror from "../img/horror-genre.jpg"
 import adventure from "../img/adventure-genre.jpg"
 import drama from "../img/drama-genre.jpg"
+import Loader from '../components/Loader';
 
 export const Home = () => {
 
@@ -21,28 +22,12 @@ export const Home = () => {
   const [movies, setMovies] = useState([]);
   const [token, setToken] = useState('');
   const [albums, setAlbums] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const TOP_RATED_TV =  `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
   const TOP_RATED_ALBUMS = `https://api.deezer.com/chart/0/albums`
   const TOP_RATED_MOVIES = `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
-
-
-  // useEffect(() => {
-  //   const fetchToken = async () => {
-  //     const response = await axios.post("https://accounts.spotify.com/api/token", 
-  //     "grant_type=client_credentials", {
-  //       headers: {
-  //         Authorization: `Basic ${btoa(`${import.meta.env.VITE_SPOTIFY_CLIENT_ID}:${import.meta.env.VITE_SPOTIFY_CLIENT_SECRET_ID}`)}`,
-  //           "Content-Type": "application/x-www-form-urlencoded",
-  //       }
-  //     });
-  //     setToken(response.data.access_token);
-  //   };
-
-  //   fetchToken();
-  // }, []);
-
-  
   
 
   useEffect(() => {
@@ -54,7 +39,13 @@ export const Home = () => {
       .catch(err => console.log(err));
   }, []);
 
-  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    },500); 
+
+    return () => clearTimeout(timer);
+  },[])
 
 
   useEffect(() => {
@@ -72,82 +63,91 @@ export const Home = () => {
 
 
   return (
-    <div className="home">
-        <Nav/>
-        <Search/>
-        <HomePageInfo/>
-        
-        <h1 className='genre-title'>Pick a Genre:</h1>
+    <div>
+      {isLoading ? (
+        <Loader/>
+      ) : (
+        <>
+          <div className="home">
+            <Nav/>
+            <Search/>
+            <HomePageInfo/>
+            
+            <h1 className='genre-title'>Pick a Genre:</h1>
 
-        <div className="home-page-genre">
-          <div className="home-page-genre-box">
-            <img src={action} alt="" />
+            <div className="home-page-genre">
+              <div className="home-page-genre-box">
+                <img src={action} alt="" />
 
-            <h1>Action</h1>
+                <h1>Action</h1>
 
-            <p>John Wick, 2014</p>
-          </div>
-          <div className="home-page-genre-box">
-            <img src={drama} alt="" />
-            <h1>Drama</h1>
-          </div>
-          <div className="home-page-genre-box">
-            <img src={comedy} alt="" />
+                <p>John Wick, 2014</p>
+              </div>
+              <div className="home-page-genre-box">
+                <img src={drama} alt="" />
+                <h1>Drama</h1>
+              </div>
+              <div className="home-page-genre-box">
+                <img src={comedy} alt="" />
 
-            <h1>Comedy</h1>
-          </div>
-          <div className="home-page-genre-box">
-            <img src={horror} alt="" />
-            <h1>Horror</h1>
-          </div>
-          <div className="home-page-genre-box">
-            <img src={scifi} alt="" />
+                <h1>Comedy</h1>
+              </div>
+              <div className="home-page-genre-box">
+                <img src={horror} alt="" />
+                <h1>Horror</h1>
+              </div>
+              <div className="home-page-genre-box">
+                <img src={scifi} alt="" />
 
-            <h1>Sci-Fi</h1>
-          </div>
-          <div className="home-page-genre-box">
-            <img src={adventure} alt="" />
-            <h1>Adventure</h1>
-          </div>
-          
-          
-        </div>
-
-        <div className="critically-acclaimed-home-page">
-
-          <h1 className='home-title'>Critically-acclaimed tv-series</h1>
-
-          <div className="home-tv-display">
-            <div className="popular-series-display">
-              {tv.length > 0 && tv.slice(1,8).map((tv) => {
-                return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
-              })}
-
+                <h1>Sci-Fi</h1>
+              </div>
+              <div className="home-page-genre-box">
+                <img src={adventure} alt="" />
+                <h1>Adventure</h1>
+              </div>
+              
+              
             </div>
-          </div>
-          
-        </div>
-        <br></br>
 
+            <div className="critically-acclaimed-home-page">
 
-        <div className="popular-movies-home-page">
+              <h1 className='home-title'>Critically-acclaimed tv-series</h1>
 
-          <h1 className='home-title'>Popular movies</h1>
+              <div className="home-tv-display">
+                <div className="popular-series-display">
+                  {tv.length > 0 && tv.slice(1,8).map((tv) => {
+                    return <TvItem key={tv.id} image={tv.poster_path} title={tv.name} year={tv.first_air_date.substring(0, 4)} id={tv.id} type="tv"/>
+                  })}
 
-
-          <div className="home-tv-display">
-            <div className="popular-series-display">
-              {movies.length > 0 && movies.slice(0,7).map((movie) => {
-                return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
-              })}
-
+                </div>
+              </div>
+              
             </div>
-          </div>        
-        </div>
+            <br></br>
 
-        <Footer/>
+
+            <div className="popular-movies-home-page">
+
+              <h1 className='home-title'>Popular movies</h1>
+
+
+              <div className="home-tv-display">
+                <div className="popular-series-display">
+                  {movies.length > 0 && movies.slice(0,7).map((movie) => {
+                    return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                  })}
+
+                </div>
+              </div>        
+            </div>
+
+            <Footer/>
+      </div>
+        </>
+      )}
     </div>
   )
+    
 }
 
 

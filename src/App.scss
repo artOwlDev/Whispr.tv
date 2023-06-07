@@ -1069,6 +1069,109 @@
             }
         }
     }
+
+    .movie-filter{
+        display: flex;
+        height: 80vh;
+        width: 70vw;
+        margin: 10rem auto;   
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 8px; 
+
+        .filter-panel{
+            flex: 1;
+            background-color: #1d2226;;
+            
+        
+            
+            .general-filters{
+                display: flex;
+                flex-direction: column;
+
+                .header{
+                    display: flex;
+                    padding: 0.8rem;
+                    font-family: 'Josefin Sans', sans-serif;
+                    font-weight: 700;
+                }
+
+                .options{
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    font-family: 'Poppins', sans-serif;
+
+
+
+                    .options-element{
+                        padding: 10px 3rem;
+                        font-size: 0.8rem;
+
+                        &:hover{
+                            background-color: white;
+                            color: black;
+                            
+                        }
+                        
+                        &.last{
+                            margin-bottom: 0.2rem;
+                        }
+                    }
+
+                }
+            }
+
+            
+
+            .genre-filters{
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid white;
+
+                .header{
+                    display: flex;
+                    padding: 0.8rem;
+                    font-family: 'Josefin Sans', sans-serif;
+                    font-weight: 700;
+                }
+
+                .options{
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    font-family: 'Poppins', sans-serif;
+
+
+                    .options-element{
+                        padding: 10px 3rem;
+                        font-size: 0.8rem;
+
+                        &:hover{
+                            background-color: white;
+                            color: black;
+                            
+                        }
+                        
+                        &.last{
+                            margin-bottom: 0.2rem;
+                        }
+                    }
+
+                }
+
+
+            }
+
+        }
+        
+        .filter-results{
+            flex: 5;
+        }
+        
+        
+    }
+
    
     
 

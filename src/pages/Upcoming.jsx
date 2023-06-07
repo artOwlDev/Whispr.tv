@@ -88,7 +88,7 @@ const Upcoming = () => {
     
               <div className="movie-container">
                 <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={6500} infiniteLoop={true}>
-                  {upcoming.length > 0 && upcoming.slice(0, 20).map((movie) => (
+                  {filteredMovies.length > 0 && filteredMovies.slice(0, 20).map((movie) => (
                     <div className='upcoming-movie-div' key={movie.id}>
                       <div className="upcoming-movie-div">
                         <img src={IMAGES + movie.backdrop_path} style={{ background: "linear-gradient(to bottom, transparent 50%, #14171d 100%)" }} />

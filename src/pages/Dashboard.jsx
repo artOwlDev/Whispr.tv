@@ -16,6 +16,11 @@ const Dashboard = () => {
         setActiveTab(tab)
     }
 
+    useEffect(() => {
+        document.title = `${user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)} · Whispr`;
+
+    },[])
+
   return (
     <div className='dashboard-page'>
         <Nav/>

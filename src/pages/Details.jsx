@@ -38,10 +38,10 @@ const Details = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-          },600); // Set the delay time in milliseconds (2 seconds in this example)
+          },700); // Set the delay time in milliseconds (2 seconds in this example)
       
           return () => clearTimeout(timer);
-    },[])
+    },[id])
 
 
     const handleStarHover = (index) => {
@@ -208,7 +208,7 @@ const Details = () => {
                             <h2>{details?.first_air_date?.substring(0,4)} - {details?.first_air_date?.substring(0,4) === details?.last_air_date?.substring(0,4) ? " present" : details?.last_air_date?.substring(0,4)}</h2>
                             <h3>Created by: {details?.created_by?.[0]?.name}</h3>
                             <p>{details.overview}</p>
-                            <p>Average rating: <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
+                            <p>Average rating: <span style={{color: details?.vote_average >= 7 ? "#66FF99" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span> / 10</p>
     
                             <div className="actors">
                                 {crew?.cast?.slice(0,6).map(actor => {
@@ -296,7 +296,7 @@ const Details = () => {
                             
                             <h3>Directed by: {director}</h3>
                             <p>{details.overview}</p>
-                            <p>Average rating: {details?.vote_average === 0 ? <span>NA</span> : <span style={{color: details?.vote_average >= 8 ? "rgb(35, 210, 35)" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span>} / 10</p>
+                            <p>Average rating: {details?.vote_average === 0 ? <span>NA</span> : <span style={{color: details?.vote_average >= 7 ? "#66FF99" : details?.vote_average > 5 ? "yellow" : "red"}}>{details?.vote_average?.toString().substring(0,3)}</span>} / 10</p>
     
                             <div className="actors">
                                 {crew?.cast?.slice(0,6).map(actor => {
