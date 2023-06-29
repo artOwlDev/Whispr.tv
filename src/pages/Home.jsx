@@ -40,6 +40,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
+    document.title = `Home · Whispr`;
     const timer = setTimeout(() => {
       setIsLoading(false);
     },500); 

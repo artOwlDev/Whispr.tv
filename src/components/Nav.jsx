@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaCameraRetro, FaFly, FaHatWizard } from "react-icons/fa";
 import {IoMdArrowDropdown} from "react-icons/io"
 import whisper from "../img/whispr-logo.png"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { authFirebase } from '../../utils/firebase'; 
 import {useAuthState} from "react-firebase-hooks/auth"
 import {FaUserFriends} from "react-icons/fa"
@@ -14,10 +14,12 @@ import {HiOutlineMenu} from "react-icons/hi"
 
 export const Nav = () => {
 
+
   const[user, loading] = useAuthState(authFirebase);
   const[dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
-  const[userImage, setUserImage] = useState("");
+  const[userImage, setUserImage] = useState(""); 
+
 
   const handleActiveTab  = (tab) => {
     setActiveTab(tab)
@@ -34,9 +36,7 @@ export const Nav = () => {
   }
   useEffect(()=> {
     if (user){
-      console.log(user);
       setUserImage(user.photoURL);
-      console.log(userImage);
     }
   },[])
 
@@ -49,6 +49,16 @@ export const Nav = () => {
       <Link to={'../../dashboard'}>
         <div className='dropdown-element'>Dashboard</div>
       </Link>
+      <Link to={'../../movie'}>
+        <div className='dropdown-element mobile'>Movie</div>
+      </Link>
+      <Link to={'../../tv'}>
+        <div className='dropdown-element mobile'>TV Series</div>
+      </Link>
+      <Link to={'../../reviews'}>
+        <div className='dropdown-element mobile'>Reviews</div>
+      </Link>
+
       <div className='hori-line'></div>
       <div onClick={() => authFirebase.signOut() && navigate("/")} className='dropdown-element logout'>Log out</div>
     </div>
@@ -88,7 +98,7 @@ export const Nav = () => {
         <div className="right-side">
           {!user && (
             <Link to={`../../auth/login`}>
-              <button className='button-nav'>Login</button>
+              <button className='button-nav'>Log In</button>
             </Link>
           )}
           {user && (

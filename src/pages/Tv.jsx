@@ -132,6 +132,7 @@ const genreTable = {
 
                     <Link to={`../tv/details/${movie.id}`}>
                       <button className='upcoming-movie-button'>View Details</button>
+                      
                     </Link>
                   </div>
                 </div>
