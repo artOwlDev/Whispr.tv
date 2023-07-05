@@ -17,7 +17,7 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-        document.title = `${user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)} · Whispr`;
+        document.title = `${user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)} | Whispr`;
 
     },[])
 

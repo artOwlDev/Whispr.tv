@@ -22,7 +22,7 @@ const Tv = () => {
 
 
   useEffect(() => {
-    document.title = `TV · Whispr`;
+    document.title = `TV Series | Whispr`;
     const timer = setTimeout(() => {
         setIsLoading(false);
       },500); // Set the delay time in milliseconds (2 seconds in this example)

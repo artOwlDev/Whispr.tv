@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import axios from 'axios';
@@ -9,7 +9,6 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import { authFirebase } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import {AiFillStar, AiOutlinePlus,AiFillHeart} from "react-icons/ai"
-import Rate from '../components/Rate';
 import { TvItem } from '../components/TvItem';
 import { MovieSharp } from '@mui/icons-material';
 import { Carousel } from 'react-responsive-carousel';
@@ -34,6 +33,15 @@ const Details = () => {
     const [hoveredStars, setHoveredStars] = useState(0);
     var director = "";
     const [isLoading, setIsLoading] = useState(true);
+
+    const [showReviewBox, setShowReviewBox] = useState(false);
+    const [boxTop, setBoxTop] = useState('80%');
+    const [boxLeft, setBoxLeft] = useState('50%');
+    let boxHeight;
+    let boxWidth;
+    const boxRef = useRef(null);
+
+
 
     
 
@@ -114,8 +122,6 @@ const Details = () => {
         getCrew();
     },[id])
 
-   
-
 
     useEffect(() => {
         var tabName;
@@ -125,7 +131,7 @@ const Details = () => {
         else{
             tabName = details.title;
         }
-        document.title = `${tabName} · Whispr`;
+        document.title = `${tabName} | Whispr`;
         
     },[mediaType, details])
 
@@ -148,6 +154,38 @@ const Details = () => {
     const rating = details?.vote_average?.toString().substring(0,3);
     const creatorText = mediaType === 'tv' ? 'Created by' : 'Directed by'; 
 
+    const handleReviewClick = () => {
+        setShowReviewBox(!showReviewBox);
+    };
+
+
+    useLayoutEffect(() => {
+        const handleScroll = () => {
+            const box = boxRef.current;
+            if (box) {
+              const windowHeight = window.innerHeight;
+              const boxHeight = box.offsetHeight;
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+              const topPosition = scrollTop + (windowHeight - boxHeight) / 2;
+              box.style.top = `${topPosition + 100}px`;
+            }
+          };
+      
+          handleScroll();
+      
+          window.addEventListener('scroll', handleScroll);
+      
+          return () => {
+            window.removeEventListener('scroll', handleScroll);
+          };
+      }, []);
+
+
+      const handleClosingReview = () => {
+        setShowReviewBox(!showReviewBox);
+      }
+    
+
 
     return(
 
@@ -162,8 +200,24 @@ const Details = () => {
             
                 <div className="details">
 
-    
-                    <div className="backdrop" style={{display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`}}>
+                {showReviewBox && (
+                    <>
+                    <div className="overlay"></div>
+                    <div
+                        className="review-box"
+                        ref={boxRef}
+                        style={{
+                        top: boxTop,
+                        left: boxLeft,
+                        height: `${boxHeight}px`,
+                        width: `${boxWidth}px`,
+                        }}
+                    >
+                        <h1 onClick={handleClosingReview}>THIS IS THE TEXT</h1>
+                    </div>
+                    </>
+                )}
+                    <div className="backdrop" style={{border: "none", display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`}}>
 
                         
                     </div>
@@ -199,7 +253,7 @@ const Details = () => {
 
 
                                 <div className="additional-features">
-                                    <div className='feature-element'><h1>Write a review</h1></div>
+                                    <div className='feature-element'><h1 onClick={handleReviewClick}>Write a review</h1></div>
                                     <div className='feature-element'><h1>Add to list</h1></div>
                                     <div className='feature-element last'><h1>Share</h1></div>
                                 </div>
@@ -212,12 +266,15 @@ const Details = () => {
                         <div className="details-text">
 
                 
+                            <div className="details-name">
+                                <h1>{itemName} - </h1>
+                                {details.tagline && <span>"{details.tagline}"</span>}
 
-                            <h1>{itemName}</h1>
-                            <h2>{airDateText} {airDate}</h2>
-                            <h3>{mediaType === "tv" ? 'Created by: ' : 'Director: '} {createdBy}</h3>
+                            </div>
+                            <h2><span>{airDateText}</span> {airDate}</h2>
+                            <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy}</h3>
                             <p>{overview}</p>
-                            <p>Average rating: <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
+                            <p><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
 
                             
     

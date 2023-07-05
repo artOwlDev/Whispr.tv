@@ -16,7 +16,7 @@ const Upcoming = () => {
     const[isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        document.title = `Upcoming · Whispr`;
+        document.title = `Upcoming | Whispr`;
         const timer = setTimeout(() => {
             setIsLoading(false);
           },500); // Set the delay time in milliseconds (2 seconds in this example)
@@ -24,9 +24,6 @@ const Upcoming = () => {
           return () => clearTimeout(timer);
     },[])
 
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1; // Months are zero-based, so add 1
-    const currentDay = currentDate.getDate();    
 
     useEffect(() => {
         async function getUpcoming(){
@@ -64,19 +61,24 @@ const Upcoming = () => {
       };
 
 
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth() + 1; // Adding 1 since getMonth() returns zero-based index
+      const currentDay = now.getDate();
+
       const filteredMovies = upcoming.filter((movie) => {
-        const itemDate = movie.release_date.substring(5);
-        const itemMonth = parseInt(itemDate.substring(0, 2), 10);
-        const itemDay = parseInt(itemDate.substring(3, 5), 10);
+        const releaseYear = parseInt(movie.release_date.substring(0, 4), 10);
+        const releaseMonth = parseInt(movie.release_date.substring(5, 7), 10);
+        const releaseDay = parseInt(movie.release_date.substring(8, 10), 10);
 
-        return !(currentMonth > itemMonth || (currentMonth === itemMonth && currentDay >= itemDay));
+        if (currentYear > releaseYear) {
+          return false; // Filter out movies from previous years
+        } else if (currentYear === releaseYear) {
+          return !(currentMonth > releaseMonth || (currentMonth === releaseMonth && currentDay >= releaseDay));
+        } else {
+          return true; // Include movies from future years
+        }
       });
-
-      useEffect(() => {
-        console.log(filteredMovies)
-      },[]);
-
-
 
       return (
         <div>

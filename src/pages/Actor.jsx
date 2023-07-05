@@ -22,7 +22,7 @@ const Actor = () => {
     }
 
     useEffect(() => {
-        document.title = `${details.name} · Whispr`;
+        document.title = `${details.name} | Whispr`;
     },[details])
 
 

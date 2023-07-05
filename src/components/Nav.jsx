@@ -60,7 +60,7 @@ export const Nav = () => {
       </Link>
 
       <div className='hori-line'></div>
-      <div onClick={() => authFirebase.signOut() && navigate("/")} className='dropdown-element logout'>Log out</div>
+      <div onClick={() => authFirebase.signOut() && window.location.reload() && navigate("/")} className='dropdown-element logout'>Log out</div>
     </div>
   }
 
@@ -106,11 +106,15 @@ export const Nav = () => {
                 <Link to={'../../'}>
                   <AiOutlineSearch className='search-icon'/>
                 </Link>
+
+               
                 
                 <div  className='user-logged-in-dropdown' to={'/dashboard'}>
+                  
                   <p><span>{user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
                   <img src={user.photoURL} alt="" />                
                 </div>
+
 
                 <HiOutlineMenu onClick={handleDropdown} className='dropdown-icon'/>
                 {dropdown && <DropDown/>}

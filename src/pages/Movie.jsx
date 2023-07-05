@@ -25,10 +25,11 @@ const Movie = () => {
   const [isLoading, setIsLoading] = useState(true);
   const[tab, setActiveTab] = useState('genre');
   const[genre, setGenre] = useState(28);
+  const [displayResultsText, setDisplayResultsText] = useState("Action")
 
 
   useEffect(() => {
-    document.title = `Movies · Whispr`;
+    document.title = `Movies | Whispr`;
     const timer = setTimeout(() => {
       setIsLoading(false);
     },500); 
@@ -268,8 +269,10 @@ const Movie = () => {
 							</div>
 
 							<div className="filter-results">
+
                 {tab === 'genre' && (
                   <div className="genre-results">
+                    
                     {movieGenreList.length > 0 && movieGenreList.slice(0,28).map((movie) => {
 
                       return <div className='filter-result-item'>
