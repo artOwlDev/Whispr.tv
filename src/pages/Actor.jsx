@@ -75,7 +75,7 @@ const Actor = () => {
 
             <div className="actor-details-credits">
                 {credits?.cast && credits?.cast?.slice(0,movieCount).map(movie => {
-                    return <div>
+                    return <div key={movie.id}>
                         <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title || movie.name} year={movie.release_date?.substring(0, 4) || movie.first_air_date?.substring(0, 4)} id={movie.id} type={movie.media_type === "movie" ? "movie" : "tv"}/>
                     </div>
                 })}

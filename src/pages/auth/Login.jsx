@@ -8,6 +8,7 @@ import {authFirebase} from "../../../utils/firebase";
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import bannerimage from "../../img/banner.jpg"
+import { getFirestore, collection, doc, setDoc, getDoc } from 'firebase/firestore';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -21,15 +22,28 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = async () => {
         try {
-            const result = await signInWithPopup(authFirebase, googleProvider);
-            navigate("/");
-            console.log(result.user);
-
-
+          const result = await signInWithPopup(authFirebase, googleProvider);
+          const user = result.user;
+      
+          // Create a user document in the 'users' collection
+          const db = getFirestore();
+          const userRef = doc(db, 'users', user.uid);
+          await setDoc(userRef, {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            userId : user.uid,
+            likedReviews: []
+            // Add other desired user information here
+          });
+      
+          navigate('/');
+          console.log(user);
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
-    }
+      };
+      
 
     
 

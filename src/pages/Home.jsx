@@ -15,6 +15,10 @@ import horror from "../img/horror-genre.jpg"
 import adventure from "../img/adventure-genre.jpg"
 import drama from "../img/drama-genre.jpg"
 import Loader from '../components/Loader';
+import {useAuthState} from "react-firebase-hooks/auth"
+import { authFirebase } from '../../utils/firebase'; 
+
+
 
 export const Home = () => {
 
@@ -23,6 +27,8 @@ export const Home = () => {
   const [token, setToken] = useState('');
   const [albums, setAlbums] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const[user, loading] = useAuthState(authFirebase);
+
 
 
   const TOP_RATED_TV =  `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
@@ -44,6 +50,9 @@ export const Home = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     },500); 
+
+    console.log(user);
+
 
     return () => clearTimeout(timer);
   },[])
@@ -74,41 +83,6 @@ export const Home = () => {
             <Search/>
             <HomePageInfo/>
             
-            <h1 className='genre-title'>Pick a Genre:</h1>
-
-            <div className="home-page-genre">
-              <div className="home-page-genre-box">
-                <img src={action} alt="" />
-
-                <h1>Action</h1>
-
-                <p>John Wick, 2014</p>
-              </div>
-              <div className="home-page-genre-box">
-                <img src={drama} alt="" />
-                <h1>Drama</h1>
-              </div>
-              <div className="home-page-genre-box">
-                <img src={comedy} alt="" />
-
-                <h1>Comedy</h1>
-              </div>
-              <div className="home-page-genre-box">
-                <img src={horror} alt="" />
-                <h1>Horror</h1>
-              </div>
-              <div className="home-page-genre-box">
-                <img src={scifi} alt="" />
-
-                <h1>Sci-Fi</h1>
-              </div>
-              <div className="home-page-genre-box">
-                <img src={adventure} alt="" />
-                <h1>Adventure</h1>
-              </div>
-              
-              
-            </div>
 
             <div className="critically-acclaimed-home-page">
 

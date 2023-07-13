@@ -18,7 +18,69 @@ const Tv = () => {
   const IMAGES = "https://image.tmdb.org/t/p/original"
   const[isLoading, setIsLoading] = useState(true);
 
-  const [hoveredIndex, setHoveredIndex] = useState(1);
+  const [popularTV, setPopularTV] = useState([]);
+  const [topRatedTV, setTopRatedTV] = useState([]);
+  const [actionTV, setActionTV] = useState([]); 
+  const [comedyTV, setComedyTV] = useState([]);
+  const [sciFiTV, setSciFiTV] = useState([]);
+
+
+
+
+
+  const POPULAR_TV =  `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
+  const TOPRATED_TV = `http://api.themoviedb.org/3/discover/tv?sort_by=vote_average.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=1&vote_count.gte=300`
+  const ACTION_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=10759&vote_count.gte=300&page=1`
+  const COMEDY_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=35&vote_count.gte=300&page=1`
+  const SCIFI_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=10765&vote_count.gte=300&page=1`
+
+  useEffect(() => {
+    axios.get(SCIFI_TV)
+      .then(res => {
+        console.log(res.data);
+        setSciFiTV(res.data.results);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+
+  useEffect(() => {
+    axios.get(COMEDY_TV)
+      .then(res => {
+        console.log(res.data);
+        setComedyTV(res.data.results);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get(ACTION_TV)
+      .then(res => {
+        console.log(res.data);
+        setActionTV(res.data.results);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios.get(POPULAR_TV)
+      .then(res => {
+        console.log(res.data);
+        setPopularTV(res.data.results);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+
+
+  useEffect(() => {
+    axios.get(TOPRATED_TV)
+      .then(res => {
+        console.log(res.data);
+        setTopRatedTV(res.data.results);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
 
   useEffect(() => {
@@ -139,6 +201,88 @@ const genreTable = {
               ))}
             </Carousel>
           </div>
+
+
+          <div className="popular-tv">
+
+            <h1 className='title'>Popular TV Series</h1>
+
+
+            <div className="tv-display">
+              <div className="popular-series-display">
+                {popularTV.length > 0 && popularTV.slice(0,7).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
+                })}
+
+              </div>
+            </div>        
+          </div>
+
+          <div className="highRated-tv">
+
+            <h1 className='title'>Action</h1>
+
+
+            <div className="tv-display">
+              <div className="highRated-series-display">
+                {actionTV.length > 0 && actionTV.slice(0,7).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
+                })}
+
+              </div>
+            </div>        
+          </div>
+
+          <div className="highRated-tv">
+
+            <h1 className='title'>Comedy</h1>
+
+
+            <div className="tv-display">
+              <div className="highRated-series-display">
+                {comedyTV.length > 0 && comedyTV.slice(0,7).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
+                })}
+
+              </div>
+            </div>        
+          </div>
+
+          <div className="highRated-tv">
+
+            <h1 className='title'>Sci-Fi</h1>
+
+
+            <div className="tv-display">
+              <div className="highRated-series-display">
+                {sciFiTV.length > 0 && sciFiTV.slice(0,7).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
+                })}
+
+              </div>
+            </div>        
+          </div>
+            
+          <div className="highRated-tv">
+
+            <h1 className='title'>Highest Rated</h1>
+
+
+            <div className="tv-display">
+              <div className="highRated-series-display">
+                {topRatedTV.length > 0 && topRatedTV.slice(0,7).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
+                })}
+
+              </div>
+            </div>        
+          </div>
+          
+
+
+
+          
+
 
           <Footer />
         </>

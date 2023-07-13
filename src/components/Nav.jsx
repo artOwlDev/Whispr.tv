@@ -37,6 +37,8 @@ export const Nav = () => {
   useEffect(()=> {
     if (user){
       setUserImage(user.photoURL);
+      console.log(user);
+
     }
   },[])
 

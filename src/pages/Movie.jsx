@@ -17,6 +17,8 @@ const Movie = () => {
   const[details, setDetails] = useState([]);
   const[movieGenreList, setMovieGenreList] = useState([]);
   const[topRated, setTopRated] = useState([]);
+  const[lowestRated, setLowestRated] = useState([]);
+
   const[upcoming, setUpcoming] = useState([]);
   const[nowPlaying, setNowPlaying] = useState([]);
   const[hotMovies, setHotMovies] = useState([]);
@@ -32,8 +34,10 @@ const Movie = () => {
     document.title = `Movies | Whispr`;
     const timer = setTimeout(() => {
       setIsLoading(false);
-    },500); 
+    },100); 
 
+    
+    
     return () => clearTimeout(timer);
   }, [])
 
@@ -159,6 +163,30 @@ const Movie = () => {
     getTopRated();
   },[id]) 
 
+  useEffect(() => {
+    async function getLowestRated(){
+        try{
+          const response1 = await axios.get(`http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.asc&api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=1&vote_count.gte=300`)
+          const response2 = await axios.get(`http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.asc&api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=2&vote_count.gte=300`)
+          const response3 = await axios.get(`http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.asc&api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=3&vote_count.gte=300`)
+
+          const movies1 = response1.data.results;
+          const movies2 = response2.data.results;
+          const movies3 = response3.data.results;
+
+          const updatedMovieGenreList = [...movies1, ...movies2, ...movies3];
+          console.log(updatedMovieGenreList)
+          
+
+          setLowestRated(updatedMovieGenreList);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    getLowestRated();
+  },[id]) 
+
   
 
 
@@ -233,9 +261,8 @@ const Movie = () => {
 
 											<div className={tab === 'whatsNew' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('whatsNew')}><p>What's new</p></div>
 											<div className={tab === 'comingSoon' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('comingSoon')}><p>Coming soon</p></div>
-											<div className={tab === 'popular' ? 'options-element active': 'options-element'}><p>Popular</p></div>									
 											<div className={tab === 'highest' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('highest')}><p>Sort by rating: Highest</p></div>																		
-											<div className={tab === 'lowest' ? 'options-element active': 'options-element'}><p>Sort by rating: Lowest</p></div>																		
+											<div className={tab === 'lowest' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('lowest')}><p>Sort by rating: Lowest</p></div>																		
 										</div>
 															
 									</div>
@@ -275,7 +302,7 @@ const Movie = () => {
                     
                     {movieGenreList.length > 0 && movieGenreList.slice(0,28).map((movie) => {
 
-                      return <div className='filter-result-item'>
+                      return <div key={movie.id} className='filter-result-item'>
                         <Link to={`./details/${movie.id}`}>
                           <img src={IMAGES + movie.poster_path}/>
                         </Link>
@@ -385,6 +412,43 @@ const Movie = () => {
                 {tab === 'highest' && (
                   <div className="genre-results">
                     {topRated.length > 0 && topRated.slice(0,28).map((movie) => {
+
+                      return <div className='filter-result-item'>
+                        <Link to={`./details/${movie.id}`}>
+                          <img src={IMAGES + movie.poster_path}/>
+                        </Link>
+
+                        <div className="movie-rating">
+                        {[...Array(5)].map((_, index) => (
+                          <span
+                            key={index}
+                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
+                          >
+                            {index < Math.floor(movie?.vote_average / 2) ? (
+                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
+                            ) : (
+                              <span className="star-icon-empty">&#9734;</span>
+                            )}
+                          </span>
+                        ))}
+
+                       
+                      </div>
+                      <Link>
+                        <div className="movie-details">
+                            <p>{movie.title}</p>
+                            <p>{movie.release_date.substring(5)}</p>
+                        </div>
+                      </Link>
+                      
+                      </div>
+                    })}
+                  </div>
+                )}
+
+                {tab === 'lowest' && (
+                  <div className="genre-results">
+                    {lowestRated.length > 0 && lowestRated.slice(0,28).map((movie) => {
 
                       return <div className='filter-result-item'>
                         <Link to={`./details/${movie.id}`}>

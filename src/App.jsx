@@ -14,6 +14,7 @@ import Tv from './pages/Tv'
 import Dashboard from './pages/Dashboard'
 import Actor from './pages/Actor'
 import Upcoming from './pages/Upcoming'
+import Reviews from './pages/Reviews'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/actor/:id" element={<Actor />} />
           <Route path="/upcoming" element={<Upcoming />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
       </div>
     </BrowserRouter>
