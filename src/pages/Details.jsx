@@ -16,7 +16,6 @@ import {MdFavorite, MdWatchLater} from "react-icons/md"
 import {BiTime} from "react-icons/bi"
 import Loader from '../components/Loader';
 import notfound from "../img/notfound.png";
-import personnotfound from "../img/personnotfound.png"
 import {getFirestore, doc, collection, getDocs, addDoc, deleteDoc, query, where, updateDoc, getDoc, onSnapshot} from "firebase/firestore"
 
 
