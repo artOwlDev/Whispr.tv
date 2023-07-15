@@ -19,6 +19,10 @@ const Movie = () => {
   const[topRated, setTopRated] = useState([]);
   const[lowestRated, setLowestRated] = useState([]);
 
+  const[action, setAction] = useState([]);
+  const[scifi, setScifi] = useState([]);
+  const[animation, setAnimation] = useState([]);
+
   const[upcoming, setUpcoming] = useState([]);
   const[nowPlaying, setNowPlaying] = useState([]);
   const[hotMovies, setHotMovies] = useState([]);
@@ -106,6 +110,48 @@ const Movie = () => {
     getHotMovies();
 
   },[]) 
+
+  useEffect(() => {
+    async function getActionMovies(){
+      try{
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=28&page=1`)
+          console.log(response.data);
+          setAction(response.data.results)
+      }
+      catch(error){
+          console.log(error);
+      }
+  }
+    getActionMovies();
+  },[])
+
+  useEffect(() => {
+    async function getAnimationMovies(){
+      try{
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=16&page=1`)
+          console.log(response.data);
+          setAnimation(response.data.results)
+      }
+      catch(error){
+          console.log(error);
+      }
+  }
+    getAnimationMovies();
+  },[])
+
+  useEffect(() => {
+    async function getSciFiMovies(){
+      try{
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=878&page=1`)
+          console.log(response.data);
+          setScifi(response.data.results)
+      }
+      catch(error){
+          console.log(error);
+      }
+  }
+    getSciFiMovies();
+  },[])
 
 
   useEffect(() => {
@@ -250,250 +296,93 @@ const Movie = () => {
               </Carousel>
             </div>
 
-            <div className="movie-filter">
-							<div className="filter-panel">
-									<div className="general-filters">
-									  <div className="header">
-										  <h1>General</h1>
-										</div>
+            
 
-										<div className="options">
+          </div>
 
-											<div className={tab === 'whatsNew' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('whatsNew')}><p>What's new</p></div>
-											<div className={tab === 'comingSoon' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('comingSoon')}><p>Coming soon</p></div>
-											<div className={tab === 'highest' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('highest')}><p>Sort by rating: Highest</p></div>																		
-											<div className={tab === 'lowest' ? 'options-element active': 'options-element'} onClick={() => setActiveTab('lowest')}><p>Sort by rating: Lowest</p></div>																		
-										</div>
-															
-									</div>
+          <div className="movie-selection-list">
 
-									
-									<div className="genre-filters">
-										<div className="header">
-											<h1>Genre</h1>
-										</div>
+            <h1 className='title'>Criticlally Acclaimed Movies</h1>
 
-										<div className="options">
 
-											<div className={genre === '28' ? 'options-element active': 'options-element'} onClick={() => setGenre('28')}>Action</div>
-											<div className={genre === '12' ? 'options-element active': 'options-element'} onClick={() => setGenre('12')}>Adventure</div>
-											<div className={genre === '16' ? 'options-element active': 'options-element'} onClick={() => setGenre('16')}>Animation</div>									
-											<div className={genre === '35' ? 'options-element active': 'options-element'} onClick={() => setGenre('35')}>Comedy</div>																		
-											<div className={genre === '99' ? 'options-element active': 'options-element'} onClick={() => setGenre('99')}>Documentary</div>																		
-											<div className={genre === '18' ? 'options-element active': 'options-element'} onClick={() => setGenre('18')}>Drama</div>																		
-											<div className={genre === '14' ? 'options-element active': 'options-element'} onClick={() => setGenre('14')}>Fantasy</div>																		
-											<div className={genre === '27' ? 'options-element active': 'options-element'} onClick={() => setGenre('27')}>Horror</div>																		
-											<div className={genre === '878' ? 'options-element active': 'options-element'} onClick={() => setGenre('878')}>Science Fiction</div>																		
-											<div className={genre === '10749' ? 'options-element active': 'options-element last'} onClick={() => setGenre('10749')}>Romance</div>																		
-										</div>
-                    
-
-									</div>
-
-									<div className="release-year-filters">
-
-									</div>
-							</div>
-
-							<div className="filter-results">
-
-                {tab === 'genre' && (
-                  <div className="genre-results">
-                    
-                    {movieGenreList.length > 0 && movieGenreList.slice(0,28).map((movie) => {
-
-                      return <div key={movie.id} className='filter-result-item'>
-                        <Link to={`./details/${movie.id}`}>
-                          <img src={IMAGES + movie.poster_path}/>
-                        </Link>
-
-                        <div className="movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
-
-                       
-                      </div>
-                      <Link>
-                        <div className="movie-details">
-                            <p>{movie.title}</p>
-                            <p>{movie.release_date.substring(5)}</p>
-                        </div>
-                      </Link>
-                      
-                      </div>
-                    })}
-                  </div>
-                )}
-
-                {tab === 'whatsNew' && (
-                  <div className="genre-results">
-                    {nowPlaying.length > 0 && nowPlaying.slice(0,20).map((movie) => {
-
-                      return <div className='filter-result-item'>
-                        <Link to={`./details/${movie.id}`}>
-                          <img src={IMAGES + movie.poster_path}/>
-                        </Link>
-
-                        <div className="movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
-
-                       
-                      </div>
-                      <Link>
-                        <div className="movie-details">
-                            <p>{movie.title}</p>
-                            <p>{movie.release_date.substring(5)}</p>
-                        </div>
-                      </Link>
-                      
-                      </div>
-                    })}
-                  </div>
-                )}
-
-                {tab === 'comingSoon' && (
-                  <div className="genre-results">
-                    {upcoming.length > 0 && upcoming.slice(0,20).map((movie) => {
-
-                      return <div className='filter-result-item'>
-                        <Link to={`./details/${movie.id}`}>
-                          <img src={IMAGES + movie.poster_path}/>
-                        </Link>
-
-                        <div className="movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
-
-                       
-                      </div>
-                      <Link>
-                        <div className="movie-details">
-                            <p>{movie.title}</p>
-                            <p>{movie.release_date.substring(5)}</p>
-                        </div>
-                      </Link>
-                      
-                      </div>
-                    })}
-                  </div>
-                )}
-
-                {tab === 'highest' && (
-                  <div className="genre-results">
-                    {topRated.length > 0 && topRated.slice(0,28).map((movie) => {
-
-                      return <div className='filter-result-item'>
-                        <Link to={`./details/${movie.id}`}>
-                          <img src={IMAGES + movie.poster_path}/>
-                        </Link>
-
-                        <div className="movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
-
-                       
-                      </div>
-                      <Link>
-                        <div className="movie-details">
-                            <p>{movie.title}</p>
-                            <p>{movie.release_date.substring(5)}</p>
-                        </div>
-                      </Link>
-                      
-                      </div>
-                    })}
-                  </div>
-                )}
-
-                {tab === 'lowest' && (
-                  <div className="genre-results">
-                    {lowestRated.length > 0 && lowestRated.slice(0,28).map((movie) => {
-
-                      return <div className='filter-result-item'>
-                        <Link to={`./details/${movie.id}`}>
-                          <img src={IMAGES + movie.poster_path}/>
-                        </Link>
-
-                        <div className="movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "white" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
-
-                       
-                      </div>
-                      <Link>
-                        <div className="movie-details">
-                            <p>{movie.title}</p>
-                            <p>{movie.release_date.substring(5)}</p>
-                        </div>
-                      </Link>
-                      
-                      </div>
-                    })}
-                  </div>
-                )}
+            <div className="movie-display">
 
 
 
+              <div className="movie-selection-display">
+                {topRated.length > 0 && topRated.slice(0,14).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                })}
+
+              </div>
 
 
-                
-                    
-							</div>
-				
+            </div> 
 
-            </div>
+       
+          </div>
+          <div className="movie-selection-list">
 
+            <h1 className='title'>Action</h1>
+
+
+            <div className="movie-display">
+
+
+
+              <div className="movie-selection-display">
+                {action.length > 0 && action.slice(0,14).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                })}
+
+              </div>
+
+
+            </div> 
+
+       
+          </div>
+          <div className="movie-selection-list">
+
+            <h1 className='title'>Sci-Fi</h1>
+
+
+            <div className="movie-display">
+
+
+
+              <div className="movie-selection-display">
+                {scifi.length > 0 && scifi.slice(0,14).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                })}
+
+              </div>
+
+
+            </div> 
+
+       
+          </div>
+          <div className="movie-selection-list">
+
+            <h1 className='title'>Animation</h1>
+
+
+            <div className="movie-display">
+
+
+
+              <div className="movie-selection-display">
+                {animation.length > 0 && animation.slice(0,14).map((movie) => {
+                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                })}
+
+              </div>
+
+
+            </div> 
+
+       
           </div>
 
           <Footer />

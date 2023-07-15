@@ -17,7 +17,6 @@ import {BiTime} from "react-icons/bi"
 import Loader from '../components/Loader';
 import notfound from "../img/notfound.png";
 import personnotfound from "../img/personnotfound.png"
-import whisprPoster from "../img/whisprBanner.png"
 import {getFirestore, doc, collection, getDocs, addDoc, deleteDoc, query, where, updateDoc, getDoc, onSnapshot} from "firebase/firestore"
 
 
@@ -477,7 +476,7 @@ const Details = () => {
 
                 
                         <div className="details-name">
-                            <h1>{itemName} - </h1>
+                            <h1>{itemName}</h1>
                             {details.tagline && <span>"{details.tagline}"</span>}
 
                         </div>
@@ -489,7 +488,7 @@ const Details = () => {
 
 
                         <div className="actors">
-                            {crew?.cast?.slice(0,9).map(actor => {
+                            {crew?.cast?.slice(0,4).map(actor => {
                                 return <div key={actor.id} className='actors-div'>
                                     <Link to={`../../actor/${actor.id}`}>
                                         <img src={IMAGES + actor.profile_path} alt="" />
@@ -549,7 +548,7 @@ const Details = () => {
 
                 
                             <div className="details-name">
-                                <h1>{itemName} - </h1>
+                                <h1>{itemName}</h1>
                                 {details.tagline && <span>"{details.tagline}"</span>}
 
                             </div>
@@ -561,7 +560,7 @@ const Details = () => {
                             
     
                             <div className="actors">
-                                {crew?.cast?.slice(0,9).map(actor => {
+                                {crew?.cast?.slice(0,12).map(actor => {
                                     return <div className='actors-div' key={actor.id}>
                                         <Link to={`../../actor/${actor.id}`}>
                                             <img src={IMAGES + actor.profile_path} alt="" />
@@ -584,7 +583,7 @@ const Details = () => {
 
                         <div className="details-reviews-map">
 
-                            {entries.length > 0 && entries.map(item => {
+                            {entries.length > 0 && entries.slice(0,3).map(item => {
 
                                 return  <div key={entries.reviewID} className="details-review-input">
                                     
@@ -614,7 +613,7 @@ const Details = () => {
                                     </div>
 
                                     <div className="bottom">
-                                        <p>{item.review}</p>
+                                        <p className='review-text'>{item.review}</p>
 
                                         <div className="delete">
                                             {user && item.userId === user.uid ? <AiOutlineDelete onClick={() => deleteEntry(item.reviewId)} className='icon-delete'/> : null}

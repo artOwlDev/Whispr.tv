@@ -7,6 +7,7 @@ import { Nav } from '../components/Nav'
 import { TvItem } from '../components/TvItem';
 import { Carousel } from 'react-responsive-carousel';
 import Loader from '../components/Loader';
+import {AiFillStar, AiOutlineRight, AiOutlineLeft} from "react-icons/ai";
 
 
 const Tv = () => {
@@ -153,7 +154,7 @@ const genreTable = {
           <Nav />
 
           <div className="movie-container">
-            <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={6500} infiniteLoop={true}>
+            <Carousel showArrows={true} showThumbs={false} showStatus={false} showIndicators={false} useKeyboardArrows={true} autoPlay={true} interval={4500} infiniteLoop={true}>
               {nowPlaying.length > 0 && nowPlaying.slice(0, 20).map((movie) => (
                 <div className='upcoming-movie-div' key={movie.id}>
                   <div className="upcoming-movie-div">
@@ -209,13 +210,20 @@ const genreTable = {
 
 
             <div className="tv-display">
+
+
+
               <div className="popular-series-display">
-                {popularTV.length > 0 && popularTV.slice(0,7).map((movie) => {
+                {popularTV.length > 0 && popularTV.slice(0,14).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
               </div>
-            </div>        
+
+
+            </div> 
+
+       
           </div>
 
           <div className="highRated-tv">
@@ -225,7 +233,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {actionTV.length > 0 && actionTV.slice(0,7).map((movie) => {
+                {actionTV.length > 0 && actionTV.slice(0,14).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -240,7 +248,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {comedyTV.length > 0 && comedyTV.slice(0,7).map((movie) => {
+                {comedyTV.length > 0 && comedyTV.slice(0,14).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -255,7 +263,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {sciFiTV.length > 0 && sciFiTV.slice(0,7).map((movie) => {
+                {sciFiTV.length > 0 && sciFiTV.slice(0,14).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -270,7 +278,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {topRatedTV.length > 0 && topRatedTV.slice(0,7).map((movie) => {
+                {topRatedTV.length > 0 && topRatedTV.slice(0,14).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 

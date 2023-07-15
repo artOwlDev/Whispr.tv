@@ -460,6 +460,8 @@
             cursor: pointer;
             box-shadow: 0 0 0 1px white;
             background-size: 120% 120%;
+            transform: scale(1.02);
+            transition: all 0.2s ease-in-out;
         }
     }
 
@@ -792,8 +794,9 @@
                     display: flex;
                     align-items: center;
 
+
                     h1{
-                        font-size: 2rem;
+                        font-size: 1.8rem;
                         font-weight: bolder;
                     }
 
@@ -845,7 +848,7 @@
                         justify-content: center;
                         flex-direction: column;
                         align-items: center;
-                        width: 14rem;
+                        width: 6rem;
                         font-family: 'Poppins', sans-serif;
 
 
@@ -855,11 +858,11 @@
                         img{
                             margin-bottom: 10px;
                             object-fit: cover;
-                            height: 10vh;
+                            height: 12vh;
                             width: 6vw;
                             opacity: 0.9;
                             transition: all 0.2s ease-in-out;
-                            border-radius: 50%;
+                            border-radius: 1rem;
                             object-position: center center;
 
                             &:hover{
@@ -894,7 +897,6 @@
             align-items: center;
             gap: 3rem;
             width: 80%;
-
             h1{
                 font-size: 1.2rem;
                 font-family: 'Poppins', sans-serif;
@@ -954,9 +956,15 @@
                         display: flex;
                         flex-direction: column;
                         gap: 3rem;
+                        height: 50%;
+                        word-break: break-word;
+
     
                         .review-text{
-                            font-size: 0.9rem;
+                            display: flex;
+                            flex-wrap: wrap;
+                            font-size: 0.8rem;
+                            
                         }
 
                         .delete{
@@ -1248,13 +1256,18 @@
 }
 
 .popular-tv{
+   
+
     .title{
         font-family: 'Poppins', sans-serif;
         font-size: 1.4rem;
-        margin: 6rem 0 1rem 6rem;
+        margin: 4rem 0 2rem 6rem;
     }
 
     .tv-display{
+        
+        
+       
         
 
         .popular-series-display{
@@ -1262,11 +1275,12 @@
             align-content: center;
             justify-content: center;
             flex-direction: row;
-            margin: 2rem;
             flex-wrap: wrap;
+            margin: 2rem auto;
             gap: 10px;
         }
     }
+
 
 }
 
@@ -1274,7 +1288,7 @@
     .title{
         font-family: 'Poppins', sans-serif;
         font-size: 1.4rem;
-        margin: 6rem 0 1rem 6rem;
+        margin: 4rem 0 2rem 6rem;
     }
 
     .tv-display{
@@ -1285,13 +1299,38 @@
             align-content: center;
             justify-content: center;
             flex-direction: row;
-            margin: 2rem;
             flex-wrap: wrap;
+            margin: 2rem auto;
             gap: 10px;
         }
     }
 
 }
+
+.movie-selection-list{
+    .title{
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+        margin: 4rem 0 2rem 6rem;
+    }
+
+    .movie-display{
+        
+
+        .movie-selection-display{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 2rem auto;
+            gap: 10px;
+        }
+    }
+
+}
+
+
 
 
 
@@ -1928,6 +1967,21 @@
     }
   }
 
+  @media (max-width: 1400px){
+
+
+    .navbg{
+        .nav{
+            .right-side{
+                gap: 1rem;
+               
+                .dropdown-icon{
+                }
+            }
+        }
+    }
+  }
+
   @media (max-width: 768px) {
     .loaded-info h1 {
       font-size: 10px; /* Decreased font size for smaller screens */
@@ -1970,6 +2024,7 @@
     .tv-item{
         max-height: 600px;
         max-width: 375px;
+        aspect-ratio: 16/9;
 
         h1{
             font-size: 2rem;
@@ -1984,210 +2039,148 @@
 
     .details-frag{
         
+        
         .details{
 
             .details-reviews-container{
-                display: none;
 
                 h1{
-                    display: none;
+                    text-align: center;
                 }
 
                 .details-reviews-map{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    .details-review-input{
+                        font-size: 2rem;
+                        height: 40vh;
+                        width: 80vw;
+                        border: none;
+
+                        .top{
+                            .left{
+                                display: flex;
+                                text-align: center;
+                                
+
+                                .userinfo{
+                                    h1{
+                                        font-size: 1.5rem;
+                                    }
+                                }
+                            }
+                            .right{
+                                .date{
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+
+                        .bottom{
+                            .review-text{
+                                font-size: 1.5rem;
+                                font-family: "Poppins";
+                            }
+                            .delete{
+                                .icon-delete{
+                                    font-size: 2rem;
+                                }
+                            }
+
+                            .likes{
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 1rem;
+                                .icon{
+                                    font-size: 2rem;
+                                }
+                                p{
+                                    font-size: 1.4rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .similar-movies{
+                text-align: center;
+               
+
+               .similar-movies-map{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+               }
+            }
+
+            .backdrop{
+                display: none;
+                visibility: hidden;
+                position: absolute;
+            }
+            .details-text{
+                display: flex;
+                flex-direction: column;
+                display: none;
+
+                .actors{
                     display: none;
                 }
             }
 
-            
-
-            .similar-movies{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 3rem;
-    
-                h1:first-child{
-    
-                    font-size: 1.2rem;
-                    font-family: 'Poppins', sans-serif;
-                    justify-content: flex-start;
-    
-                }
-    
-                
-                .similar-movies-map{
-                    display: flex;
-                    justify-content: center;
-                    gap: 2rem;
-                }
-            }
-
-            .details-text{
-                display: none;
-            }
-            
-            .similar-movies{
-                margin-top: 40rem;
-                
-                .similar-movies-map{
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
-            
-            .backdrop{
-                width: 100vw;
-                margin: 0;
-                position: relative;
-            }
-
             .details-info{
-                margin: 60rem auto;
-                width: 100vw;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                height: 60vh;
-                
-                p{
-                    font-size: 1rem;
-                }
-
+                gap: 2rem;
+                width: 100%;
 
                 .details-image-div{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-
-                    .details-text-hidden{
-                        display: flex;
-                        flex-direction: column; 
-                        justify-content: flex-start;
-                        margin: 0rem 2rem;
-                        flex: 2;
-                        gap: 1.4rem;
-                        font-family: 'Montserrat', sans-serif;
-                        text-align: center;
-        
-                        h1{
-                            font-size: 2.8rem;
-                            font-weight: bolder;
-                        }
-        
-
-                    }
 
                     .rate-review{
                         display: none;
                     }
-
-                    
-
-                    
-                  
                 }
-
-
-
 
                 .details-text{
-                    margin-top: 60rem;
                     text-align: center;
 
-    
                     .details-name{
-                        display: flex;
-                        align-items: center;
-                        text-align: center;
-                        justify-content: center;
                         flex-direction: column;
-    
-                        h1{
-                            font-size: 2rem;
-                            font-weight: bolder;
-                            text-align: center;
-                        }
-    
-                        span{
-                            font-family: 'Ysabeau Office', sans-serif;
-                            font-weight: 300;
-                            font-size: 1.2rem;
-                            margin-left: 2rem;
-                            text-align: center;
-                            font-family: 'Indie Flower', cursive;
-                            
-                        }
-    
                     }
-    
-                    h2{
-                        span{
-                            font-weight: 600;
+
+                    .actors{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+
+                        .actors-div{
+                            width: 20%;
+                            height: 16vh;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            img{
+                                border-radius: 1rem;
+                                height: 10vh;
+                                width: 20vw;
+                            }
                         }
                     }
-    
-                    h3{
-                        span{
-                            font-weight: 600;
-                        }
-                    }
-    
-                    p{
-                        .rating-text{
-                            font-weight: 600;
-                        }
-                    }
-    
-                   
-    
+                }
+
+            }
+
+        }
+
                        
     
-                    .actors{
-                        margin-top: 10rem;
-                        display: flex;
-                        justify-content: center;
-                        gap: 3rem;
-                        
-    
-    
-                        .actors-div{
-                            width: 30%;
-                            
-    
-                            img{
-                                border-radius: 0;
-                                object-fit: cover;
-                                height: 20vh;
-                                width: 30vw;
-                                
-    
-                                &:hover{
-                                    opacity: 1;
-                                    cursor: pointer;
-                                }
-                            }
-    
-                            h1{
-                                font-size: 1rem;
-                                font-weight: 700;
-                                margin-bottom: 0.5rem;
-                            }
-                            p{
-                                font-size: 0.8rem;
-                            }
-    
-                            
-                            
-                        }
-                    }
-    
-                   
-                }
-            }
-            
-        }
     }
 
     
@@ -2349,7 +2342,28 @@
         }
     }
 
-    
+    .popular-tv{
+        .title{
+            text-align: center;
+            margin: 1rem;
+            font-size: 1.8rem;
+        }
+    }
+
+    .highRated-tv{
+        .title{
+            text-align: center;
+            margin: 1rem;
+            font-size: 1.8rem;
+            
+        }
+    }
+
+
+    .footer{
+        margin: 20rem 0 0 0;
+    }
+
 
 
 }
