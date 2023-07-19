@@ -143,7 +143,7 @@ export const Nav = () => {
                 
                 <div  className='user-logged-in-dropdown' to={'/dashboard'}>
                   
-                  <p><span>{username === '' ? user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1) : username}</span></p>
+                  <p><span>{username !== '' ? username : user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
                   <img src={user.photoURL} alt="" />                
                 </div>
 
