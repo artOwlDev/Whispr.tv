@@ -223,6 +223,15 @@ const Details = () => {
 
         const handleSubmitReview = async () => {
             try {
+                const dbUser = getFirestore();
+                const userRef = doc(dbUser, 'users', user.uid);
+                const userSnapshot = await getDoc(userRef);
+
+
+                const userData = userSnapshot.data();
+                const username = userData.username || ''; // If userna
+
+
               const newReview = {
                 userId: user.uid,
                 itemId: details.id,
@@ -230,8 +239,12 @@ const Details = () => {
                 review: text,
                 reviewId: '', // Placeholder value, it will be updated later
                 userImage : user.photoURL,
-                date: formattedDate
+                date: formattedDate,
+                username : username
               };
+
+               
+              // Update the review with the generated review ID and username
           
               const db = getFirestore();
               const docRef = await addDoc(collection(db, "reviews"), newReview);
@@ -591,20 +604,10 @@ const Details = () => {
                                         <div className="left">
                                             <div className="userinfo">
                                                 <img src={item.userImage} alt="" />
-                                                <h1>ArtuniPuni</h1>
+                                                <h1>{item.username}</h1>
                                             </div>
-                                            <div className="star-rating">
-                                            {[...Array(5)].map((_, index) => (
-                                            <span key={index}
-                                            className='star-icon'
-                                            style={{ color: index < hoveredStars ? 'gold' : 'whitesmoke' }}
-                                            onMouseEnter={() => handleStarHover(index)}
-                                            onMouseLeave={() => setHoveredStars(0)}>
-                                                &#9733;
-                                            </span>
                                             
-                                        ))}
-                                        </div>
+                                            
                                         </div>
                                         <div className="right">
                                             <p className='date'>{item.date}</p>

@@ -11,6 +11,7 @@ import {AiOutlineSearch} from "react-icons/ai"
 import {HiOutlineMenu} from "react-icons/hi"
 import TvIcon from '@mui/icons-material/Tv';
 import {BiMovie} from "react-icons/bi"
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 
 
@@ -22,11 +23,41 @@ export const Nav = () => {
   const[dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const[userImage, setUserImage] = useState(""); 
+  const [username, setUsername] = useState("");
 
 
   const handleActiveTab  = (tab) => {
     setActiveTab(tab)
   }
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        if (user) {
+          const db = getFirestore();
+          const userRef = doc(db, 'users', user.uid);
+          const userSnapshot = await getDoc(userRef);
+
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.data();
+            if (userData && userData.username) {
+              setUsername(userData.username);
+            }
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUsername();
+  }, []);
+  
+
+
+
+
+
 
 
   const handleDropdown = () => {
@@ -112,7 +143,7 @@ export const Nav = () => {
                 
                 <div  className='user-logged-in-dropdown' to={'/dashboard'}>
                   
-                  <p><span>{user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
+                  <p><span>{username === '' ? user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1) : username}</span></p>
                   <img src={user.photoURL} alt="" />                
                 </div>
 

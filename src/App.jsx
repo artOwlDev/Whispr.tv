@@ -15,6 +15,7 @@ import Dashboard from './pages/Dashboard'
 import Actor from './pages/Actor'
 import Upcoming from './pages/Upcoming'
 import Reviews from './pages/Reviews'
+import Username from './pages/Username'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/actor/:id" element={<Actor />} />
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/reviews" element={<Reviews />} />
+          <Route path="/username-select" element={<Username />} />
         </Routes>
       </div>
     </BrowserRouter>

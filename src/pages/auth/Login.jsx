@@ -21,27 +21,39 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = async () => {
-        try {
-          const result = await signInWithPopup(authFirebase, googleProvider);
-          const user = result.user;
-      
+      try {
+        const result = await signInWithPopup(authFirebase, googleProvider);
+        const user = result.user;
+  
+        // Check if the user has already selected a username
+        const db = getFirestore();
+        const userRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(userRef);
+  
+        if (userDoc.exists()) {
+          // User has already selected a username
+          navigate('/');
+        } else {
+          // User hasn't selected a username yet, proceed to username selection page
           // Create a user document in the 'users' collection
-          const db = getFirestore();
-          const userRef = doc(db, 'users', user.uid);
-          await setDoc(userRef, {
+          const newUserRef = doc(db, 'users', user.uid);
+          await setDoc(newUserRef, {
             displayName: user.displayName,
             email: user.email,
             photoURL: user.photoURL,
-            userId : user.uid,
-            likedReviews: []
+            userId: user.uid,
+            likedReviews: [],
+            username: ""
             // Add other desired user information here
           });
-      
-          navigate('/');
-          console.log(user);
-        } catch (error) {
-          console.log(error);
+  
+          navigate('/username-select');
         }
+  
+        console.log(user);
+      } catch (error) {
+        console.log(error);
+      }
       };
       
 
@@ -51,7 +63,7 @@ const Login = () => {
     
 
   return (
-    <React.Fragment>
+    <div className='login-page-container'>
         <Nav/>
         <div className="login-page">
             <div className="login-card">
@@ -71,7 +83,7 @@ const Login = () => {
             </div>
         </div>
         <Footer/>
-    </React.Fragment>
+    </div>
     
   )
 }
