@@ -30,7 +30,7 @@ const HomePageInfo = () => {
         <div className="boxA">
             <div className="boxA-description">
                 <h1>Write a review!</h1>
-                <p>Share what your thoughts on a variety of selections about a movie or tv series!</p>
+                <p>Share your thoughts on a variety of selections about a movie or tv series!</p>
                 
             </div>
         </div>
