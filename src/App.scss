@@ -2148,8 +2148,8 @@
 
                .similar-movies-map{
                     display: flex;
-                    flex-direction: column;
-                    gap: 30rem;
+                    flex-direction: row;
+                    flex-wrap: wrap;
 
                }
             }
