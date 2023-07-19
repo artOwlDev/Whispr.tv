@@ -35,7 +35,7 @@ const Details = () => {
     const[crew, setCrew] = useState([]);
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const {pathname} = useLocation();
-    const mediaType = pathname.includes("tv") ? "tv" : "movie";
+    const mediaType = pathname.includes("television") ? "tv" : "movie";
     const [hoveredStars, setHoveredStars] = useState(0);
     var director = "";
     const [isLoading, setIsLoading] = useState(true);
@@ -582,7 +582,7 @@ const Details = () => {
 
                         <div className="details-reviews-map">
 
-                            {entries.length > 0 && entries.slice(0,3).map(item => {
+                            {entries.length > 0 && entries.slice(0,6).map(item => {
 
                                 return  <div key={entries.reviewID} className="details-review-input">
                                     
@@ -644,7 +644,7 @@ const Details = () => {
 
                         {mediaType === 'tv' &&  (
                             <div className="similar-movies-map" key={"a"}>
-                                {similarTV.length > 0 && similarTV?.slice(0,5).map((tv) => {
+                                {similarTV.length > 0 && similarTV?.slice(0,8).map((tv) => {
                                     return <TvItem image={tv.poster_path} title={tv.name} year={similarTV?.first_air_date?.substring(0,4) === similarTV?.last_air_date?.substring(0,4) ? " present" : similarTV?.last_air_date?.substring(0,4)} id={tv.id} type={"tv"}/>
                                 })}
                             </div>
@@ -652,7 +652,7 @@ const Details = () => {
 
                         {mediaType === 'movie' && (
                             <div className="similar-movies-map" key={"a"}>
-                                {similarMovies.length > 0 && similarMovies?.slice(0,5).map((movie) => {
+                                {similarMovies.length > 0 && similarMovies?.slice(0,8).map((movie) => {
                                     return <TvItem image={movie.poster_path} title={movie.title} year={movie.release_date} id={movie.id} type={"movie"}/>
                                 })}
                             </div>

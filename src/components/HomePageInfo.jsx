@@ -12,7 +12,7 @@ const HomePageInfo = () => {
         <div className="box1">
               <div className="box1-description">
                   <h1>Find whatever you're looking for.</h1>
-                  <p>We've gathered thousands of movies and tv-series from the internet. Search for one to get started!</p>
+                  <p>We have compiled a vast collection of movies and TV series from the internet. Begin your search to find exactly what you're seeking!</p>
                   
               </div>
           </div>
@@ -30,10 +30,8 @@ const HomePageInfo = () => {
         <div className="boxA">
             <div className="boxA-description">
                 <h1>Write a review!</h1>
-                <p>Share what you think about the tv-series and give a rating.</p>
-                <Link to={'/reviews'}>
-                  <button style={{borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>View Reviews</button>
-                </Link>
+                <p>Share what your thoughts on a variety of selections about a movie or tv series!</p>
+                
             </div>
         </div>
       </div>

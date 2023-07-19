@@ -9,7 +9,7 @@ import notfound from "../img/notfound.png"
 export const TvItem = ({image,title,year,id,type, onMouseOver}) => {
 
   const IMAGES = "https://image.tmdb.org/t/p/w1280"
-  const mediaType = type === "tv" ? "tv" : "movie";
+  const mediaType = type === "tv" ? "television" : "movies";
 
   const [hasError, setHasError] = useState(false);
 

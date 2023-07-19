@@ -24,10 +24,10 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movie" element={<Movie />} />
-          <Route path="/tv" element={<Tv />} />
-          <Route path="/tv/details/:id" element={<Details />} />
-          <Route path="/movie/details/:id" element={<Details />} />
+          <Route path="/movies" element={<Movie />} />
+          <Route path="/television" element={<Tv />} />
+          <Route path="/television/details/:id" element={<Details />} />
+          <Route path="/movies/details/:id" element={<Details />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/actor/:id" element={<Actor />} />

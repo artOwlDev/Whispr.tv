@@ -9,6 +9,9 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {FaUserFriends} from "react-icons/fa"
 import {AiOutlineSearch} from "react-icons/ai"
 import {HiOutlineMenu} from "react-icons/hi"
+import TvIcon from '@mui/icons-material/Tv';
+import {BiMovie} from "react-icons/bi"
+
 
 
 
@@ -77,24 +80,7 @@ export const Nav = () => {
           <a href="/"><img src={whisper} alt="" /></a>
           
         </div> 
-        <div className='middle-side'>
-          <div className="nav-items">
-            <Link to={'/movie'}>
-              <span>Movies</span>
-            </Link>
-            <Link to={'/tv'}>
-              <span>TV Shows</span>
-            </Link>
-            
-            <Link to={'/upcoming'}>
-              <span>Upcoming</span>
-              
-            </Link>
-            <Link to={'/reviews'}>
-              <span>Reviews</span>
-            </Link>
-          </div>
-        </div>
+        
 
 
         <div className="right-side">
@@ -105,9 +91,24 @@ export const Nav = () => {
           )}
           {user && (
               <React.Fragment>
-                <Link to={'../../'}>
-                  <AiOutlineSearch className='search-icon'/>
-                </Link>
+
+                <div className="nav-icons">
+                  <Link to={'../../movies'}>
+                    <h1 className='right-nav-element text'>Movies</h1>
+                  </Link>
+
+                  <Link to={'../../television'}>
+                    <h1 className='right-nav-element text'>TV Series</h1>
+                  </Link>
+
+
+
+                  
+                  <Link to={'../../'}>
+                    <AiOutlineSearch className='right-nav-element'/>
+                  </Link>
+
+                </div>
 
                
                 
