@@ -286,7 +286,7 @@ const Movie = () => {
                         ))}
                       </div>
 
-                      <Link to={`../movie/details/${movie.id}`}>
+                      <Link to={`../movies/details/${movie.id}`}>
                         <button className='upcoming-movie-button'>View Details</button>
                       </Link>
 															
