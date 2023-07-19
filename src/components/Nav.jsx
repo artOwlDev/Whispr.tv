@@ -54,15 +54,13 @@ export const Nav = () => {
       <Link to={'../../dashboard'}>
         <div className='dropdown-element'>Dashboard</div>
       </Link>
-      <Link to={'../../movie'}>
-        <div className='dropdown-element mobile'>Movie</div>
+      <Link to={'../../movies'}>
+        <div className='dropdown-element mobile'>Movies</div>
       </Link>
-      <Link to={'../../tv'}>
+      <Link to={'../../television'}>
         <div className='dropdown-element mobile'>TV Series</div>
       </Link>
-      <Link to={'../../reviews'}>
-        <div className='dropdown-element mobile'>Reviews</div>
-      </Link>
+      
 
       <div className='hori-line'></div>
       <div onClick={() => authFirebase.signOut() && window.location.reload() && navigate("/")} className='dropdown-element logout'>Log out</div>
