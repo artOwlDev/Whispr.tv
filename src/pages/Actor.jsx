@@ -9,7 +9,7 @@ import { TvItem } from '../components/TvItem';
 const Actor = () => {
     const[credits, setCredits] = useState([]);
     const[details, setDetails] = useState([]);
-    const[movieCount, setMovieCount] = useState(18);
+    const[movieCount, setMovieCount] = useState(16);
     const {id} = useParams();
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Actor = () => {
 
     const handleMovieCount = () => {
         setTimeout(() => {
-            setMovieCount(movieCount + 18);
+            setMovieCount(movieCount + 16);
         }, 500); // Add a delay of 2 seconds
     }
 

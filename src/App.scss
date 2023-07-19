@@ -1262,7 +1262,7 @@
     
     .actor-details-credits{
         display: flex;
-        margin: 6rem 12rem;
+        margin: 6rem 2rem;
         justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
@@ -2030,6 +2030,15 @@
   
 
 @media screen and (max-width: 1000px) {
+
+    .actor-details{
+        width: 100%;
+
+        .actor-details-credits{
+            display: flex;
+            border: 1px solid white;
+        }
+    }
 
     .movie-container{
         .upcoming-movie-div{
