@@ -93,7 +93,7 @@ const Search = () => {
 
             <div className="search-results" ref={searchRef}>
             {searchVal != '' && filteredData.length > 0 && filteredData.sort((a, b) => b.popularity - a.popularity).slice(0,6).map((movie) => {
-                  return <Link to={`/${movie.release_date ? 'movie' : 'tv'}/details/${movie.id}`}><div className="loaded-info">
+                  return <Link to={`/${movie.release_date ? 'movies' : 'television'}/details/${movie.id}`}><div className="loaded-info">
                       <h1>{movie.title || movie.name}</h1>
                       <p>{movie.release_date ? <BiMovie className='icon'/> : <TvIcon className='icon'/>}<i>({movie.release_date?.substring(0,4) || movie.first_air_date?.substring(0,4)})</i></p>
                   </div>
