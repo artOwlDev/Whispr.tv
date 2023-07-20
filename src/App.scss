@@ -278,12 +278,13 @@
                 font-size: 1rem;
                 font-family: 'Poppins', sans-serif;
                 font-weight: 500;
+                border: 1px solid #9999bd;
+
                 
               
                 &:hover {
                     color: white;
                     background-color: transparent;
-                    border: 1px solid #9999bd;
                 }
             
             }
