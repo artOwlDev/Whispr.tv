@@ -9,6 +9,7 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import { authFirebase } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineDelete, AiFillStar, AiOutlinePlus,AiFillHeart, AiOutlineClose, AiFillDislike, AiFillLike} from "react-icons/ai"
+import {TbStarHalfFilled, TbStarFilled} from "react-icons/tb"
 import { TvItem } from '../components/TvItem';
 import { MovieSharp } from '@mui/icons-material';
 import { Carousel } from 'react-responsive-carousel';
@@ -52,6 +53,15 @@ const Details = () => {
     const maxLength = 300;
 
     const [copied, setCopied] = useState(false);
+
+
+    const totalStars = 5;
+    const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half smaller
+  
+    const fullStars = Math.floor(ratingOutOf5);
+    const hasHalfStar = (ratingOutOf5 - fullStars) >= 0.5;
+
+  
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -159,7 +169,7 @@ const Details = () => {
       : (crew?.crew || []).find(crewMember => crewMember.department === 'Directing')?.name;
     
     const overview = details.overview;
-    const rating = details?.vote_average?.toString().substring(0,3);
+    const rating = details?.vote_average?.toString().substring(0,3) / 2;
     const creatorText = mediaType === 'tv' ? 'Created by' : 'Directed by'; 
     const itemID = details.id;
 
@@ -421,7 +431,8 @@ const Details = () => {
             });
         };
           
-          
+
+        
           
           
           
@@ -493,9 +504,8 @@ const Details = () => {
 
                         </div>
                         <h2><span>{airDateText}</span> {airDate}</h2>
-                        <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy}</h3>
+                        <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy} dywavdyawvdyvawy</h3>
                         <p>{overview}</p>
-                        <p><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
 
 
 
@@ -520,16 +530,23 @@ const Details = () => {
     
                             <div className="rate-review">
                                 <div className="star-rating">
-                                    {[...Array(5)].map((_, index) => (
-                                    <span key={index}
-                                    className='star-icon'
-                                    style={{ color: index < hoveredStars ? 'gold' : 'whitesmoke' }}
-                                    onMouseEnter={() => handleStarHover(index)}
-                                    onMouseLeave={() => setHoveredStars(0)}>
-                                        &#9733;
+                                {[...Array(totalStars)].map((_, index) => (
+                                    <span
+                                    key={index}
+                                    className={`star ${index < fullStars ? 'gold' : index === fullStars && hasHalfStar ? 'gold' : 'blue'}`}
+                                    >
+                                    {index < fullStars ? (
+                                        <span className="star-icon full"><TbStarFilled/></span>
+                                    ) : index === fullStars && hasHalfStar ? (
+                                        <span className="star-icon half"><TbStarHalfFilled/></span>
+                                    ) : (
+                                        <span className="star-icon-empty"><TbStarFilled/></span>
+                                    )}
                                     </span>
-                                    
                                 ))}
+
+                                    <p>{rating}</p>
+                                
                                 </div>
 
                                 <div className='hori-line'></div>
@@ -567,7 +584,10 @@ const Details = () => {
                             <h2><span>{airDateText}</span> {airDate}</h2>
                             <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy}</h3>
                             <p>{overview}</p>
-                            <p><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
+                            <p className='rating-p'><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
+
+
+
 
                             
     

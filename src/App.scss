@@ -709,19 +709,19 @@
                         display: flex;
                         justify-content: center;
                         margin: 1rem;
+                        gap: 10px;
+                        font-size: 1.8rem;
+                        align-items: center;
 
+                        p{
+                            font-size: 0.9rem;
+                        }
+
+                        
                         .star-icon{
-                            cursor: pointer;
-                            margin: 0.2rem;
+                            color: gold;
 
-                            font-size: 2rem;
-                            color: whitesmoke;
-
-                            &:hover{
-                                color: gold;
-                            }
-
-
+                            
                         }
                     }
 
@@ -819,6 +819,10 @@
                 flex: 2;
                 gap: 2rem;
                 font-family: 'Montserrat', sans-serif;
+
+                .rating-p{
+                    display: none;
+                }
 
                 .details-name{
                     display: flex;
@@ -2147,6 +2151,8 @@
 
 @media screen and (max-width: 1000px) {
 
+    
+
     .actor-details{
         width: 100%;
 
@@ -2312,6 +2318,10 @@
 
                 .details-text{
                     text-align: center;
+
+                    .rating-p{
+                        display:block;
+                    }
 
                     .details-name{
                         flex-direction: column;
