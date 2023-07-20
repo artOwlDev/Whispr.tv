@@ -2165,16 +2165,20 @@
     .login-page{
         .login-card{
             flex-direction: column;
-            height: 40vh;
+            height: 5vh;
             font-size: larger;
+            
+
 
             .left{
                 display: none;
             }
 
             .right{
-                height: 30vh;
+                height: 5vh;
                 width: 100%;
+                border-top-left-radius: 2rem;
+                border-bottom-left-radius: 2rem;
                 border-top-right-radius: 0rem;
                 border-bottom-right-radius: 0rem;
             }
