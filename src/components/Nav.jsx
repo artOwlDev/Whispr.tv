@@ -113,13 +113,9 @@ export const Nav = () => {
 
 
         <div className="right-side">
-          {!user && (
-            <Link to={`../../auth/login`}>
-              <button className='button-nav'>Log In</button>
-            </Link>
-          )}
-          {user && (
-              <React.Fragment>
+          
+          
+             
 
                 <div className="nav-icons">
                   <Link to={'../../movies'}>
@@ -139,20 +135,32 @@ export const Nav = () => {
 
                 </div>
 
+                {!user && (
+                  <Link to={`../../auth/login`}>
+                    <button className='button-nav'>Log In</button>
+                  </Link>
+                )}
+
+                {user && (
+                  <React.Fragment>
+                    <div  className='user-logged-in-dropdown' to={'/dashboard'}>
+                      <p><span>{username !== '' ? username : user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
+                      <img src={user.photoURL} alt="" />                
+                    </div>
+  
+  
+                    <HiOutlineMenu onClick={handleDropdown} className='dropdown-icon'/>
+                    {dropdown && <DropDown/>}
+                  </React.Fragment>
+                )}
+
+                
+
                
                 
-                <div  className='user-logged-in-dropdown' to={'/dashboard'}>
-                  
-                  <p><span>{username !== '' ? username : user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)}</span></p>
-                  <img src={user.photoURL} alt="" />                
-                </div>
 
-
-                <HiOutlineMenu onClick={handleDropdown} className='dropdown-icon'/>
-                {dropdown && <DropDown/>}
-
-              </React.Fragment>
-          )}
+              
+          
         </div>
       </div>
     </div>
