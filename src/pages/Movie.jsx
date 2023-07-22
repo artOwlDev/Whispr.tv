@@ -8,6 +8,8 @@ import { AiFillStar } from 'react-icons/ai';
 import { Carousel } from 'react-responsive-carousel';
 import { RaceBy } from '@uiball/loaders'
 import Loader from '../components/Loader';
+import {TbStarHalfFilled, TbStarFilled} from "react-icons/tb"
+
 
 
 const Movie = () => {
@@ -32,6 +34,12 @@ const Movie = () => {
   const[tab, setActiveTab] = useState('genre');
   const[genre, setGenre] = useState(28);
   const [displayResultsText, setDisplayResultsText] = useState("Action")
+
+  const totalStars = 5;
+  const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half smaller
+
+  const fullStars = Math.floor(ratingOutOf5);
+  const hasHalfStar = (ratingOutOf5 - fullStars) >= 0.5;
 
 
   useEffect(() => {
@@ -76,6 +84,7 @@ const Movie = () => {
         }
         catch(error){
             console.log(error);
+            console.log("STAR IS" + fullStars + " " + ratingOutOf5)
         }
     }
     getUpcoming();
@@ -272,19 +281,42 @@ const Movie = () => {
                       <p className='upcoming-movie-release-date'>Release Date: {movie.release_date.substring(5)}</p>
 
                       <div className="upcoming-movie-rating">
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                          >
-                            {index < Math.floor(movie?.vote_average / 2) ? (
-                              <span style={{ color: "gold" }} className="star-icon-full">&#9733;</span>
-                            ) : (
-                              <span className="star-icon-empty">&#9734;</span>
-                            )}
-                          </span>
-                        ))}
+                        <div className="star-rating">
+                          {[...Array(5)].map((_, index) => {
+                            const totalStars = 5;
+                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half
+                            const fullStars = Math.floor(ratingOutOf5);
+                            const hasHalfStar = ratingOutOf5 - index >= 0.5;
+                            const isFullStar = index < fullStars;
+
+                            return (
+                              <span
+                                key={index}
+                                className={`star ${isFullStar ? "gold" : hasHalfStar ? "gold" : "blue"}`}
+                              >
+                                {isFullStar ? (
+                                  <span className="star-icon full">
+                                    <AiFillStar />
+                                  </span>
+                                ) : hasHalfStar ? (
+                                  <span className="star-icon half">
+                                    <TbStarHalfFilled />
+                                  </span>
+                                ) : (
+                                  <span className="star-icon-empty">
+                                    <AiFillStar />
+                                  </span>
+                                )}
+                              </span>
+                            );
+                          })}
+
+                      
+                        </div>
+
                       </div>
+
+
 
                       <Link to={`../movies/details/${movie.id}`}>
                         <button className='upcoming-movie-button'>View Details</button>

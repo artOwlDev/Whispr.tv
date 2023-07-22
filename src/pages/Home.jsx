@@ -24,6 +24,7 @@ export const Home = () => {
 
   const [tv,setTv] = useState([]); 
   const [movies, setMovies] = useState([]);
+  const[nowPlaying, setNowPlaying] = useState([]);
   const [token, setToken] = useState('');
   const [albums, setAlbums] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,6 +58,20 @@ export const Home = () => {
     return () => clearTimeout(timer);
   },[])
 
+  useEffect(() => {
+    async function getNowPlaying(){
+        try{
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
+          console.log(response.data);
+          setNowPlaying(response.data.results)
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    getNowPlaying();
+  },[]) 
+
 
   useEffect(() => {
     axios.get(TOP_RATED_MOVIES)
@@ -84,6 +99,20 @@ export const Home = () => {
             <HomePageInfo/>
             
 
+            <div className="popular-movies-home-page">
+
+              <h1 className='home-title'>Now playing</h1>
+
+
+              <div className="home-tv-display">
+                <div className="popular-series-display">
+                  {nowPlaying.length > 0 && nowPlaying.slice(0,8).map((movie) => {
+                    return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
+                  })}
+
+                </div>
+              </div>        
+            </div>
             <div className="critically-acclaimed-home-page">
 
               <h1 className='home-title'>Critically-acclaimed tv-series</h1>

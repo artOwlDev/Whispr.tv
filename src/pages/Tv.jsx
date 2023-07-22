@@ -8,6 +8,8 @@ import { TvItem } from '../components/TvItem';
 import { Carousel } from 'react-responsive-carousel';
 import Loader from '../components/Loader';
 import {AiFillStar, AiOutlineRight, AiOutlineLeft} from "react-icons/ai";
+import {TbStarHalfFilled, TbStarFilled} from "react-icons/tb"
+
 
 
 const Tv = () => {
@@ -179,18 +181,38 @@ const genreTable = {
                     <p className='upcoming-movie-release-date'>Release Date: {movie.first_air_date.substring(5)}</p>
 
                     <div className="upcoming-movie-rating">
-                      {[...Array(5)].map((_, index) => (
-                        <span
-                          key={index}
-                          className={`star ${index < Math.floor(movie.vote_average / 2) ? 'gold' : 'blue'}`}
-                        >
-                          {index < Math.floor(movie?.vote_average / 2) ? (
-                            <span style={{ color: "gold" }} className="star-icon-full">&#9733;</span>
-                          ) : (
-                            <span className="star-icon-empty">&#9734;</span>
-                          )}
-                        </span>
-                      ))}
+                      <div className="star-rating">
+                          {[...Array(5)].map((_, index) => {
+                            const totalStars = 5;
+                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half
+                            const fullStars = Math.floor(ratingOutOf5);
+                            const hasHalfStar = ratingOutOf5 - index >= 0.5;
+                            const isFullStar = index < fullStars;
+
+                            return (
+                              <span
+                                key={index}
+                                className={`star ${isFullStar ? "gold" : hasHalfStar ? "gold" : "blue"}`}
+                              >
+                                {isFullStar ? (
+                                  <span className="star-icon full">
+                                    <AiFillStar />
+                                  </span>
+                                ) : hasHalfStar ? (
+                                  <span className="star-icon half">
+                                    <TbStarHalfFilled />
+                                  </span>
+                                ) : (
+                                  <span className="star-icon-empty">
+                                    <AiFillStar />
+                                  </span>
+                                )}
+                              </span>
+                            );
+                          })}
+
+                      
+                        </div>
                     </div>
 
                     <Link to={`../television/details/${movie.id}`}>

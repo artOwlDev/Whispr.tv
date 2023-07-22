@@ -256,6 +256,7 @@
 
                 .hori-line::after {
                     content: "";
+
                     display: block;
                     width: 100%;
                     height: 1px;
@@ -1415,7 +1416,24 @@
                 display: flex;
                 gap: 10px;
                 text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+                
+                text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+                .star-rating{
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    align-items: center;
+                    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
 
+                    
+                    .star-icon{
+                        color: gold;
+
+                        
+                    }
+                }
+
+                
             }
 
             .upcoming-movie-release-date{
@@ -1494,192 +1512,7 @@
         }
     }
 
-    .movie-filter{
-        display: flex;
-        height: 90vh;
-        width: 82vw;
-        margin: 10rem auto;   
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 8px; 
-
-        .filter-panel{
-            flex: 16vw;
-            background-color: #1d2226;;
-            
-        
-            
-            .general-filters{
-                display: flex;
-                flex-direction: column;
-
-                .header{
-                    display: flex;
-                    padding: 0.8rem;
-                    font-family: 'Josefin Sans', sans-serif;
-                    font-weight: 700;
-                }
-
-                .options{
-                    display: flex;
-                    flex-direction: column;
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                    font-family: 'Poppins', sans-serif;
-
-
-
-                    .options-element{
-                        padding: 10px 3rem;
-                        font-size: 0.8rem;
-
-                        &:hover{
-                            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.545);
-                            background-size: 120% 120%;    
-                            
-                        }
-                        
-                        &.last{
-                            margin-bottom: 0.2rem;
-                        }
-                    }
-
-                }
-            }
-
-            
-
-            .genre-filters{
-                display: flex;
-                flex-direction: column;
-
-                .header{
-                    display: flex;
-                    padding: 0.8rem;
-                    font-family: 'Josefin Sans', sans-serif;
-                    font-weight: 700;
-                }
-
-                .options{
-                    display: flex;
-                    flex-direction: column;
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                    font-family: 'Poppins', sans-serif;
-
-
-                    .options-element{
-                        padding: 10px 3rem;
-                        font-size: 0.8rem;
-
-                       &.active{
-                        background: white;
-                        color: black;
-                       }
-
-                       
-
-                        &:hover{
-                            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.545);
-                            background-size: 120% 120%;                            
-                        }
-                        
-                        &.last{
-                            margin-bottom: 0.2rem;
-                        }
-                    }
-
-                    
-
-                }
-
-
-            }
-
-        }
-        
-        .filter-results{
-            width: 60vw;
-            padding-left: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            h1{
-                text-align: center;
-                margin: 1rem;
-                font-size: 2rem;
-                text-decoration: underline;
-            }
-       
-
-
-            .genre-results{
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                font-family: 'Poppins', sans-serif;
-
-
-                .filter-result-item{
-                    display: flex;
-                    flex-direction: column;
-                    height: 21vh;
-                    width: 8vw;
-                    position: relative;
-                    border-radius: 1rem;
-
-                    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.545);
-
-
-                    &:hover{
-                        cursor: pointer;
-
-                        border-radius: 1rem;
-                        box-shadow: 0 0 0 1px rgb(2, 204, 245);
-                        background-size: 160% 160%;
-
-                        
-                    }
-                    
-                    img{
-                        object-fit: cover;
-                        height: 20vh;
-                        width: 8vw;
-                        background-size: 120% 120%;
-                        border-top-left-radius: 1rem;
-                        border-top-right-radius: 1rem;
-                    }
-
-                    .movie-rating{
-                        position: absolute;
-                        bottom: 0;
-                        display: flex;
-                        width: 8vw;
-                        justify-content: center;
-                        background: #1d2226;
-                        border-bottom-left-radius: 1rem;
-                        border-bottom-right-radius: 1rem;
-                        gap: 2px;
-
-                        
-                    }
-
-                    .movie-details{
-                        display: none;
-                    }
-                    
-                    
-
-                    
-
-
-                   
-                }
-            }
-        }
-        
-        
-    }
+    
 
    
     
@@ -1849,6 +1682,7 @@
             .upcoming-movie-rating{
                 display: flex;
                 gap: 10px;
+
             }
 
             .upcoming-movie-release-date{

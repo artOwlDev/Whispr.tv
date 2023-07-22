@@ -530,20 +530,20 @@ const Details = () => {
     
                             <div className="rate-review">
                                 <div className="star-rating">
-                                {[...Array(totalStars)].map((_, index) => (
-                                    <span
-                                    key={index}
-                                    className={`star ${index < fullStars ? 'gold' : index === fullStars && hasHalfStar ? 'gold' : 'blue'}`}
-                                    >
-                                    {index < fullStars ? (
-                                        <span className="star-icon full"><TbStarFilled/></span>
-                                    ) : index === fullStars && hasHalfStar ? (
-                                        <span className="star-icon half"><TbStarHalfFilled/></span>
-                                    ) : (
-                                        <span className="star-icon-empty"><TbStarFilled/></span>
-                                    )}
-                                    </span>
-                                ))}
+                                    {[...Array(totalStars)].map((_, index) => (
+                                        <span
+                                        key={index}
+                                        className={`star ${index < fullStars ? 'gold' : index === fullStars && hasHalfStar ? 'gold' : 'blue'}`}
+                                        >
+                                        {index < fullStars ? (
+                                            <span className="star-icon full"><TbStarFilled/></span>
+                                        ) : index === fullStars && hasHalfStar ? (
+                                            <span className="star-icon half"><TbStarHalfFilled/></span>
+                                        ) : (
+                                            <span className="star-icon-empty"><TbStarFilled/></span>
+                                        )}
+                                        </span>
+                                    ))}
 
                                     <p>{rating}</p>
                                 
@@ -584,7 +584,7 @@ const Details = () => {
                             <h2><span>{airDateText}</span> {airDate}</h2>
                             <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy}</h3>
                             <p>{overview}</p>
-                            <p className='rating-p'><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 7 ? "#66FF99" : rating > 5 ? "yellow" : "red"}}>{rating}</span> / 10</p>
+                            <p className='rating-p'><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 3.5 ? "#66FF99" : rating   > 2.5 ? "yellow" : "red"}}>{rating}</span> / 5</p>
 
 
 
