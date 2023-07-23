@@ -1807,6 +1807,7 @@
                 background: rgb(255, 255, 255);
                 text-align: center;
                 align-items: center;
+                
 
                 .search-form{
                     width: 100%;
@@ -1852,6 +1853,10 @@
                 }
 
                 .button{
+
+                    &.invalid{
+                        display: none;
+                    }
                     
 
                     &.valid{

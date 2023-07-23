@@ -5,11 +5,15 @@ import { authFirebase } from '../../utils/firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
 
 const Dashboard = () => {
 
     const[user, loading] = useAuthState(authFirebase);
     const [activeTab, setActiveTab] = useState('reviews');
+    const [username, setUsername] = useState("");
+
     const navigate = useNavigate();
 
     const handleActiveTab  = (tab) => {
@@ -17,7 +21,39 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-        document.title = `${user.email.substring(0, user.email.indexOf("@")).charAt(0).toUpperCase() + user.email.substring(0, user.email.indexOf("@")).slice(1)} | Whispr`;
+        const handleDashboard = () => {
+            if (!user){
+               navigate("../../auth/login")
+            }
+        };
+    
+
+
+        const fetchUsername = async () => {
+          try {
+            if (user) {
+              const db = getFirestore();
+              const userRef = doc(db, 'users', user.uid);
+              const userSnapshot = await getDoc(userRef);
+    
+              if (userSnapshot.exists()) {
+                const userData = userSnapshot.data();
+                if (userData && userData.username) {
+                  setUsername(userData.username);
+                }
+              }
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        fetchUsername();
+        handleDashboard();
+      }, []);
+
+    useEffect(() => {
+        document.title = `${username} | Whispr`;
 
     },[])
 
@@ -29,7 +65,7 @@ const Dashboard = () => {
 
                 <div className="dashboard-userinfo">
                     <h1>Dashboard</h1>
-                    <p style={{paddingBottom: "0.6rem"}}>{user.email}</p>
+                    <p style={{paddingBottom: "0.6rem"}}>{user ? user.email : null}</p>
                 </div>
 
                 <div className="dashboard-selections">
@@ -43,7 +79,7 @@ const Dashboard = () => {
                     <div className='dashboard-right-div'>
                         <h1 style={{fontSize: "1rem", paddingBottom: "1rem"}}>Reviews</h1>
                         <h1 style={{fontSize: "2rem", paddingBottom: "0.4rem"}}>Review history: </h1>
-                        <p>Signed in with: {user.email}</p>
+                        <p>Signed in with: {user ? user.email : null}</p>
 
                     </div>
 
