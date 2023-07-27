@@ -150,7 +150,8 @@ const WriteReview = () => {
           cinematographyRating: selectedStarsC,
           enjoymentRating: selectedStarsD,
           tags : clickedTags,
-          itemPicture : details.poster_path
+          itemPicture : details.poster_path,
+          mediaType : mediaType
       };
 
         setActiveTab("done");

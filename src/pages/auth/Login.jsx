@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = `Login / Sign up · Whispr`;
+        document.title = `Login / Sign up | Whispr`;
     },[])
 
 
