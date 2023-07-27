@@ -1544,8 +1544,8 @@
     .dashboard{
         display: flex;
         margin: 5rem 12rem;
-        height: 80vh;
         font-family: 'Poppins', sans-serif;
+        min-height: 60vh;
         
 
         .dashboard-left{
@@ -1599,6 +1599,204 @@
 
                 p{
                     font-size: 0.8rem;
+                }
+
+                .reviews-container{
+               
+                    display: flex;
+                    gap: 2rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    margin: 2rem auto;
+    
+                    
+                    .review-input{
+                        border: 1px solid white;
+                        height: fit-content;
+                        width: 50vw;
+                        display: flex;
+                        position: relative;
+                        border-radius: 1.5rem;
+    
+                        .tags{
+                            display: flex;
+                            position: absolute;
+                            align-items: center;
+                            top: 10px;
+                            right: 10px;
+                            gap: 10px;
+    
+                            .tag-box{
+                                background-color: #9898d3;
+                                border-radius: 5px;
+                                padding: 5px 10px;
+                                color: black;
+                            }
+                        }
+    
+                        .user-info{
+                            position: absolute;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            bottom: 10px;
+                            right: 10px;
+    
+    
+                            .likes{
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                margin: 0 10px;
+    
+                                .like{
+                                    font-size: 1.4rem;
+    
+                                    &:hover{
+                                        cursor: pointer;
+                                        color: rgb(43, 237, 146);
+                                    }
+    
+                                    
+                                }
+    
+                                .dislike{
+                                    font-size: 1.4rem;
+    
+                                    &:hover{
+                                        cursor: pointer;
+                                        color: rgb(222, 83, 83);
+                                    }
+                                }
+    
+                                .garbage{
+                                    font-size: 1.4rem;
+                                    margin: 1rem;
+    
+                                    &:hover{
+                                        cursor: pointer;
+                                        color: #9898d3;
+                                    }
+                                }
+    
+                            }
+    
+    
+    
+                            img{
+                                object-fit: cover;
+                                height: 4vh;
+                                border-radius: 50%;
+                            }
+                        }
+    
+                        .left-side{
+                            display: flex;
+                            flex: 1;
+                            justify-content: center;
+    
+                            .score-box{
+                                margin: 0.6rem;
+                                padding: 0.6rem;
+                                display: flex;
+                                margin-top: 1rem;
+                                flex-direction: column;
+                                text-align: center;
+                                
+                                color: black;
+                                border-radius: 1rem;
+    
+                                &.green{
+                                    background: rgb(42, 182, 42);
+                                }
+    
+                                &.yellow{
+                                    background: rgb(222, 147, 18);
+                                }
+    
+                                &.red{
+                                    background: rgb(222, 83, 83);
+                                }
+    
+                                h1{
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+    
+                        .right-side{
+                            display: flex;
+                            flex: 12;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 1rem;
+                            padding: 1rem;
+                            font-family: "Poppins";
+                            max-width: 55vw;
+                            
+                            .review-info{
+                                p{
+                                    font-weight: 700;
+                                }
+                            }
+    
+                            .review-text{
+                                word-wrap: break-word;
+    
+                                p{
+                                    padding: 10px 20px 10px 0;
+                                }
+                            }
+    
+                            
+    
+                            
+    
+                            .review-scores{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                gap: 1rem;
+    
+                                .plot-score{
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 1rem;
+    
+                                    h1{
+                                        font-weight: 700;
+                                        font-size: 1rem;
+                                        width: 8vw;
+                                    }
+    
+                                    .plot-score-stars{
+                                        display: flex;
+                                        gap: 0.5rem;
+    
+                                        .star-icon{
+                                            color: gold;
+                                            text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    
+                                        }
+    
+                                        .star-icon-empty{
+                                            color: #d1d5db;
+                                            text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    
+                                        }
+                                    }
+                                    
+                                }
+                            }
+    
+                            
+                        }
+    
+    
+                        
+                    }
+    
+                    
                 }
 
             }
@@ -2378,6 +2576,55 @@
 
 @media screen and (max-width: 1000px) {
 
+    .dashboard-page{
+        margin: 0 auto;
+
+        .dashboard{
+            flex-direction: column;
+            margin: 3rem 4rem;
+            
+            .dashboard-left{
+                max-height: 14vh;
+
+                .dashboard-selections{
+                }
+            }  
+
+            .dashboard-right{
+                width: 80vw;
+                margin: 3rem 0;
+                justify-content: center;
+
+                .dashboard-right-div{
+                    .reviews-container{
+                        margin-top: 6rem;
+                        gap: 4rem;
+                        .review-input{
+                            width: 80vw;
+    
+                            .left-side{
+                                display: none;
+                                flex: 1;
+    
+                                
+                            }
+    
+                            .right-side{
+                                .review-scores{
+                                    .plot-score{
+                                        gap: 5rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            
+        }
+    }
     
 
     .tags-container{
