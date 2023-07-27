@@ -27,6 +27,7 @@ const WriteReview = () => {
     const IMAGES = "https://image.tmdb.org/t/p/original"
     const imagePath = details.backdrop_path;
 
+
     const [activeTab, setActiveTab] = useState('scores');
 
     const [lineOne, setLineOne] = useState(false);
@@ -149,6 +150,7 @@ const WriteReview = () => {
           cinematographyRating: selectedStarsC,
           enjoymentRating: selectedStarsD,
           tags : clickedTags,
+          itemPicture : details.poster_path
       };
 
         setActiveTab("done");

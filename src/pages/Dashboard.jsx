@@ -18,6 +18,8 @@ const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('reviews');
     const [username, setUsername] = useState("");
     const [entries, setEntries] = useState([]); 
+    const IMAGES = "https://image.tmdb.org/t/p/original"
+
 
 
     const navigate = useNavigate();
@@ -128,6 +130,7 @@ const Dashboard = () => {
                           {entries.length > 0 && entries.map(item => {
                                   return <div key={item.reviewID} className="review-input">
                                       <div className="left-side">
+                                          <img src={IMAGES + item.itemPicture}/>
                                           <div className="rating-box">
                                               <div className={
                                                   ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 4)

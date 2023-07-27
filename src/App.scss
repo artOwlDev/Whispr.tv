@@ -1692,8 +1692,18 @@
     
                         .left-side{
                             display: flex;
-                            flex: 1;
+                            flex: 2;
                             justify-content: center;
+                            flex-direction: column;
+
+                            img{
+                                object-fit: contain;
+                                padding: 10px;
+                                border-radius: 1.4rem;
+                            }
+                            
+
+
     
                             .score-box{
                                 margin: 0.6rem;
@@ -2603,9 +2613,8 @@
                             width: 80vw;
     
                             .left-side{
-                                display: none;
                                 flex: 1;
-    
+                                
                                 
                             }
     
@@ -2615,6 +2624,14 @@
                                         gap: 5rem;
                                     }
                                 }
+                            }
+
+                            .user-info{
+                                gap: 1px;
+                                img{
+                                    height: 2.5vh;
+                                }
+                                
                             }
                         }
                     }
@@ -2857,7 +2874,6 @@
                 }
 
                 .dropdown{
-                    border: 1px solid red;
                     width: 20vw;
                     .dropdown-element{
                         font-size: 1.2rem;
