@@ -227,10 +227,7 @@ const Dashboard = () => {
                                       <div className="user-info">
                                           <div className="likes">
                                               {user && item.userId === user.uid ? <AiOutlineDelete onClick={() => deleteEntry(item.reviewId)} className='garbage'/> : null}
-                                              <IoIosArrowUp onClick={() => handleLike(item.reviewId)} className="like"/>
-                                              <p>{item.likes}</p>
-                                              <IoIosArrowDown onClick={() => handleDislike(item.reviewId)} className="dislike"/>
-
+                                              
                                                   
                                               </div>
 
