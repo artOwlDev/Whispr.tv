@@ -668,9 +668,12 @@ const Details = () => {
                                     </div>
                                     <div className="user-info">
                                         <div className="likes">
-                                                <IoIosArrowUp onClick={() => handleLike(item.reviewId)} className="like"/>
-                                                <p>{item.likes}</p>
-                                                <IoIosArrowDown onClick={() => handleDislike(item.reviewId)} className="dislike"/>
+                                            {user && item.userId === user.uid ? <AiOutlineDelete onClick={() => deleteEntry(item.reviewId)} className='garbage'/> : null}
+                                            <IoIosArrowUp onClick={() => handleLike(item.reviewId)} className="like"/>
+                                            <p>{item.likes}</p>
+                                            <IoIosArrowDown onClick={() => handleDislike(item.reviewId)} className="dislike"/>
+
+                                                
                                             </div>
 
                                         <h1>{item.username}</h1>

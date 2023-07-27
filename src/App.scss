@@ -1009,6 +1009,16 @@
                                 }
                             }
 
+                            .garbage{
+                                font-size: 1.4rem;
+                                margin: 1rem;
+
+                                &:hover{
+                                    cursor: pointer;
+                                    color: #9898d3;
+                                }
+                            }
+
                         }
 
 
