@@ -11,7 +11,7 @@ const HomePageInfo = () => {
       <div className="watch">
         <div className="box1">
               <div className="box1-description">
-                  <h1>Find whatever you're looking for.</h1>
+                  <h1>Find everything you're looking for.</h1>
                   <p>We have compiled a vast collection of movies and TV series from the internet. Begin your search to find exactly what you're seeking!</p>
                   
               </div>

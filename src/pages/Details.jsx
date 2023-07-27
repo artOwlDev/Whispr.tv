@@ -18,6 +18,8 @@ import {BiTime} from "react-icons/bi"
 import Loader from '../components/Loader';
 import notfound from "../img/notfound.png";
 import {getFirestore, doc, collection, getDocs, addDoc, deleteDoc, query, where, updateDoc, getDoc, onSnapshot} from "firebase/firestore"
+import example from "../img/banner11.jpg"
+import {IoIosArrowUp, IoIosArrowDown} from "react-icons/io"
 
 
 
@@ -34,13 +36,17 @@ const Details = () => {
     const[similarMovies, setSimilarMovies] = useState([]);
     const[similarTV, setSimilarTV] = useState([]);
     const[crew, setCrew] = useState([]);
-    const IMAGES = "https://image.tmdb.org/t/p/w1280"
+    const IMAGES = "https://image.tmdb.org/t/p/original"
     const {pathname} = useLocation();
     const mediaType = pathname.includes("television") ? "tv" : "movie";
     const [hoveredStars, setHoveredStars] = useState(0);
     var director = "";
+
     const [isLoading, setIsLoading] = useState(true);
+
     const [entries, setEntries] = useState([]); 
+    const [reviewNum, setReviewNum] = useState(4);
+    const [likedStatus, setLikedStatus] = useState(false);
 
     const [showReviewBox, setShowReviewBox] = useState(false);
     const [boxTop, setBoxTop] = useState('80%');
@@ -99,18 +105,6 @@ const Details = () => {
         }
         getSimilarTV();
     },[id])
-
-    useEffect(() => {
-        async function getReviews(){
-            try{
-                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
-                setReviews(response.data)
-            }
-            catch(error){
-            }
-        }
-        getReviews();
-    },[])
     
     useEffect(() => {
         async function getDetails(){
@@ -172,48 +166,7 @@ const Details = () => {
     const rating = details?.vote_average?.toString().substring(0,3) / 2;
     const creatorText = mediaType === 'tv' ? 'Created by' : 'Directed by'; 
     const itemID = details.id;
-
-    const handleReviewClick = () => {
-
-        if (!user){
-           navigate("../../auth/login")
-        }
-        else{
-            setShowReviewBox(!showReviewBox);
-        }
-
-    };
-
-
-    useLayoutEffect(() => {
-        const handleScroll = () => {
-            const box = boxRef.current;
-            if (box) {
-              const windowHeight = window.innerHeight;
-              const boxHeight = box.offsetHeight;
-              const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-              const topPosition = scrollTop + (windowHeight - boxHeight) * 3/4 ;
-              box.style.top = `${topPosition}px`;
-            }
-          };
-      
-          handleScroll();
-      
-          window.addEventListener('scroll', handleScroll);
-      
-          return () => {
-            window.removeEventListener('scroll', handleScroll);
-          };
-      }, []);
-
-
-      const handleClosingReview = () => {
-        setShowReviewBox(!showReviewBox);
-      }
-
-
         
-
         const [hasErrorPoster, setHasErrorPoster] = useState(false);
 
         const handleImageErrorPoster = () => {
@@ -231,47 +184,6 @@ const Details = () => {
         const formattedDate = now.toLocaleDateString('en-US', options);
 
 
-        const handleSubmitReview = async () => {
-            try {
-                const dbUser = getFirestore();
-                const userRef = doc(dbUser, 'users', user.uid);
-                const userSnapshot = await getDoc(userRef);
-
-
-                const userData = userSnapshot.data();
-                const username = userData.username || ''; // If userna
-
-
-              const newReview = {
-                userId: user.uid,
-                itemId: details.id,
-                likes: 0,
-                review: text,
-                reviewId: '', // Placeholder value, it will be updated later
-                userImage : user.photoURL,
-                date: formattedDate,
-                username : username
-              };
-
-               
-              // Update the review with the generated review ID and username
-          
-              const db = getFirestore();
-              const docRef = await addDoc(collection(db, "reviews"), newReview);
-              const reviewId = docRef.id;
-          
-              // Update the review with the generated review ID
-              await updateDoc(docRef, { reviewId: reviewId });
-          
-              // Clear the textarea or perform any other necessary actions
-              setText("");
-              setShowReviewBox(false);
-            } catch (error) {
-              console.error("Error adding review:", error);
-            }
-          };
-          
-          
           
 
           const getReviewCount = async () => {
@@ -318,6 +230,7 @@ const Details = () => {
                   .filter((doc) => doc.data().itemId === mediaID)
                   .map((doc) => ({ ...doc.data(), id: doc.id }));
                 setEntries(fetchedEntries);
+                console.log(entries);
               }, (error) => {
                 console.error('Error fetching entries:', error);
               });
@@ -339,7 +252,8 @@ const Details = () => {
               const userSnapshot = await getDoc(userRef);
               const likedReviews = userSnapshot.data().likedReviews || [];
               if (likedReviews.includes(reviewId)) {
-                return;
+
+                return true;
               }
           
               // Add the reviewId to the likedReviews array in the user document
@@ -356,12 +270,15 @@ const Details = () => {
               await updateDoc(reviewRef, {
                 likes: updatedLikes,
               });
+
           
               console.log('Review liked successfully');
             } catch (error) {
               console.error('Error liking review:', error);
             }
           };
+
+          
 
           const handleDislike = async (reviewId) => {
             try {
@@ -389,12 +306,37 @@ const Details = () => {
               await updateDoc(reviewRef, {
                 likes: updatedLikes,
               });
+
+              setLikedStatus(false);
           
               console.log('Review disliked successfully');
             } catch (error) {
               console.error('Error disliking review:', error);
             }
           };
+
+          useEffect(() => {
+            if (user == null){
+                return;
+            }
+            const hasLikedReview = (reviewId) => {
+                const db = getFirestore();
+                const userRef = doc(db, 'users', user.uid);
+              
+                return getDoc(userRef)
+                  .then((userSnapshot) => {
+                    const likedReviews = userSnapshot.data().likedReviews || [];
+                    return likedReviews.includes(reviewId);
+                  })
+                  .catch((error) => {
+                    console.error('Error checking if review is liked:', error);
+                    return false; // Return false if there's an error to avoid unexpected behavior
+                  });
+              };
+
+              hasLikedReview()
+
+          },[likedStatus])
 
         
           
@@ -431,7 +373,9 @@ const Details = () => {
             });
         };
           
-
+        const handleLoadMoreReviews = () => {
+            setReviewNum(reviewNum + 4);
+        }
         
           
           
@@ -561,7 +505,11 @@ const Details = () => {
 
 
                                 <div className="additional-features">
-                                    <div className='feature-element' onClick={handleReviewClick}><h1>Write a review</h1></div>
+                                    <Link to={user != null ? (`../${mediaType === "movie" ? "movies" : "television"}/write-review/${id}`) : "../../auth/login"}>
+                                        <div className='feature-element'>
+                                            <h1>Write a review</h1>
+                                        </div>
+                                    </Link>
                                     <div className='feature-element'><h1>Add to list</h1></div>
                                     <div className='feature-element last' onClick={handleCopyToClipboard}><h1 >Share</h1></div>
                                     {copied && <div className="clipboard-text"><h1>Copied to clipboard!</h1></div>}
@@ -602,6 +550,8 @@ const Details = () => {
                                     </div>
                                 })}
                             </div>
+
+                            
                             
                         </div>
                     </div>
@@ -611,49 +561,137 @@ const Details = () => {
                     
                     <div style={{display: entries.length === 0 ? "none" : "flex"}} className="details-reviews-container">
 
-                        <h1>Top Reviews</h1>
+                        <h1>Recent Reviews</h1>
 
                         <div className="details-reviews-map">
 
-                            {entries.length > 0 && entries.slice(0,6).map(item => {
+                            
 
-                                return  <div key={entries.reviewID} className="details-review-input">
-                                    
-
-                                    <div className="top">
-                                        <div className="left">
-                                            <div className="userinfo">
-                                                <img src={item.userImage} alt="" />
-                                                <h1>{item.username}</h1>
+                            {entries.length > 0 && entries.map(item => {
+                                return <div key={item.reviewID} className="review-input">
+                                    <div className="left-side">
+                                        <div className="rating-box">
+                                            <div className={
+                                                ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 4)
+                                                    ? "score-box green"
+                                                    : ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 3)
+                                                    ? "score-box yellow"
+                                                    : "score-box red"
+                                                }>
+                                                <p>Overall</p>
+                                                <h1>{(item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating)/4}</h1>
                                             </div>
-                                            
-                                            
-                                        </div>
-                                        <div className="right">
-                                            <p className='date'>{item.date}</p>
                                         </div>
                                     </div>
-
-                                    <div className="bottom">
-                                        <p className='review-text'>{item.review}</p>
-
-                                        <div className="delete">
-                                            {user && item.userId === user.uid ? <AiOutlineDelete onClick={() => deleteEntry(item.reviewId)} className='icon-delete'/> : null}
+                                    <div className="right-side">
+                                        <div className="review-info">
+                                            <p>{item.date}</p>
                                             
                                         </div>
-                                        
+                                        <div className="review-text">
+                                            <p>{item.review}</p>
+                                        </div>
+                                        <div className="review-scores">
+                                            <div className="plot-score">
+                                                <h1>Plot/Storytelling</h1>
+                                                <div className="plot-score-stars">
+                                                    {[...Array(totalStars)].map((_, index) => (
+                                                        <span
+                                                        key={index}
+                                                        className={`star ${index < item.plotRating ? 'gold' : null}`}
+                                                        >
+                                                        {index < item.plotRating ? (
+                                                            <span className="star-icon full"><TbStarFilled/></span>
+                                                        ) : (
+                                                            <span className="star-icon-empty"><TbStarFilled/></span>
+                                                        )}
+                                                        </span>
+                                                    ))}
+                                                </div>
+
+                                            </div>
+                                            <div className="plot-score">
+                                                <h1>Performances</h1>
+                                                <div className="plot-score-stars">
+                                                    {[...Array(totalStars)].map((_, index) => (
+                                                        <span
+                                                        key={index}
+                                                        className={`star ${index < item.actingRating ? 'gold' : null}`}
+                                                        >
+                                                        {index < item.actingRating ? (
+                                                            <span className="star-icon full"><TbStarFilled/></span>
+                                                        ) : (
+                                                            <span className="star-icon-empty"><TbStarFilled/></span>
+                                                        )}
+                                                        </span>
+                                                    ))}
+                                                </div>
+
+                                            </div>
+                                            <div className="plot-score">
+                                                <h1>Cinematography</h1>
+                                                <div className="plot-score-stars">
+                                                    {[...Array(totalStars)].map((_, index) => (
+                                                        <span
+                                                        key={index}
+                                                        className={`star ${index < item.cinematographyRating ? 'gold' : null}`}
+                                                        >
+                                                        {index < item.cinematographyRating ? (
+                                                            <span className="star-icon full"><TbStarFilled/></span>
+                                                        ) : (
+                                                            <span className="star-icon-empty"><TbStarFilled/></span>
+                                                        )}
+                                                        </span>
+                                                    ))}
+                                                </div>
+
+                                            </div>
+                                            <div className="plot-score">
+                                                <h1>Enjoyability</h1>
+                                                <div className="plot-score-stars">
+                                                    {[...Array(totalStars)].map((_, index) => (
+                                                        <span
+                                                        key={index}
+                                                        className={`star ${index < item.enjoymentRating ? 'gold' : null}`}
+                                                        >
+                                                        {index < item.enjoymentRating ? (
+                                                            <span className="star-icon full"><TbStarFilled/></span>
+                                                        ) : (
+                                                            <span className="star-icon-empty"><TbStarFilled/></span>
+                                                        )}
+                                                        </span>
+                                                    ))}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="user-info">
                                         <div className="likes">
-                                            <AiFillLike className='icon like' onClick={() => handleLike(item.reviewId)}/>
-                                            <p>{item.likes}</p>
-                                            <AiFillDislike className='icon dislike'onClick={() => handleDislike(item.reviewId)}/>
-                                        </div>
+                                                <IoIosArrowUp onClick={() => handleLike(item.reviewId)} className="like"/>
+                                                <p>{item.likes}</p>
+                                                <IoIosArrowDown onClick={() => handleDislike(item.reviewId)} className="dislike"/>
+                                            </div>
+
+                                        <h1>{item.username}</h1>
+                                        <img src={item.userImage}/>
                                     </div>
-                                
+                                    <div className="tags">
+                                        {item.tags.map(item => {
+                                            return <div key={item} className='tag-box'>
+                                                    {item}
+                                                </div>
+                                        })}
+                                    </div>
                                 </div>
                             })}
+                            
                         </div>
 
-
+                        {entries.length > (4 + reviewNum) && (
+                            <button onClick={handleLoadMoreReviews()} className="load-more-button">Load more</button>
+                        )}
+                        
 
                         
                     </div>

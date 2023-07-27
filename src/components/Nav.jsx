@@ -144,7 +144,7 @@ export const Nav = () => {
                 {user && (
                   <React.Fragment>
                     <div  className='user-logged-in-dropdown' to={'/dashboard'}>
-                      <p><span>{username !== '' ? username : null}</span></p>
+                      <p>{username}</p>
                       <img src={user.photoURL} alt="" />                
                     </div>
   

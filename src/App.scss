@@ -28,14 +28,15 @@
     .watch{
         height: 30vh;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        margin: 2rem 15rem;
-        padding: 10rem;
+        margin: 4rem 4rem;
+        padding: 2rem;
+
 
         .box1{
             display: flex;
-            width: 40%;
+            width: 30%;
     
             .box1-description{
                 font-family: 'Poppins', sans-serif;
@@ -57,7 +58,7 @@
             margin: 1rem;
             img{
                 object-fit: contain;
-                height: 30vh;
+                height: 32vh;
             }
         }
     }
@@ -65,14 +66,14 @@
     .rating{
         height: 30vh;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        margin: 2rem 15rem;
-        padding: 10rem;
+        margin: 1rem 4rem;
+        padding: 2rem;
 
         .boxA{
             display: flex;
-            width: 40%;
+            width: 30%;
     
             .boxA-description{
                 font-family: 'Poppins', sans-serif;
@@ -470,6 +471,7 @@
     font-family: 'Poppins', sans-serif;
     max-width: 200px;
     max-height: 350px;
+    aspect-ratio: 16/9;
     margin: 1rem 0.2rem;    
     border-radius: 1rem;
     
@@ -948,126 +950,193 @@
                 margin: 0 auto;
 
                 
-                .details-review-input{
-                    
-                    border: 0.5px solid white;
-                    height: 40vh;
-                    width: 20vw;
-                    border-radius: 2rem;
-                    padding: 2rem;
-                    font-family: "Poppins";
-                    background: #1d2226;
+                .review-input{
+                    border: 1px solid white;
+                    height: fit-content;
+                    width: 60vw;
                     display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
                     position: relative;
-    
-                    .top{
+                    border-radius: 1.5rem;
+
+                    .tags{
                         display: flex;
-                        justify-content: space-between;
-    
-                        .left{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-    
-                           
-                            .userinfo{
-                                display: flex;
-                                align-items: center;
-                                flex-direction: column;
-                                gap: 1rem;
-    
-                                img{
-                                    object-fit: contain;
-                                    height: 6vh;
-                                    border-radius: 50%;
-                                }
-                            }
-                        }
-                        .right{
-                            font-size: 0.8rem;
-                            
+                        position: absolute;
+                        align-items: center;
+                        top: 10px;
+                        right: 10px;
+                        gap: 10px;
+
+                        .tag-box{
+                            background-color: #9898d3;
+                            border-radius: 5px;
+                            padding: 5px 10px;
+                            color: black;
                         }
                     }
-    
-                    .bottom{
+
+                    .user-info{
+                        position: absolute;
                         display: flex;
-                        flex-direction: column;
-                        gap: 3rem;
-                        height: 50%;
-                        word-break: break-word;
+                        align-items: center;
+                        gap: 10px;
+                        bottom: 10px;
+                        right: 10px;
 
-    
-                        .review-text{
+
+                        .likes{
                             display: flex;
-                            flex-wrap: wrap;
-                            font-size: 0.8rem;
-                            
-                        }
+                            align-items: center;
+                            gap: 10px;
+                            margin: 0 10px;
 
-                        .delete{
-                            position: absolute;
-                            bottom: 10%;
-                            left: 10%;
-
-                            .icon-delete{
+                            .like{
                                 font-size: 1.4rem;
 
                                 &:hover{
-                                    color: rgb(237, 94, 94);
                                     cursor: pointer;
+                                    color: rgb(43, 237, 146);
                                 }
-                            }
-                        }
-    
-                        .likes{
-                            position: absolute;
-                            display: flex;
-                            bottom: 10%;
-                            right: 10%;
-                            gap: 10px;
-                            
-    
-                            .icon{
-                                font-size: 1.2rem;
-                                cursor: pointer;
+
                                 
+                            }
 
-                                &.like{
-                                    color: whitesmoke;
+                            .dislike{
+                                font-size: 1.4rem;
 
-                                    &:hover{
-                                        color: greenyellow;
-                                    }
-
-                                    
-                                }
-
-                                &.dislike{
-                                    color: whitesmoke;
-
-                                    &:hover{
-
-                                        color: rgb(131, 54, 54);
-                                    }
-
-                                    
+                                &:hover{
+                                    cursor: pointer;
+                                    color: rgb(222, 83, 83);
                                 }
                             }
-                            p{
-                                font-size: 0.8rem;
+
+                        }
+
+
+
+                        img{
+                            object-fit: cover;
+                            height: 4vh;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .left-side{
+                        display: flex;
+                        flex: 1;
+                        justify-content: center;
+
+                        .score-box{
+                            margin: 0.6rem;
+                            padding: 0.6rem;
+                            display: flex;
+                            margin-top: 1rem;
+                            flex-direction: column;
+                            text-align: center;
+                            
+                            color: black;
+                            border-radius: 1rem;
+
+                            &.green{
+                                background: rgb(42, 182, 42);
+                            }
+
+                            &.yellow{
+                                background: rgb(222, 147, 18);
+                            }
+
+                            &.red{
+                                background: rgb(222, 83, 83);
+                            }
+
+                            h1{
+                                font-weight: 700;
                             }
                         }
-    
+                    }
+
+                    .right-side{
+                        display: flex;
+                        flex: 12;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 1rem;
+                        padding: 1rem;
+                        font-family: "Poppins";
+                        max-width: 55vw;
+                        
+                        .review-info{
+                            p{
+                                font-weight: 700;
+                            }
+                        }
+
+                        .review-text{
+                            word-wrap: break-word;
+
+                            p{
+                                padding: 10px 20px 10px 0;
+                            }
+                        }
+
+                        
+
+                        
+
+                        .review-scores{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 1rem;
+
+                            .plot-score{
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+
+                                h1{
+                                    font-weight: 700;
+                                    font-size: 1rem;
+                                    width: 8vw;
+                                }
+
+                                .plot-score-stars{
+                                    display: flex;
+                                    gap: 0.5rem;
+
+                                    .star-icon{
+                                        color: gold;
+                                        text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+
+                                    }
+
+                                    .star-icon-empty{
+                                        color: #d1d5db;
+                                        text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+
+                                    }
+                                }
+                                
+                            }
+                        }
+
                         
                     }
-    
-    
+
+
                     
-    
-    
                 }
+
+                
+            }
+
+            .load-more-button{
+                margin-top: 2rem;
+                padding: 0.8rem 3rem;
+                width: fit-content;
+                background-color: #9898d3;
+                border-radius: 1rem;
+                font-weight: 700;
+                
             }
             
 
@@ -1100,6 +1169,314 @@
     }
 
 
+}
+
+.write-review{
+    font-family: "Poppins";
+
+    .image-component{
+        position: relative;
+
+        
+
+        img{
+            height: 26vh;
+            object-fit: cover;
+            width: 100vw;
+            filter: opacity(0.3);
+            border-bottom: 1px solid black;
+        }
+
+        p{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span{
+                font-weight: 700;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .rating-component{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 4rem 0;
+        height: 60vh;
+        
+
+        
+        .go-back{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            width: fit-content;
+
+            &:hover{
+                color: #9898d3;
+            }
+
+            .back-icon{
+                font-size: 2rem;
+            }
+        }
+
+        
+        
+        
+
+        .review-component-headers{
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-width: 40vw;
+            margin-top: 1rem;
+
+            .tag-span{
+                color: orange;
+            }
+
+            
+            h1{
+                font-size: 1.8rem;
+                font-weight: 700;
+
+                
+            }
+            
+            span{
+                color: #9898d3;
+                
+
+            }
+
+            form{
+                margin-top: 2rem;
+                width: 100%;
+
+    
+                textarea{
+                    height: 20vh;
+                    border-radius: 20px;
+                    outline: none;
+                    font-size: 1rem;
+                    padding: 1rem;
+                    width: 100%;
+                    border: 1px solid black;
+                    resize: none;
+                }
+
+                p{
+                    padding: 10px;
+                    text-align: end;
+                    font-size: 0.8rem;
+
+                }
+            }
+
+            
+        }
+
+        .tag-headers{
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+    
+
+        .progress-bar{
+            display: flex;
+            margin-bottom: 2rem;
+            justify-content: center;
+
+
+            .circle{
+                position: relative;
+                height: 3vh;
+                width: 3vh;
+                border-radius: 50%;
+                font-size: 1rem;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                background-color: #d1d5db;
+                color: black;
+
+
+                &.active{
+                    background: #9898d3;
+                    color: white;
+                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;                }
+
+                h1{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            .line{
+                display: flex;
+                align-items: center;
+                width: 10vw;
+
+
+                
+                .line-icon{
+                    width: 10vw;
+                    border: 2px solid #d1d5db;
+                    background: #d1d5db;
+
+                    &.active{
+                        border: 2px solid #9898d3;;
+                        background: #9898d3;;
+                    }
+
+                }
+            }
+        }
+
+        .button{
+            margin-top: 2rem;
+            padding: 0.8rem 3rem;
+            width: fit-content;
+            filter: opacity(.5);
+            background-color: #9898d3;
+            border-radius: 1rem;
+            font-weight: 700;
+            pointer-events: none; 
+
+            
+
+
+            &.active{
+                filter: opacity(1);
+                pointer-events:all; 
+
+
+                &:hover{
+                    filter: brightness(90%);
+                }
+            }
+        }
+
+        .check-icon{
+            font-size: 6rem;
+            color: rgb(41, 184, 41);
+        }
+        .done-p{
+            font-size: 1.4rem;
+            margin: 1rem;
+        }
+
+
+
+        .tags-container{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+
+            .tags{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                max-width: 40vw;
+
+
+
+                .tag-box {
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    padding: 5px 10px;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease-in-out;
+
+                    &:hover{
+                        filter: brightness(90%);
+                    }
+
+                    &.active{
+                        background: #9898d3;
+                        color: black;
+                        border: 1px solid black;
+                    }
+                  }
+                  
+            }
+        }   
+
+        .rating-input-container{
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: stretch;
+
+            .rating-input{
+                display: flex;
+                justify-content: space-between;
+                gap: 10rem;
+                padding: 1rem;
+    
+                &.blurred{
+                    filter: opacity(0.5);
+                    pointer-events: none; 
+                }
+    
+                .rating-input-info{
+                    h1{
+                        font-size: 1.8rem;
+                        font-weight: 700;
+    
+                        span{
+                            color: #9898d3;
+                        }
+                    }
+                }
+    
+                .rating-input-score{
+                    display: flex;
+                    align-items: center;
+    
+    
+                    .star{
+                        font-size: 2rem;
+                        cursor: pointer;
+                        gap: 10px;
+    
+                        &.filled{
+                            color: gold;
+                            text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    
+                        }
+                        &.empty{
+                            color: #d1d5db;
+                            text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    
+                        }
+                    }
+                }
+    
+                
+            }
+
+        }
+
+        
+    }
 }
 
 .home{
@@ -1993,6 +2370,12 @@
 
     
 
+    .tags-container{
+        border: 1px solid white;
+    }
+
+    
+
     .actor-details{
         width: 100%;
 
@@ -2061,59 +2444,35 @@
                 .details-reviews-map{
                     display: flex;
                     flex-direction: column;
-                    gap: 2rem;
-
-                    .details-review-input{
-                        font-size: 2rem;
-                        height: 40vh;
+                    justify-content: center;
+                    gap: 4rem;
+                    margin: 0;
+                    
+                    .review-input{
                         width: 80vw;
-                        border: none;
 
-                        .top{
-                            .left{
-                                display: flex;
-                                text-align: center;
-                                
+                        .left-side{
+                            display: none;
+                            flex: 1;
 
-                                .userinfo{
-                                    h1{
-                                        font-size: 1.5rem;
-                                    }
-                                }
-                            }
-                            .right{
-                                .date{
-                                    font-size: 1.2rem;
-                                }
-                            }
+                            
                         }
 
-                        .bottom{
-                            .review-text{
-                                font-size: 1.5rem;
-                                font-family: "Poppins";
-                            }
-                            .delete{
-                                .icon-delete{
-                                    font-size: 2rem;
-                                }
-                            }
-
-                            .likes{
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                gap: 1rem;
-                                .icon{
-                                    font-size: 2rem;
-                                }
-                                p{
-                                    font-size: 1.4rem;
+                        .right-side{
+                            .review-scores{
+                                .plot-score{
+                                    gap: 5rem;
                                 }
                             }
                         }
                     }
+
+                    
+                
+                    
                 }
+
+                
             }
 
             .similar-movies{
@@ -2217,9 +2576,7 @@
             justify-content: space-between;
             align-items: center;
 
-            .left-side{
-
-            }
+            
 
             .middle-side{
                 display: none;

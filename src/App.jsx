@@ -16,6 +16,7 @@ import Actor from './pages/Actor'
 import Upcoming from './pages/Upcoming'
 import Reviews from './pages/Reviews'
 import Username from './pages/Username'
+import WriteReview from './pages/WriteReview'
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/actor/:id" element={<Actor />} />
           <Route path="/upcoming" element={<Upcoming />} />
-          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/movies/write-review/:id" element={<WriteReview />} />
+          <Route path="/television/write-review/:id" element={<WriteReview />} />
           <Route path="/username-select" element={<Username />} />
         </Routes>
       </div>
