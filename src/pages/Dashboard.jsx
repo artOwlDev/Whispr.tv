@@ -263,8 +263,11 @@ const Dashboard = () => {
                     <h1 style={{fontSize: "1rem", paddingBottom: "1rem"}}>Account</h1>
                     <h1 style={{fontSize: "2rem", paddingBottom: "0.4rem"}}>My Account</h1>
                     <p>Signed in with: {user.email}</p>
+                    <Link to={"../username-select"}>
+                        <button style={{marginTop: "3rem", borderRadius: "1rem", width: "300px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Change username</button>
+                    </Link>
 
-                    <button onClick={() => authFirebase.signOut() && navigate("/")}style={{marginTop: "2rem", borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Sign out</button>
+                    <button onClick={() => authFirebase.signOut() && navigate("/")}style={{marginTop: "2rem",width: "300px", borderRadius: "1rem", margin: "1rem 0px", background: "#2596be", fontSize: "1.2rem", padding: "10px"}}>Sign out</button>
                 </div>
                 )}
             </div>
