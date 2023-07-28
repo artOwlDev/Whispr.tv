@@ -33,6 +33,7 @@ function App() {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/actor/:id" element={<Actor />} />
+          <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/movies/write-review/:id" element={<WriteReview />} />
           <Route path="/television/write-review/:id" element={<WriteReview />} />
           <Route path="/username-select" element={<Username />} />

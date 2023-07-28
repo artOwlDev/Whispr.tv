@@ -572,9 +572,9 @@ const Details = () => {
                                     <div className="left-side">
                                         <div className="rating-box">
                                             <div className={
-                                                ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 >= 4)
+                                                ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 4)
                                                     ? "score-box green"
-                                                    : ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 >= 3)
+                                                    : ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 3)
                                                     ? "score-box yellow"
                                                     : "score-box red"
                                                 }>

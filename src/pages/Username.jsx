@@ -14,7 +14,6 @@ const Username = () => {
   const [user] = useAuthState(authFirebase);
   const navigate = useNavigate();
 
-  
   const handleInputChange = (event) => {
     const { value } = event.target;
     setUsername(value);

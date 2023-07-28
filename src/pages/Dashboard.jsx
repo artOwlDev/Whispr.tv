@@ -5,7 +5,7 @@ import { authFirebase } from '../../utils/firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
 import Footer from '../components/Footer';
 import {TbStarFilled} from "react-icons/tb"
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import {collection, getDocs, addDoc, deleteDoc, query, where, updateDoc, onSnapshot} from "firebase/firestore"
 import {AiOutlineDelete} from "react-icons/ai"
@@ -130,14 +130,12 @@ const Dashboard = () => {
                           {entries.length > 0 && entries.map(item => {
                                   return <div key={item.reviewID} className="review-input">
                                       <div className="left-side">
-                                        <Link to={`../${item.mediaType === "movie" ? "movies" : "television"}/details/${item.itemId}`}>
-                                            <img src={IMAGES + item.itemPicture}/>
-                                        </Link>
+                                          <img src={IMAGES + item.itemPicture}/>
                                           <div className="rating-box">
                                               <div className={
-                                                  ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 >= 4)
+                                                  ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 4)
                                                       ? "score-box green"
-                                                      : ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 >= 3)
+                                                      : ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 3)
                                                       ? "score-box yellow"
                                                       : "score-box red"
                                                   }>
