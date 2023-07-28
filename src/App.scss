@@ -827,6 +827,38 @@
                 .rating-p{
                     display: none;
                 }
+                button{
+                    width: 20vw;
+                    text-align: center;
+                    margin: 2rem auto;
+                    background: rgb(62, 160, 170);
+                    padding: 10px;
+                    border-radius: 1rem;
+                    display: none;
+                    
+                }
+
+                .star-rating{
+                    display: none;
+                    justify-content: center;
+                    margin-top: 3rem;
+                    margin-bottom: 2rem;
+                    gap: 10px;
+                    font-size: 1.8rem;
+                    align-items: center;
+                    
+
+                    p{
+                        font-size: 0.9rem;
+                    }
+
+                    
+                    .star-icon{
+                        color: gold;
+
+                        
+                    }
+                }
 
                 .details-name{
                     display: flex;
@@ -2644,9 +2676,6 @@
     }
     
 
-    .tags-container{
-        border: 1px solid white;
-    }
 
     
 
@@ -2794,6 +2823,14 @@
 
                     .rating-p{
                         display:block;
+                    }
+
+                    button{
+                        display: block;
+                        
+                    }
+                    .star-rating{
+                        display: flex;
                     }
 
                     .details-name{

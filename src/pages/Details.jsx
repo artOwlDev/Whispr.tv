@@ -398,42 +398,7 @@ const Details = () => {
             
                 <div className="details">
 
-                {showReviewBox && (
-                    <>
-
-                    
-                    <div className="overlay"></div>
-                    <div className="review-box" ref={boxRef} style={{top: boxTop,left: boxLeft,height: `${boxHeight}px`,width: `${boxWidth}px`,}} >
-                        <div className="review-box-container">
-                            
-                        </div>
-                        <div className="icon-container">
-                            <p>Write a review for: </p>
-                            <AiOutlineClose className='close-icon' onClick={handleClosingReview}/>
-                        </div>
-                        <div className="review-box-item-text">
-                            <h1>{itemName}</h1>
-                            <p>({airDate})</p>
-                        </div>
-                        
-                        <div className="review-box-user">
-                            <img src={IMAGES + imagePath} alt="" />   
-                            <form onSubmit={handleReviewSubmission} className="search-form">
-                                <textarea onChange={handleChange} maxLength={maxLength} name="Text1" cols="40" rows="5" placeholder="Share your thoughts.." style={{resize: "none"}}  value={text}></textarea>
-
-                                <p style={{color: text.length === 100 ? "rgb(237, 19, 19)" : "white"}} className='character-remaining'>{text.length}/{maxLength}</p>
-                                
-                            </form>
-
-                        </div>
-
-
-                        <div className="submit-container">
-                            <p className="submit" onClick={handleSubmitReview}>Submit</p>
-                        </div>
-                    </div>
-                    </>
-                )}
+        
                     <div className="backdrop" style={{border: "none", display: "flex", justifyContent: "center", background: `linear-gradient(to right, transparent 40%, #14171d 90%), linear-gradient(to left, transparent 40%, #14171d 90%), url(${IMAGES + details.backdrop_path}) no-repeat center center / cover`}}>
 
                         
@@ -445,6 +410,25 @@ const Details = () => {
                         <div className="details-name">
                             <h1>{itemName}</h1>
                             {details.tagline && <span>"{details.tagline}"</span>}
+                            <div className="star-rating">
+                                {[...Array(totalStars)].map((_, index) => (
+                                    <span
+                                    key={index}
+                                    className={`star ${index < fullStars ? 'gold' : index === fullStars && hasHalfStar ? 'gold' : 'blue'}`}
+                                    >
+                                    {index < fullStars ? (
+                                        <span className="star-icon full"><TbStarFilled/></span>
+                                    ) : index === fullStars && hasHalfStar ? (
+                                        <span className="star-icon half"><TbStarHalfFilled/></span>
+                                    ) : (
+                                        <span className="star-icon-empty"><TbStarFilled/></span>
+                                    )}
+                                    </span>
+                                ))}
+
+                                <p>{rating}</p>
+                            
+                            </div>
 
                         </div>
                         <h2><span>{airDateText}</span> {airDate}</h2>
@@ -532,8 +516,28 @@ const Details = () => {
                             <h2><span>{airDateText}</span> {airDate}</h2>
                             <h3><span>{mediaType === "tv" ? 'Created by: ' : 'Director: '}</span> {createdBy}</h3>
                             <p>{overview}</p>
-                            <p className='rating-p'><span className='rating-text'>Average rating:</span> <span style={{color: rating >= 3.5 ? "#66FF99" : rating   > 2.5 ? "yellow" : "red"}}>{rating}</span> / 5</p>
+                            <div className="star-rating">
+                                {[...Array(totalStars)].map((_, index) => (
+                                    <span
+                                    key={index}
+                                    className={`star ${index < fullStars ? 'gold' : index === fullStars && hasHalfStar ? 'gold' : 'blue'}`}
+                                    >
+                                    {index < fullStars ? (
+                                        <span className="star-icon full"><TbStarFilled/></span>
+                                    ) : index === fullStars && hasHalfStar ? (
+                                        <span className="star-icon half"><TbStarHalfFilled/></span>
+                                    ) : (
+                                        <span className="star-icon-empty"><TbStarFilled/></span>
+                                    )}
+                                    </span>
+                                ))}
 
+                                <p>{rating}</p>
+                            
+                            </div>
+                            <Link to={user != null ? (`../${mediaType === "movie" ? "movies" : "television"}/write-review/${id}`) : "../../auth/login"}>
+                                <button>Write a Review</button>
+                            </Link>
 
 
 

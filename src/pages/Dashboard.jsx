@@ -5,7 +5,7 @@ import { authFirebase } from '../../utils/firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
 import Footer from '../components/Footer';
 import {TbStarFilled} from "react-icons/tb"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import {collection, getDocs, addDoc, deleteDoc, query, where, updateDoc, onSnapshot} from "firebase/firestore"
 import {AiOutlineDelete} from "react-icons/ai"
@@ -130,7 +130,10 @@ const Dashboard = () => {
                           {entries.length > 0 && entries.map(item => {
                                   return <div key={item.reviewID} className="review-input">
                                       <div className="left-side">
-                                          <img src={IMAGES + item.itemPicture}/>
+                                          <Link to={`../${item.mediaType === "movie" ? "movies" : "television"}/details/${item.itemId}`}>
+
+                                            <img src={IMAGES + item.itemPicture}/>
+                                          </Link>
                                           <div className="rating-box">
                                               <div className={
                                                   ((item.plotRating + item.enjoymentRating + item.cinematographyRating + item.actingRating) / 4 > 4)
