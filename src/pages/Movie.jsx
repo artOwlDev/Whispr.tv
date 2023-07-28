@@ -342,7 +342,7 @@ const Movie = () => {
 
 
               <div className="movie-selection-display">
-                {topRated.length > 0 && topRated.slice(0,16).map((movie) => {
+                {topRated.length > 0 && topRated.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
                 })}
 
@@ -363,7 +363,7 @@ const Movie = () => {
 
 
               <div className="movie-selection-display">
-                {action.length > 0 && action.slice(0,16).map((movie) => {
+                {action.length > 0 && action.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
                 })}
 
@@ -384,7 +384,7 @@ const Movie = () => {
 
 
               <div className="movie-selection-display">
-                {scifi.length > 0 && scifi.slice(0,16).map((movie) => {
+                {scifi.length > 0 && scifi.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
                 })}
 
@@ -405,7 +405,7 @@ const Movie = () => {
 
 
               <div className="movie-selection-display">
-                {animation.length > 0 && animation.slice(0,16).map((movie) => {
+                {animation.length > 0 && animation.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
                 })}
 

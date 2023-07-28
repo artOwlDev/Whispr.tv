@@ -236,7 +236,7 @@ const genreTable = {
 
 
               <div className="popular-series-display">
-                {popularTV.length > 0 && popularTV.slice(0,16).map((movie) => {
+                {popularTV.length > 0 && popularTV.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -255,7 +255,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {actionTV.length > 0 && actionTV.slice(0,16).map((movie) => {
+                {actionTV.length > 0 && actionTV.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -270,7 +270,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {comedyTV.length > 0 && comedyTV.slice(0,16).map((movie) => {
+                {comedyTV.length > 0 && comedyTV.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -285,7 +285,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {sciFiTV.length > 0 && sciFiTV.slice(0,16).map((movie) => {
+                {sciFiTV.length > 0 && sciFiTV.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 
@@ -300,7 +300,7 @@ const genreTable = {
 
             <div className="tv-display">
               <div className="highRated-series-display">
-                {topRatedTV.length > 0 && topRatedTV.slice(0,16).map((movie) => {
+                {topRatedTV.length > 0 && topRatedTV.slice(0,18).map((movie) => {
                   return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
                 })}
 

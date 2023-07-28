@@ -543,7 +543,7 @@ const Details = () => {
                             
     
                             <div className="actors">
-                                {crew?.cast?.slice(0,12).map(actor => {
+                                {crew?.cast?.slice(0,6).map(actor => {
                                     return <div className='actors-div' key={actor.id}>
                                         <Link to={`../../actor/${actor.id}`}>
                                             <img src={IMAGES + actor.profile_path} alt="" />
@@ -711,7 +711,7 @@ const Details = () => {
 
                         {mediaType === 'tv' &&  (
                             <div className="similar-movies-map" key={"a"}>
-                                {similarTV.length > 0 && similarTV?.slice(0,8).map((tv) => {
+                                {similarTV.length > 0 && similarTV?.slice(0,10).map((tv) => {
                                     return <TvItem image={tv.poster_path} title={tv.name} year={similarTV?.first_air_date?.substring(0,4) === similarTV?.last_air_date?.substring(0,4) ? " present" : similarTV?.last_air_date?.substring(0,4)} id={tv.id} type={"tv"}/>
                                 })}
                             </div>
@@ -719,7 +719,7 @@ const Details = () => {
 
                         {mediaType === 'movie' && (
                             <div className="similar-movies-map" key={"a"}>
-                                {similarMovies.length > 0 && similarMovies?.slice(0,8).map((movie) => {
+                                {similarMovies.length > 0 && similarMovies?.slice(0,10).map((movie) => {
                                     return <TvItem image={movie.poster_path} title={movie.title} year={movie.release_date} id={movie.id} type={"movie"}/>
                                 })}
                             </div>
