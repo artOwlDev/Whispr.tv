@@ -2687,10 +2687,48 @@
         }
     }
 
+    .tv-container{
+        .upcoming-movie-div{
+            height: 30vh;
+            width: 100%;
+            
+
+            .upcoming-movie-div{
+                position: relative;
+                width: 100vw;
+                height: 94vh;
+                overflow: hidden;
+    
+                img{
+                    animation: none;
+                    overflow: auto;
+                }
+            }
+
+            
+        }
+
+    }
+
     .movie-container{
         .upcoming-movie-div{
             height: 30vh;
             width: 100%;
+            
+
+            .upcoming-movie-div{
+                position: relative;
+                width: 100vw;
+                height: 94vh;
+                overflow: hidden;
+    
+                img{
+                    animation: none;
+                    overflow: auto;
+                }
+            }
+
+            
         }
     }
 
