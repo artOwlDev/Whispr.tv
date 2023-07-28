@@ -81,7 +81,7 @@ const Actor = () => {
 
 
             <div className="button-div">
-            {movieCount < 60 && (
+            {movieCount < 36 && (
                 <button className='button-actors' onClick={handleMovieCount}>View more</button>
             )}
             </div>

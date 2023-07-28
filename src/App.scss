@@ -863,13 +863,13 @@
 
                 .details-name{
                     display: flex;
+                    justify-content: space-between;
 
 
                     h1{
                         font-size: 1.8rem;
                         font-weight: bolder;
                         display: flex;
-                        flex: 2;
                     }
 
                     span{
@@ -880,7 +880,6 @@
                         text-align: center;
                         font-family: 'Indie Flower', cursive;
                         display: flex;
-                        flex: 2;
                         
                     }
 
