@@ -480,7 +480,10 @@ const Details = () => {
                                 <div className='hori-line'></div>
 
 
-                                
+                                <div className="icon-features">
+                                    <AiOutlinePlus className='icon plus'/>
+                                    <MdWatchLater className='icon watch'/>
+                                </div>
 
                                 <div className='hori-line'></div>
 
