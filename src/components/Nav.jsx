@@ -37,13 +37,10 @@ export const Nav = () => {
           const db = getFirestore();
           const userRef = doc(db, 'users', user.uid);
           const userSnapshot = await getDoc(userRef);
+          const userData = userSnapshot.data();
+          setUsername(userData.username)
 
-          if (userSnapshot.exists()) {
-            const userData = userSnapshot.data();
-            if (userData && userData.username) {
-              setUsername(userData.username);
-            }
-          }
+  
         }
       } catch (error) {
         console.log(error);
@@ -144,7 +141,7 @@ export const Nav = () => {
                 {user && (
                   <React.Fragment>
                     <div  className='user-logged-in-dropdown' to={'/dashboard'}>
-                      <p>{username}</p>
+                      {username !== "" && <p>{username}</p>}
                       <img src={user.photoURL} alt="" />                
                     </div>
   

@@ -480,10 +480,7 @@ const Details = () => {
                                 <div className='hori-line'></div>
 
 
-                                <div className="icon-features">
-                                    <AiOutlinePlus className='icon plus'/>
-                                    <MdWatchLater className='icon watch'/>
-                                </div>
+                                
 
                                 <div className='hori-line'></div>
 
@@ -494,7 +491,6 @@ const Details = () => {
                                             <h1>Write a review</h1>
                                         </div>
                                     </Link>
-                                    <div className='feature-element'><h1>Add to list</h1></div>
                                     <div className='feature-element last' onClick={handleCopyToClipboard}><h1 >Share</h1></div>
                                     {copied && <div className="clipboard-text"><h1>Copied to clipboard!</h1></div>}
 
