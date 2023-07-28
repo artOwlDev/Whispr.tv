@@ -61,7 +61,7 @@ const Dashboard = () => {
       }, []);
 
     useEffect(() => {
-        document.title = `${username} | Whispr`;
+        document.title = `Dashboard | Whispr`;
 
     },[])
 
