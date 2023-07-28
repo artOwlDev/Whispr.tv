@@ -2974,21 +2974,21 @@
                 margin: 1rem;
 
                 .loaded-info{
+                    width: 50vw;
                     text-align: center;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-around;
-                    gap: 5px;
+                    gap: 2px;
                     h1{
-                        font-size: 0.8rem;
-                        width: 100%;
+                        font-size: 1.2rem;
                         margin: 0;
                     }
 
                     p{
                         margin: 0;
-                        font-size: 0.8rem;
+                        font-size: 1.4rem;
                         display: flex;
                         align-items: center;
                         flex-direction: row;
