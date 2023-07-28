@@ -483,7 +483,6 @@ const Details = () => {
                                 <div className="icon-features">
                                     <AiOutlinePlus className='icon plus'/>
                                     <MdWatchLater className='icon watch'/>
-                                    <h1>hi</h1>
                                 </div>
 
                                 <div className='hori-line'></div>
