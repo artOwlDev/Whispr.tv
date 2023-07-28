@@ -332,27 +332,7 @@ const Movie = () => {
 
           </div>
 
-          <div className="movie-selection-list">
-
-            <h1 className='title'>Criticlally Acclaimed Movies</h1>
-
-
-            <div className="movie-display">
-
-
-
-              <div className="movie-selection-display">
-                {topRated.length > 0 && topRated.slice(0,18).map((movie) => {
-                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.title} year={movie.release_date.substring(0, 4)} id={movie.id} type="movie"/>
-                })}
-
-              </div>
-
-
-            </div> 
-
-       
-          </div>
+          
           <div className="movie-selection-list">
 
             <h1 className='title'>Action</h1>

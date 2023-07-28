@@ -293,20 +293,7 @@ const genreTable = {
             </div>        
           </div>
             
-          <div className="highRated-tv">
-
-            <h1 className='title'>Highest Rated</h1>
-
-
-            <div className="tv-display">
-              <div className="highRated-series-display">
-                {topRatedTV.length > 0 && topRatedTV.slice(0,18).map((movie) => {
-                  return <TvItem key={movie.id} image={movie.poster_path} title={movie.name} year={movie.first_air_date.substring(0, 4)} id={movie.id} type="tv"/>
-                })}
-
-              </div>
-            </div>        
-          </div>
+          
           
 
 

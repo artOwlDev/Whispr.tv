@@ -495,7 +495,7 @@
         &:hover{
             cursor: pointer;
             background-size: 100% 100%;
-            transform: scale(1.02);
+            transform: scale(1.05);
             transition: all 0.2s ease-in-out;
             border: 1px solid white;
         }
@@ -1868,6 +1868,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+        max-width: 2000px;
+
     margin: 6rem auto;
     gap: 2rem;
 
@@ -1904,16 +1906,16 @@
 
     .notable{
         font-size: 2rem;
-        margin-top: 4rem 
+        margin-top: 4rem;
     }
     
     .actor-details-credits{
         display: flex;
-        margin: 6rem 2rem;
         justify-content: center;
-        flex-direction: row;
+        max-width: 2000px;
+        margin-left: 4rem;
+        margin-right: 4rem;
         flex-wrap: wrap;
-        gap: 1rem;
     }
     
     .button-div{

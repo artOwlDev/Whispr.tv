@@ -9,7 +9,7 @@ import { TvItem } from '../components/TvItem';
 const Actor = () => {
     const[credits, setCredits] = useState([]);
     const[details, setDetails] = useState([]);
-    const[movieCount, setMovieCount] = useState(16);
+    const[movieCount, setMovieCount] = useState(18);
     const {id} = useParams();
     const IMAGES = "https://image.tmdb.org/t/p/w1280"
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Actor = () => {
 
     const handleMovieCount = () => {
         setTimeout(() => {
-            setMovieCount(movieCount + 16);
+            setMovieCount(movieCount + 18);
         }, 500); // Add a delay of 2 seconds
     }
 
@@ -75,9 +75,7 @@ const Actor = () => {
 
             <div className="actor-details-credits">
                 {credits?.cast && credits?.cast?.slice(0,movieCount).map(movie => {
-                    return <div key={movie.id}>
-                        <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title || movie.name} year={movie.release_date?.substring(0, 4) || movie.first_air_date?.substring(0, 4)} id={movie.id} type={movie.media_type === "movie" ? "movie" : "tv"}/>
-                    </div>
+                    return <TvItem key={movie.id} image={movie.poster_path} title={movie.original_title || movie.name} year={movie.release_date?.substring(0, 4) || movie.first_air_date?.substring(0, 4)} id={movie.id} type={movie.media_type === "movie" ? "movie" : "tv"}/>
                 })}
             </div>
 
