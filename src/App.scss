@@ -1134,11 +1134,12 @@
                             flex-direction: column;
                             align-items: flex-start;
                             gap: 1rem;
+                            
 
                             .plot-score{
                                 display: flex;
                                 align-items: center;
-                                gap: 1rem;
+                                gap: 2rem;
 
                                 h1{
                                     font-weight: 700;
@@ -1816,7 +1817,7 @@
                                 .plot-score{
                                     display: flex;
                                     align-items: center;
-                                    gap: 1rem;
+                                    gap: 3rem;
     
                                     h1{
                                         font-weight: 700;
