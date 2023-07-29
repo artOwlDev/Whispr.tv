@@ -508,7 +508,7 @@ const Details = () => {
 
                 
                             <div className="details-name">
-                                <h1>{itemName} {details.tagline && <span>`{details.tagline}`</span>}</h1>
+                                <h1>{itemName} {details.tagline && <span>"{details.tagline}"</span>}</h1>
 
                             </div>
                             <h2><span>{airDateText}</span> {airDate}</h2>
