@@ -408,8 +408,8 @@ const Details = () => {
 
                 
                         <div className="details-name">
-                            <h1>{itemName}</h1>
-                            {details.tagline && <span>"{details.tagline}"</span>}
+                            <h1>{itemName} <span>{details.tagline && details.tagline}</span></h1>
+                            
                             <div className="star-rating">
                                 {[...Array(totalStars)].map((_, index) => (
                                     <span
@@ -508,8 +508,7 @@ const Details = () => {
 
                 
                             <div className="details-name">
-                                <h1>{itemName}</h1>
-                                {details.tagline && <span>"{details.tagline}"</span>}
+                                <h1>{itemName} {details.tagline && <span>`{details.tagline}`</span>}</h1>
 
                             </div>
                             <h2><span>{airDateText}</span> {airDate}</h2>
