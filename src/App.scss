@@ -996,6 +996,11 @@
                     display: flex;
                     position: relative;
                     border-radius: 1.5rem;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover{
+                        transform: translateY(-8px);
+                    }
 
                     .tags{
                         display: flex;
@@ -3004,37 +3009,43 @@
     .search{
         min-height: 60vh;
         .search-title{
-            font-size: 3rem;
+            font-size: 2rem;
         }
 
         .search-form{
-            font-size: 2rem;
+            font-size: 1.6rem;
 
             .search-results{
                 margin: 1rem;
 
                 .loaded-info{
-                    width: 50vw;
+                    width: 60vw;
                     text-align: center;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     align-items: center;
-                    justify-content: space-around;
+                    justify-content: space-between;
+                    padding: 1rem;
                     gap: 2px;
+
                     h1{
-                        font-size: 1.2rem;
+                        font-size: 1rem;
                         margin: 0;
                     }
 
                     p{
                         margin: 0;
-                        font-size: 1.4rem;
+                        font-size: 1rem;
                         display: flex;
                         align-items: center;
                         flex-direction: row;
                         color: white;
                     }
                 }
+            }
+
+            input{
+                width: 70vw;
             }
         }
     }
