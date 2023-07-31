@@ -73,7 +73,7 @@ const Details = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-          },700); 
+          },1000); 
       
           return () => clearTimeout(timer);
     },[id])
