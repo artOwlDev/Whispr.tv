@@ -47,7 +47,7 @@ const Search = () => {
           setFilteredData(combinedResults);
         })
         .catch(err => console.log(err));
-      }, 500); // Wait for 500ms after user stops typing to make API call
+      }, 500); 
 
       return () => clearTimeout(timeoutId);
     } else {
