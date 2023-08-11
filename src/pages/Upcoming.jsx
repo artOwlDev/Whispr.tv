@@ -19,7 +19,7 @@ const Upcoming = () => {
         document.title = `Upcoming | Whispr`;
         const timer = setTimeout(() => {
             setIsLoading(false);
-          },500); // Set the delay time in milliseconds (2 seconds in this example)
+          },500);
       
           return () => clearTimeout(timer);
     },[])
@@ -63,7 +63,7 @@ const Upcoming = () => {
 
       const now = new Date();
       const currentYear = now.getFullYear();
-      const currentMonth = now.getMonth() + 1; // Adding 1 since getMonth() returns zero-based index
+      const currentMonth = now.getMonth() + 1; 
       const currentDay = now.getDate();
 
       const filteredMovies = upcoming.filter((movie) => {
@@ -76,7 +76,7 @@ const Upcoming = () => {
         } else if (currentYear === releaseYear) {
           return !(currentMonth > releaseMonth || (currentMonth === releaseMonth && currentDay >= releaseDay));
         } else {
-          return true; // Include movies from future years
+          return true; 
         }
       });
 

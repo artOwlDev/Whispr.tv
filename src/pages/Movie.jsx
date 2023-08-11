@@ -36,7 +36,7 @@ const Movie = () => {
   const [displayResultsText, setDisplayResultsText] = useState("Action")
 
   const totalStars = 5;
-  const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half smaller
+  const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; 
 
   const fullStars = Math.floor(ratingOutOf5);
   const hasHalfStar = (ratingOutOf5 - fullStars) >= 0.5;
@@ -284,7 +284,7 @@ const Movie = () => {
                         <div className="star-rating">
                           {[...Array(5)].map((_, index) => {
                             const totalStars = 5;
-                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half
+                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2;  
                             const fullStars = Math.floor(ratingOutOf5);
                             const hasHalfStar = ratingOutOf5 - index >= 0.5;
                             const isFullStar = index < fullStars;

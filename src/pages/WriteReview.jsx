@@ -133,7 +133,7 @@ const WriteReview = () => {
 
 
           const userData = userSnapshot.data();
-          const username = userData.username || ''; // If userna
+          const username = userData.username || ''; 
 
 
         const newReview = {
@@ -141,7 +141,7 @@ const WriteReview = () => {
           itemId: details.id,
           likes: 0,
           review: text,
-          reviewId: '', // Placeholder value, it will be updated later
+          reviewId: '',
           userImage : user.photoURL,
           date: formattedDate,
           username : username,
@@ -157,16 +157,13 @@ const WriteReview = () => {
         setActiveTab("done");
 
          
-        // Update the review with the generated review ID and username
     
         const db = getFirestore();
         const docRef = await addDoc(collection(db, "reviews"), newReview);
         const reviewId = docRef.id;
     
-        // Update the review with the generated review ID
         await updateDoc(docRef, { reviewId: reviewId });
     
-        // Clear the textarea or perform any other necessary actions
         setText("");
       } catch (error) {
         console.error("Error adding review:", error);

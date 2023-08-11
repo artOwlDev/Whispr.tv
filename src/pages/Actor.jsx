@@ -18,7 +18,7 @@ const Actor = () => {
     const handleMovieCount = () => {
         setTimeout(() => {
             setMovieCount(movieCount + 18);
-        }, 500); // Add a delay of 2 seconds
+        }, 500); 
     }
 
     useEffect(() => {

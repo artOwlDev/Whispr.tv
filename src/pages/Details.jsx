@@ -63,7 +63,7 @@ const Details = () => {
 
 
     const totalStars = 5;
-    const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half smaller
+    const ratingOutOf5 = Math.floor((details.vote_average / 2) * 2) / 2; 
   
     const fullStars = Math.floor(ratingOutOf5);
     const hasHalfStar = (ratingOutOf5 - fullStars) >= 0.5;
@@ -220,7 +220,7 @@ const Details = () => {
 
           useEffect(() => {
             if (details) {
-              const mediaID = details.id; // Replace with the actual itemId
+              const mediaID = details.id; 
           
               const db = getFirestore();
               const colRef = collection(db, 'reviews');
@@ -237,7 +237,6 @@ const Details = () => {
               });
           
               return () => {
-                // Unsubscribe from the real-time listener when the component unmounts
                 unsubscribe();
               };
             }
@@ -249,7 +248,6 @@ const Details = () => {
               const db = getFirestore();
               const userRef = doc(db, 'users', user.uid);
           
-              // Check if the user has already liked the review
               const userSnapshot = await getDoc(userRef);
               const likedReviews = userSnapshot.data().likedReviews || [];
               if (likedReviews.includes(reviewId)) {
@@ -257,13 +255,11 @@ const Details = () => {
                 return true;
               }
           
-              // Add the reviewId to the likedReviews array in the user document
               const updatedLikedReviews = [...likedReviews, reviewId];
               await updateDoc(userRef, {
                 likedReviews: updatedLikedReviews,
               });
           
-              // Increment the likes count by 1 in the review document
               const reviewRef = doc(db, 'reviews', reviewId);
               const docSnapshot = await getDoc(reviewRef);
               const currentLikes = docSnapshot.data().likes;
@@ -286,20 +282,17 @@ const Details = () => {
               const db = getFirestore();
               const userRef = doc(db, 'users', user.uid);
           
-              // Check if the user has already liked the review
               const userSnapshot = await getDoc(userRef);
               const likedReviews = userSnapshot.data().likedReviews || [];
               if (!likedReviews.includes(reviewId)) {
                 return;
               }
           
-              // Remove the reviewId from the likedReviews array in the user document
               const updatedLikedReviews = likedReviews.filter((id) => id !== reviewId);
               await updateDoc(userRef, {
                 likedReviews: updatedLikedReviews,
               });
           
-              // Decrement the likes count by 1 in the review document
               const reviewRef = doc(db, 'reviews', reviewId);
               const docSnapshot = await getDoc(reviewRef);
               const currentLikes = docSnapshot.data().likes;
@@ -331,7 +324,7 @@ const Details = () => {
                   })
                   .catch((error) => {
                     console.error('Error checking if review is liked:', error);
-                    return false; // Return false if there's an error to avoid unexpected behavior
+                    return false;
                   });
               };
 
@@ -366,7 +359,7 @@ const Details = () => {
                 setCopied(true);
                 setTimeout(() => {
                 setCopied(false);
-                }, 1000); // Display the message for 3 seconds
+                }, 1000); 
                 console.log('URL copied to clipboard:', currentUrl);
             })
             .catch((error) => {

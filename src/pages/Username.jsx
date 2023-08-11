@@ -36,7 +36,6 @@ const Username = () => {
 
     if (isValid) {
       try {
-        // Update the user document in the database with the username field
         const db = getFirestore();
         const userRef = doc(db, 'users', user.uid);
 
@@ -44,7 +43,6 @@ const Username = () => {
           username: username,
         });
 
-        // Form is valid, redirect to "./"
         navigate("/");
       } catch (error) {
         console.log(error);

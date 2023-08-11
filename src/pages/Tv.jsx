@@ -90,7 +90,7 @@ const Tv = () => {
     document.title = `TV Series | Whispr`;
     const timer = setTimeout(() => {
         setIsLoading(false);
-      },500); // Set the delay time in milliseconds (2 seconds in this example)
+      },500); 
   
       return () => clearTimeout(timer);
 },[])
@@ -184,7 +184,7 @@ const genreTable = {
                       <div className="star-rating">
                           {[...Array(5)].map((_, index) => {
                             const totalStars = 5;
-                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2; // Convert rating out of 10 to rating out of 5 and round to the nearest half
+                            const ratingOutOf5 = Math.floor((movie.vote_average / 2) * 2) / 2; 
                             const fullStars = Math.floor(ratingOutOf5);
                             const hasHalfStar = ratingOutOf5 - index >= 0.5;
                             const isFullStar = index < fullStars;
