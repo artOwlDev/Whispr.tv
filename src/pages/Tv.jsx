@@ -9,6 +9,8 @@ import { Carousel } from 'react-responsive-carousel';
 import Loader from '../components/Loader';
 import {AiFillStar, AiOutlineRight, AiOutlineLeft} from "react-icons/ai";
 import {TbStarHalfFilled, TbStarFilled} from "react-icons/tb"
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 
 
@@ -36,6 +38,14 @@ const Tv = () => {
   const ACTION_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=10759&vote_count.gte=300&page=1`
   const COMEDY_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=35&vote_count.gte=300&page=1`
   const SCIFI_TV = `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=10765&vote_count.gte=300&page=1`
+
+  useEffect(() => {
+    Aos.init({
+        duration: 2000,
+        once: true,
+        easing: "ease"
+    })
+}, [])
 
   useEffect(() => {
     axios.get(SCIFI_TV)
@@ -226,7 +236,7 @@ const genreTable = {
           </div>
 
 
-          <div className="popular-tv">
+          <div className="popular-tv" data-aos="fade-in">
 
             <h1 className='title'>Popular TV Series</h1>
 
@@ -248,7 +258,7 @@ const genreTable = {
        
           </div>
 
-          <div className="highRated-tv">
+          <div className="highRated-tv" data-aos="fade-in">
 
             <h1 className='title'>Action</h1>
 
@@ -263,7 +273,7 @@ const genreTable = {
             </div>        
           </div>
 
-          <div className="highRated-tv">
+          <div className="highRated-tv" data-aos="fade-in">
 
             <h1 className='title'>Comedy</h1>
 
@@ -278,7 +288,7 @@ const genreTable = {
             </div>        
           </div>
 
-          <div className="highRated-tv">
+          <div className="highRated-tv" data-aos="fade-in">
 
             <h1 className='title'>Sci-Fi</h1>
 

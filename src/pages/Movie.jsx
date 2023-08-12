@@ -9,6 +9,8 @@ import { Carousel } from 'react-responsive-carousel';
 import { RaceBy } from '@uiball/loaders'
 import Loader from '../components/Loader';
 import {TbStarHalfFilled, TbStarFilled} from "react-icons/tb"
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 
 
@@ -52,6 +54,14 @@ const Movie = () => {
     
     return () => clearTimeout(timer);
   }, [])
+
+  useEffect(() => {
+    Aos.init({
+        duration: 2000,
+        once: true,
+        easing: "ease"
+    })
+}, [])
 
   const genreTable = {
     28: 'Action',
@@ -333,7 +343,7 @@ const Movie = () => {
           </div>
 
           
-          <div className="movie-selection-list">
+          <div className="movie-selection-list" data-aos="fade-in">
 
             <h1 className='title'>Action</h1>
 
@@ -354,7 +364,7 @@ const Movie = () => {
 
        
           </div>
-          <div className="movie-selection-list">
+          <div className="movie-selection-list" data-aos="fade-in">
 
             <h1 className='title'>Sci-Fi</h1>
 
@@ -375,7 +385,7 @@ const Movie = () => {
 
        
           </div>
-          <div className="movie-selection-list">
+          <div className="movie-selection-list" data-aos="fade-in">
 
             <h1 className='title'>Animation</h1>
 
