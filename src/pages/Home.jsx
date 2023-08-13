@@ -130,7 +130,7 @@ export const Home = () => {
             <br></br>
 
 
-            <div className="popular-movies-home-page">
+            <div className="critically-acclaimed-home-page">
 
               <h1 className='home-title'>Popular movies</h1>
 
