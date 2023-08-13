@@ -455,8 +455,10 @@
     
 
     .search-title{
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        color: whitesmoke;
     }
 
     
@@ -2687,7 +2689,7 @@
                             }
 
                             .user-info{
-                                gap: 1px;
+                                gap: 5px;
                                 img{
                                     height: 2.5vh;
                                 }
@@ -2996,7 +2998,7 @@
                 }
 
                 .dropdown{
-                    width: 20vw;
+                    width: 24vw;
                     .dropdown-element{
                         font-size: 1.2rem;
 

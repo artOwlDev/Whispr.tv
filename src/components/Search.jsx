@@ -86,7 +86,7 @@ const Search = () => {
       <div className='search'>
           
 
-          <h1 className='search-title'>Movies, TV series all in one.</h1>
+          <h1 className='search-title'>Movies and TV series - all in one.</h1>
 
           <form className="search-form" onSubmit={handleFilter}>
             <input id="search" type="search" placeholder="Got something in mind?" autofocus required value={searchVal} onChange={handleSearch}/>
