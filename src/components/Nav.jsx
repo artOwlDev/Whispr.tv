@@ -51,9 +51,7 @@ export const Nav = () => {
   }, []);
   
 
-
-
-
+  
 
 
 
@@ -75,7 +73,7 @@ export const Nav = () => {
 
 
   const DropDown = () => {
-    return <div className='dropdown'>
+    return <div ref={dropdownRef} className='dropdown'>
       <Link to={'../../'}>
         <div className='dropdown-element'>Home</div>
       </Link>
