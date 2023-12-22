@@ -1208,6 +1208,13 @@ input{
 
         }
 
+        .no-review-div{
+            padding: 5rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
         .similar-movies{
             margin: 6rem auto;
             display: flex;
@@ -2860,6 +2867,9 @@ input{
 
             .similar-movies{
                 text-align: center;
+                
+
+                
                
 
                .similar-movies-map{
@@ -2935,6 +2945,9 @@ input{
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.531);
+                        border-top: 1px solid rgba(255, 255, 255, 0.531);;
+                        padding: 2rem;
                         
 
                         .actors-div{

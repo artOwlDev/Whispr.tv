@@ -680,6 +680,7 @@ const Details = () => {
                             
                         </div>
 
+
                         {entries.length > (4 + reviewNum) && (
                             <button onClick={handleLoadMoreReviews()} className="load-more-button">Load more</button>
                         )}
@@ -687,10 +688,13 @@ const Details = () => {
 
                         
                     </div>
+
+                    <div className='no-review-div' style={{display: entries.length === 0 ? "block" : "none"}}>Be the first one to write a review!</div>
+
     
                     <div className="similar-movies">
-                        {mediaType === "tv" && similarTV.length > 0 ? <h1>Recommended TV Shows</h1> : null}
-                        {mediaType === "movie" && similarMovies.length > 0 ? <h1>Recommended Movies</h1> : null}
+                        {mediaType === "tv" && similarTV.length > 0 ? <h1 className='recommend-h1'>Recommended TV Shows</h1> : null}
+                        {mediaType === "movie" && similarMovies.length > 0 ? <h1 className='recommend-h1'>Recommended Movies</h1> : null}
 
 
     
