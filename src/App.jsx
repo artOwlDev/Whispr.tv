@@ -17,6 +17,7 @@ import Upcoming from './pages/Upcoming'
 import Reviews from './pages/Reviews'
 import Username from './pages/Username'
 import WriteReview from './pages/WriteReview'
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/movies/write-review/:id" element={<WriteReview />} />
           <Route path="/television/write-review/:id" element={<WriteReview />} />
           <Route path="/username-select" element={<Username />} />
+          <Route path="/social/" element={<Profile />} />
         </Routes>
       </div>
     </BrowserRouter>

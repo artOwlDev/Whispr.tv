@@ -1,5 +1,80 @@
 
 
+.profile{
+    min-height: 100vh;
+
+
+    .profile-component{
+        width: 1000px;
+        min-height: 80vh;
+        margin: 1rem auto;
+        background: #1d2226a8;
+
+        .profile-banner{
+            min-height: 30vh;
+            background: #1931454a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 1rem;
+            
+            .profile-banner-name-username{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+
+                .profile-banner-name-about{
+
+                
+                    p{
+                        color: rgba(255, 255, 255, 0.782);
+                    }
+                    h1{
+                        font-size: 3rem;
+                        font-weight: bold;
+                    }
+                }
+
+
+                img{
+                    height: 20vh;
+                    border-radius: 50%;
+                }
+            }
+
+            .profile-banner-stats{
+                display: flex;
+                width: 1000px;
+                justify-content: space-around;
+                padding: 2rem 4rem;
+                border-bottom: 0.5px solid white;
+
+
+                .profile-banner-stat-box{
+                    text-align: center;
+
+                    h1{
+                        text-decoration: underline;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                        padding: 10px;
+                    }
+                }
+
+
+
+            }
+
+            
+
+        }
+
+
+    }
+}
+
 input{
     background-color: #2b2a33;
 }
