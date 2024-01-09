@@ -663,10 +663,14 @@ const Details = () => {
                                             <IoIosArrowDown onClick={() => handleDislike(item.reviewId)} className="dislike"/>
 
                                                 
-                                            </div>
+                                        </div>
 
+                                        
                                         <h1>{item.username}</h1>
-                                        <img src={item.userImage}/>
+
+                                        <Link to={`../../social/${item.userId}`}>
+                                            <img src={item.userImage} />
+                                        </Link>
                                     </div>
                                     <div className="tags">
                                         {item.tags.map(item => {

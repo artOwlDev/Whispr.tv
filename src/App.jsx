@@ -38,7 +38,7 @@ function App() {
           <Route path="/movies/write-review/:id" element={<WriteReview />} />
           <Route path="/television/write-review/:id" element={<WriteReview />} />
           <Route path="/username-select" element={<Username />} />
-          <Route path="/social/" element={<Profile />} />
+          <Route path="/social/:id" element={<Profile />} />
         </Routes>
       </div>
     </BrowserRouter>

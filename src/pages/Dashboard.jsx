@@ -83,7 +83,6 @@ const Dashboard = () => {
         });
     
         return () => {
-          // Unsubscribe from the real-time listener when the component unmounts
           unsubscribe();
         };
       

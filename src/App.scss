@@ -47,7 +47,7 @@
             .profile-banner-stats{
                 display: flex;
                 width: 1000px;
-                justify-content: space-around;
+                justify-content: flex-end;
                 padding: 2rem 4rem;
                 border-bottom: 0.5px solid white;
 
@@ -69,6 +69,17 @@
 
             
 
+        }
+
+        .profile-favorite-movies{
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-around;
+
+            .tv-item{
+                background: red;
+                width: 200px;
+            }
         }
 
 
@@ -274,23 +285,25 @@ input{
                 gap: 2rem;
                 font-size: 1.2rem;
                 margin: 1rem;
+                
+                .nav-link-element{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    &:hover{
+                        cursor: pointer;
+                        color: #9898d3;
+                        transition: all 0.4s ease;
+                    }
+                }
 
                 .right-nav-element{
 
                    &.text{
                     font-size: 0.9rem;
                    }
-                   
-
-                    &:hover{
-                        cursor: pointer;
-                        color: #9898d3;
-                        transition: all 0.4s ease;
-                        
-                    }
-
                     
-
                 }
 
                 
@@ -1108,9 +1121,22 @@ input{
                         position: absolute;
                         display: flex;
                         align-items: center;
+                        justify-content: space-around;
                         gap: 10px;
                         bottom: 10px;
                         right: 10px;
+
+                        img{
+                            object-fit: contain;
+                            width: auto;
+                            height: 4rem;
+                            border-radius: 50%;
+                        }
+
+                        h1{
+                            width: auto;
+
+                        }
 
 
                         .likes{
@@ -1152,12 +1178,10 @@ input{
                         }
 
 
+                        
 
-                        img{
-                            object-fit: cover;
-                            height: 4vh;
-                            border-radius: 50%;
-                        }
+                        
+
                     }
 
                     .left-side{

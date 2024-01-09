@@ -12,7 +12,8 @@ import {HiOutlineMenu} from "react-icons/hi"
 import TvIcon from '@mui/icons-material/Tv';
 import {BiMovie} from "react-icons/bi"
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-
+import { MdOutlineMovie } from "react-icons/md";
+import { FiUsers } from "react-icons/fi";
 
 
 
@@ -113,12 +114,19 @@ export const Nav = () => {
              
 
                 <div className="nav-icons">
-                  <Link to={'../../movies'}>
+                  <Link to={'../../movies'} className="nav-link-element">
+                    <MdOutlineMovie/>
                     <h1 className='right-nav-element text'>Movies</h1>
                   </Link>
 
-                  <Link to={'../../television'}>
+                  <Link to={'../../television'} className="nav-link-element">
+                    <TvIcon/>
                     <h1 className='right-nav-element text'>TV Series</h1>
+                  </Link>
+
+                  <Link to={'../../social'} className="nav-link-element">
+                    <FiUsers/>
+                    <h1 className='right-nav-element text'>Social</h1>
                   </Link>
 
 

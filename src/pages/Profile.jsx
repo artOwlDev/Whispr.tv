@@ -3,9 +3,18 @@
 import React from 'react'
 import { Nav } from '../components/Nav'
 import adventure from "../img/greg.jpg"
+import { TvItem } from '../components/TvItem';
+import { useParams } from 'react-router-dom';
+
 
 
 const Profile = () => {
+
+    const {id} = useParams();
+
+    
+
+
   return (
     <div className='profile'>
         <Nav/>
@@ -36,6 +45,13 @@ const Profile = () => {
                     </div>
                 </div>
 
+            </div>
+
+            <div className="profile-favorite-movies">
+                <TvItem className="tv-item"/>
+                <TvItem className="tv-item"/>
+                <TvItem className="tv-item"/>
+                <TvItem className="tv-item"/>
             </div>
         </div>
     </div>
