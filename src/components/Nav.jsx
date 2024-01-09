@@ -124,10 +124,10 @@ export const Nav = () => {
                     <h1 className='right-nav-element text'>TV Series</h1>
                   </Link>
 
-                  <Link to={'../../social'} className="nav-link-element">
+                  {/* <Link to={'../../social'} className="nav-link-element">
                     <FiUsers/>
                     <h1 className='right-nav-element text'>Social</h1>
-                  </Link>
+                  </Link> */}
 
 
 
